@@ -1,6 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
 set nocompatible
+set laststatus=2
 
 call pathogen#infect()
 call pathogen#helptags()
