@@ -31,3 +31,6 @@
 [submodule "vim/.vim/bundle/md-vim"]
 	path = vim/.vim/bundle/md-vim
 	url = git://github.com/hughbien/md-vim.git
+[submodule "vim/.vim/bundle/vim-rails"]
+	path = vim/.vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
