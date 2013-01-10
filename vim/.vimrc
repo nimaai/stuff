@@ -1,7 +1,6 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
 set nocompatible
-set laststatus=2
 
 call pathogen#infect()
 call pathogen#helptags()
@@ -76,6 +75,7 @@ nmap <silent> <C-K> :bnext<CR>
 set guifont=Monospace\ 11
 set encoding=utf-8
 let g:Powerline_symbols = 'unicode'
+set laststatus=2
 
 " Markdown extension
 au BufNewFile,BufRead *.md set ft=md
