@@ -72,7 +72,7 @@ nmap <silent> <C-K> :bnext<CR>
 
 " == Fonts, encoding, Powerline ==
 
-set guifont=Monospace\ 12
+set guifont=Monospace\ 11
 set encoding=utf-8
 let g:Powerline_symbols = 'unicode'
 
