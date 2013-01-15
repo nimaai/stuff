@@ -34,3 +34,6 @@
 [submodule "vim/.vim/bundle/vim-rails"]
 	path = vim/.vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "BufOnly.vim"]
+	path = BufOnly.vim
+	url = git://github.com/vim-scripts/BufOnly.vim.git
