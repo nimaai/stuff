@@ -59,10 +59,16 @@ set ttymouse=xterm2
 
 
 " == Easily navigate split windows ==
+
+if &term == 'konsole-256color'
+map ^[[1;3D :wincmd h<CR>
+map ^[[1;3C :wincmd l<CR>
+else
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+endif
 
 " == Easily jump between buffers
 nmap <silent> <C-J> :bprevious<CR>
