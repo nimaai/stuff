@@ -34,6 +34,8 @@ set nofoldenable        "dont fold by default
 
 set scrolloff=4         "Start scrolling when we're 4 lines away from margins
 
+" Disable scrollbars
+set guioptions=aem
 
 " == Backup files
 set nobackup
