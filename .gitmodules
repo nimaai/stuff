@@ -37,3 +37,6 @@
 [submodule "vim/.vim/bundle/vim-bufonly"]
 	path = vim/.vim/bundle/vim-bufonly
 	url = git://github.com/duff/vim-bufonly.git
+[submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
+	path = vim/.vim/bundle/vim-nerdtree-tabs
+	url = git://github.com/jistr/vim-nerdtree-tabs.git
