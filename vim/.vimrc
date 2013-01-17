@@ -37,6 +37,9 @@ set scrolloff=4         "Start scrolling when we're 4 lines away from margins
 " Disable scrollbars
 set guioptions=aem
 
+" Disable alt key mappings for menu in gvim
+set winaltkeys=no
+
 " == Backup files
 set nobackup
 set nowb
@@ -44,7 +47,6 @@ set nowb
 " == Search settings ==
 set incsearch
 set hlsearch
-
 
 " == Line numbering ==
 set number
@@ -59,24 +61,16 @@ set ttymouse=xterm2
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
 
-
 " == Easily navigate split windows ==
 
-if &term == 'konsole-256color'
-map ^[[1;3D :wincmd h<CR>
-map ^[[1;3C :wincmd l<CR>
-else
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-endif
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
 
 " == Easily jump between buffers
 nmap <silent> <C-J> :bprevious<CR>
 nmap <silent> <C-K> :bnext<CR>
-
-
 
 " == Fonts, encoding, Powerline ==
 
