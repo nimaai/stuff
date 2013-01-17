@@ -40,3 +40,6 @@
 [submodule "vim/.vim/bundle/vim-nerdtree-tabs"]
 	path = vim/.vim/bundle/vim-nerdtree-tabs
 	url = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "vim/.vim/bundle/vim-kwbdi"]
+	path = vim/.vim/bundle/vim-kwbdi
+	url = git://github.com/vim-scripts/kwbdi.vim.git
