@@ -43,3 +43,6 @@
 [submodule "vim/.vim/bundle/vim-kwbdi"]
 	path = vim/.vim/bundle/vim-kwbdi
 	url = git://github.com/vim-scripts/kwbdi.vim.git
+[submodule "vim/.vim/bundle/ruby-endwise"]
+	path = vim/.vim/bundle/ruby-endwise
+	url = git://github.com/tpope/vim-endwise.git
