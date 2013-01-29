@@ -61,6 +61,12 @@ set ttymouse=xterm2
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
 
+" == NERDTree key mappings ==
+
+noremap <A-t> :NERDTreeToggle<CR>
+noremap <A-f> :NERDTreeFind<CR>
+noremap <A-n> :NERDTreeFocus<CR>
+
 " == Easily navigate split windows ==
 
 nmap <silent> <A-k> :wincmd k<CR>
@@ -87,6 +93,15 @@ inoremap UU <Esc>u
 
 map <Enter> o<ESC>
 map <S-Enter> O<ESC>
+
+" == Key map for quick resizing of window ==
+
+if bufwinnr(1)
+  map <kPlus> <C-W>+
+  map <kMinus> <C-W>-
+  map <kDivide> <c-w><
+  map <kMultiply> <c-w>>
+endif
 
 " == Fonts, encoding, Powerline ==
 
