@@ -97,10 +97,10 @@ map <S-Enter> O<ESC>
 " == Key map for quick resizing of window ==
 
 if bufwinnr(1)
-  map <kPlus> <C-W>+
-  map <kMinus> <C-W>-
-  map <kDivide> <c-w><
-  map <kMultiply> <c-w>>
+  map <kPlus> 10<C-W>+
+  map <kMinus> 10<C-W>-
+  map <kDivide> 10<c-w><
+  map <kMultiply> 10<c-w>>
 endif
 
 " == Fonts, encoding, Powerline ==
