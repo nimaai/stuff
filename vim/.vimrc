@@ -1,5 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+cd ~/
+
 set nocompatible
 
 call pathogen#infect()
