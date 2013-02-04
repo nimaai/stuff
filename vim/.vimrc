@@ -1,5 +1,9 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+" change the leader key -> it does not work!!
+let mapleader = "_"
+let g:mapleader = "_"
+
 cd ~/
 
 set nocompatible
@@ -59,6 +63,9 @@ colorscheme xoria256
 " == Mousymouse
 set mouse=a
 set ttymouse=xterm2
+
+" open buffergator window on the right side
+let g:buffergator_viewport_split_policy="R"
 
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
