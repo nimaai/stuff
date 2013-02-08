@@ -1,8 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-" change the leader key -> it does not work!!
-let mapleader = "_"
-let g:mapleader = "_"
+" disable plugin from autoloading
+let g:nerdtree_tabs_loaded = 1
 
 cd ~/
 

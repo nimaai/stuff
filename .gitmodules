@@ -58,3 +58,6 @@
 [submodule "vim/.vim/bundle/vim-buffergator"]
 	path = vim/.vim/bundle/vim-buffergator
 	url = git://github.com/jeetsukumaran/vim-buffergator.git
+[submodule "vim/.vim/bundle/minibufexpl"]
+	path = vim/.vim/bundle/minibufexpl
+	url = git://github.com/fholgado/minibufexpl.vim.git
