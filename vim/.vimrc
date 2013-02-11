@@ -66,6 +66,9 @@ set ttymouse=xterm2
 " open buffergator window on the right side
 let g:buffergator_viewport_split_policy="R"
 
+" remap clearance of text highlighting
+nnoremap <silent> <Leader>/ :nohlsearch<CR>
+
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
 
