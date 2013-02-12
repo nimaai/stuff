@@ -114,18 +114,6 @@ if bufwinnr(1)
   map <kMultiply> 10<c-w>>
 endif
 
-" make switching between absolute and relative line numbers easier
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-
 " == Fonts, encoding, Powerline ==
 
 set guifont=Monospace\ 11
