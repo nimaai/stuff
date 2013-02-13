@@ -114,6 +114,12 @@ if bufwinnr(1)
   map <kMultiply> 10<c-w>>
 endif
 
+" remap movement keys beginning and end of line
+nnoremap $ ^
+nnoremap ^ $
+vnoremap $ ^
+vnoremap ^ $
+
 " == Fonts, encoding, Powerline ==
 
 set guifont=Monospace\ 11
