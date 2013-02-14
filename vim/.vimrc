@@ -37,7 +37,7 @@ set nofoldenable        "dont fold by default
 
 " == Scrolling
 
-set scrolloff=4         "Start scrolling when we're 4 lines away from margins
+set scrolloff=4         "Start scrolling when we're 4 lines away from margins:nnoremap <Space> i<Space><Esc>
 
 " Disable scrollbars
 set guioptions=aem
@@ -68,6 +68,8 @@ let g:buffergator_viewport_split_policy="R"
 
 " remap clearance of text highlighting
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
+" insert space in normal mode
+nnoremap <Space> a<Space><Esc>
 
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
