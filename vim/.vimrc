@@ -54,7 +54,11 @@ set incsearch
 set hlsearch
 
 " == Line numbering ==
-set number
+" set number
+
+" extension to numberlines plugin to fix the toggle when switching windows
+autocmd WinLeave * :call FocusLost()
+autocmd WinEnter * :call FocusGained()
 
 " == Colors ==
 colorscheme xoria256
