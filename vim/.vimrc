@@ -60,6 +60,12 @@ set hlsearch
 autocmd WinLeave * :call FocusLost()
 autocmd WinEnter * :call FocusGained()
 
+" disabling arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " == Colors ==
 colorscheme xoria256
 
