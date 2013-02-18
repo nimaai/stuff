@@ -67,3 +67,6 @@
 [submodule "vim/.vim/bundle/vim-numbertoggle"]
 	path = vim/.vim/bundle/vim-numbertoggle
 	url = git://github.com/jeffkreeftmeijer/vim-numbertoggle.git
+[submodule "vim/.vim/bundle/easygrep"]
+	path = vim/.vim/bundle/easygrep
+	url = git://github.com/jcf/easygrep.vim.git
