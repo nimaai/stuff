@@ -121,10 +121,8 @@ if bufwinnr(1)
 endif
 
 " remap movement keys beginning and end of line
-nnoremap $ ^
-nnoremap ^ $
-vnoremap $ ^
-vnoremap ^ $
+noremap $ ^
+noremap ^ $
 
 " == Fonts, encoding, Powerline ==
 
