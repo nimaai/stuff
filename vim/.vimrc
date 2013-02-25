@@ -14,6 +14,9 @@ syntax on
 set hidden
 filetype plugin indent on
 
+" swap files location
+set directory=~/temp/vim-swap-files
+
 " == Indentation ==
 set autoindent
 set smartindent
@@ -57,8 +60,8 @@ set hlsearch
 " set number
 
 " extension to numberlines plugin to fix the toggle when switching windows
-autocmd WinLeave * :call FocusLost()
-autocmd WinEnter * :call FocusGained()
+"autocmd WinLeave * :call FocusLost()
+"autocmd WinEnter * :call FocusGained()
 
 " disabling arrow keys
 noremap <Up> <NOP>
