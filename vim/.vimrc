@@ -15,7 +15,7 @@ set hidden
 filetype plugin indent on
 
 " swap files location
-set directory=~/temp/vim-swap-files
+set directory=~/temp/vim-swap-files/
 
 " == Indentation ==
 set autoindent
@@ -87,23 +87,6 @@ nnoremap <Space> a<Space><Esc>
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
 
-" == NERDTree key mappings ==
-
-noremap <A-t> :NERDTreeToggle<CR>
-noremap <A-f> :NERDTreeFind<CR>
-noremap <A-n> :NERDTreeFocus<CR>
-
-" == Easily navigate split windows ==
-
-nmap <silent> <A-k> :wincmd k<CR>
-nmap <silent> <A-j> :wincmd j<CR>
-nmap <silent> <A-h> :wincmd h<CR>
-nmap <silent> <A-l> :wincmd l<CR>
-
-" == Easily jump between buffers
-nmap <silent> <C-J> :bprevious<CR>
-nmap <silent> <C-K> :bnext<CR>
-
 " == Quick command mappings in insert mode ==
 
 inoremap II <Esc>I
@@ -135,7 +118,6 @@ noremap ^ $
 
 " == Fonts, encoding, Powerline ==
 
-set guifont=Monospace\ 11
 set encoding=utf-8
 let g:Powerline_symbols = 'unicode'
 set laststatus=2
