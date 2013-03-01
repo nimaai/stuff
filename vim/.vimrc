@@ -111,8 +111,7 @@ inoremap UU <Esc>u
 
 " == Key map for adding blank lines in normal mode ==
 
-map <Enter> o<ESC>
-map <S-Enter> O<ESC>
+map <Enter> O<ESC>
 
 " == Key map for quick resizing of window ==
 
