@@ -115,12 +115,12 @@ map <Enter> O<ESC>
 
 " == Key map for quick resizing of window ==
 
-if bufwinnr(1)
-  map <kPlus> 10<C-W>+
-  map <kMinus> 10<C-W>-
-  map <kDivide> 10<c-w><
-  map <kMultiply> 10<c-w>>
-endif
+" resize horzontal split window
+nmap <C-Up> 10<C-W>-<C-W>-
+nmap <C-Down> 10<C-W>+<C-W>+
+" resize vertical split window
+nmap <C-Left> 10<C-W>><C-W>>
+nmap <C-Right> 10<C-W><<C-W><
 
 " == NERDTree key mappings ==
 
