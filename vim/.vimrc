@@ -2,6 +2,9 @@
 
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
+" easygrep options
+let g:EasyGrepSearchCurrentBufferDir=0
+let g:EasyGrepRecursive=1
 
 cd ~/
 
