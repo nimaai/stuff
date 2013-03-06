@@ -97,6 +97,8 @@ let g:buffergator_viewport_split_policy="R"
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 " insert space in normal mode
 nnoremap <Space> a<Space><Esc>
+" short cut for changing current directory to the current file
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
