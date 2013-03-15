@@ -1,5 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+set t_Co=256
+
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
 " easygrep options
@@ -20,6 +22,13 @@ while c <= 'z'
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
+
+" set tab name to show only the filename
+function! GuiTabLabel()
+  return fnamemodify(bufname(winbufnr(1)), ":t")
+endfunction
+
+set guitablabel=%!GuiTabLabel()
 
 set ttimeoutlen=50
 
@@ -95,8 +104,6 @@ let g:buffergator_viewport_split_policy="R"
 
 " remap clearance of text highlighting
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
-" insert space in normal mode
-nnoremap <Space> a<Space><Esc>
 " short cut for changing current directory to the current file
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
@@ -113,10 +120,6 @@ inoremap CC <Esc>C
 inoremap SS <Esc>S
 inoremap DD <Esc>dd
 inoremap UU <Esc>u
-
-" == Key map for adding blank lines in normal mode ==
-
-map <Enter> O<ESC>
 
 " == Key map for quick resizing of window ==
 
