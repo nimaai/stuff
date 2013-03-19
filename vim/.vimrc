@@ -94,6 +94,8 @@ noremap <Right> <NOP>
 
 " == Colors ==
 colorscheme xoria256
+"set background=dark
+"colorscheme base16-default
 
 " == Mousymouse
 set mouse=a
@@ -148,8 +150,8 @@ nmap <silent> <C-J> :bprevious<CR>
 nmap <silent> <C-K> :bnext<CR>
 
 " remap movement keys beginning and end of line
-noremap $ ^
-noremap ^ $
+nnoremap <Leader>a ^
+nnoremap <Leader>e $
 
 " == Fonts, encoding, Powerline ==
 

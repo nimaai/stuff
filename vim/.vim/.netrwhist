@@ -1,4 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/nimaai/various/depot/app'
 let g:netrw_dirhist_2='/home/nimaai/various/depot/app/controllers'
+let g:netrw_dirhist_3='/home/nimaai/.config/openbox'
+let g:netrw_dirhist_4='/home/nimaai/.config'
+let g:netrw_dirhist_5='/home/nimaai/.config/enchant'
+let g:netrw_dirhist_6='/home/nimaai/.config/openbox'
+let g:netrw_dirhist_7='/home/nimaai/src/leihs/features/step_definitions/examples'
