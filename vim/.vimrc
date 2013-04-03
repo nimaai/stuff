@@ -150,12 +150,17 @@ nmap <silent> <C-J> :bprevious<CR>
 nmap <silent> <C-K> :bnext<CR>
 
 " remap movement keys beginning and end of line
-nnoremap <Leader>a ^
-nnoremap <Leader>e $
+map <Leader>a ^
+map <Leader>e $
+
+" remap keys for copying to and pasting from clipboard
+map <Leader>p "+p
+map <Leader>P "+P
+map <Leader>y "+y
 
 " == Fonts, encoding, Powerline ==
 
-set guifont=Monospace\ 11
+set guifont=Monospace\ 12
 set encoding=utf-8
 let g:Powerline_symbols = 'unicode'
 set laststatus=2
