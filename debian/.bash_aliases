@@ -1,0 +1,7 @@
+alias be='bundle exec'
+alias tbe='RAILS_ENV=test bundle exec'
+alias tbec='RAILS_ENV=test bundle exec cucumber -p all'
+alias tber='RAILS_ENV=test bundle exec rspec'
+alias dbe='RAILS_ENV=dev bundle exec'
+alias rspec='rspec --format documentation'
+alias sudo='sudo '
