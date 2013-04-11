@@ -50,7 +50,7 @@
       D: omnipresent (on all desktops).
   -->
     <keepBorder>yes</keepBorder>
-    <animateIconify>no</animateIconify>
+    <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Monospace</name>
       <size>11</size>
@@ -241,40 +241,40 @@
     </keybind>
     <keybind key="C-A-h">
       <action name="If">
-              <maximized>no</maximized>
-              <then>
-                      <action name="MoveResizeTo">
-                              <!-- move to next monitor -->
-                              <monitor>prev</monitor>
-                      </action>
-              </then>
-              <else>
-                      <action name="Unmaximize"/>
-                      <action name="MoveResizeTo">
-                              <!-- move to next monitor -->
-                              <monitor>prev</monitor>
-                      </action>
-                      <action name="Maximize"/>
-              </else>
+        <maximized>no</maximized>
+        <then>
+          <action name="MoveResizeTo">
+            <!-- move to next monitor -->
+            <monitor>prev</monitor>
+          </action>
+        </then>
+        <else>
+          <action name="Unmaximize"/>
+          <action name="MoveResizeTo">
+            <!-- move to next monitor -->
+            <monitor>prev</monitor>
+          </action>
+          <action name="Maximize"/>
+        </else>
       </action>
     </keybind>
     <keybind key="C-A-l">
       <action name="If">
-              <maximized>no</maximized>
-              <then>
-                      <action name="MoveResizeTo">
-                              <!-- move to next monitor -->
-                              <monitor>next</monitor>
-                      </action>
-              </then>
-              <else>
-                      <action name="Unmaximize"/>
-                      <action name="MoveResizeTo">
-                              <!-- move to next monitor -->
-                              <monitor>next</monitor>
-                      </action>
-                      <action name="Maximize"/>
-              </else>
+        <maximized>no</maximized>
+        <then>
+          <action name="MoveResizeTo">
+            <!-- move to next monitor -->
+            <monitor>next</monitor>
+          </action>
+        </then>
+        <else>
+          <action name="Unmaximize"/>
+          <action name="MoveResizeTo">
+            <!-- move to next monitor -->
+            <monitor>next</monitor>
+          </action>
+          <action name="Maximize"/>
+        </else>
       </action>
     </keybind>
     <!-- Keybindings for windows -->
