@@ -116,7 +116,7 @@ setWindowTitle() {
 }
 
 updateWindowTitle() {
-    setWindowTitle "${HOSTNAME%%.*}:${PWD/$HOME/~}"
+    setWindowTitle "${PWD/$HOME/~}"
 }
 
 # set bash prompt to display git information
