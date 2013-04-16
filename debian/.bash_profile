@@ -4,6 +4,8 @@ EDITOR=vim
 export EDITOR
 alias e=$EDITOR
 
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
+
 eval "$(rbenv init -)"
 
 if [ -f ~/.bash_aliases ]; then
