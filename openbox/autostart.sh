@@ -78,7 +78,7 @@ update-notifier &
 
 #(sleep 1 && lxpanel) &
 
-#(sleep 100 && dropbox start -i) & # Launch dropbo when system is loaded and internet is around.
+(sleep 100 && sh ~/progs/dropbox/.dropbox-dist/dropboxd) & # Launch dropbo when system is loaded and internet is around.
 
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
