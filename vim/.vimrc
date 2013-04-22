@@ -1,5 +1,10 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+" make gvim shell use another .bashrc file
+if has('gui_running')
+  set shell=bash\ --init-file\ .bashrc_gvim
+endif
+
 set t_Co=256
 
 " disable plugin from autoloading
