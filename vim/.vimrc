@@ -2,7 +2,7 @@
 
 " make gvim shell use another .bashrc file
 if has('gui_running')
-  set shell=bash\ --init-file\ .bashrc_gvim
+  set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
 endif
 
 set t_Co=256
