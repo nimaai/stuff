@@ -106,8 +106,8 @@ colorscheme xoria256
 set mouse=a
 set ttymouse=xterm2
 
-" open buffergator window on the right side
-let g:buffergator_viewport_split_policy="R"
+" remap clearance of text highlighting
+nnoremap <Leader>b :Bufferlist<CR>
 
 " remap clearance of text highlighting
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
