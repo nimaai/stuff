@@ -55,9 +55,6 @@
 [submodule "vim/.vim/bundle/vim-colors-phd"]
 	path = vim/.vim/bundle/vim-colors-phd
 	url = git://github.com/vim-scripts/phd.git
-[submodule "vim/.vim/bundle/vim-buffergator"]
-	path = vim/.vim/bundle/vim-buffergator
-	url = git://github.com/jeetsukumaran/vim-buffergator.git
 [submodule "vim/.vim/bundle/vim-easymotion"]
 	path = vim/.vim/bundle/vim-easymotion
 	url = git://github.com/Lokaltog/vim-easymotion.git
