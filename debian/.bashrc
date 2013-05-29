@@ -147,7 +147,6 @@ function _git_prompt() {
 }
 function _prompt_command() {
     #PS1="`_git_prompt`"'... your usual prompt goes here, e.g. \[\e[1;34m\]\w \$\[\e[0m\] '
-    stty columns 1000
     PS1="`_git_prompt`"$PS2
 }
 PROMPT_COMMAND=_prompt_command
