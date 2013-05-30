@@ -165,7 +165,7 @@ map <Leader>y "+y
 
 " == Fonts, encoding, Powerline ==
 
-set guifont=Monospace\ 12
+set guifont=Droid\ Sans\ Mono\ 12
 set encoding=utf-8
 let g:Powerline_symbols = 'unicode'
 set laststatus=2
