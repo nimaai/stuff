@@ -84,7 +84,7 @@
         prompt = false
 
 [merge]
-        tool = gvim
+        tool = gvimdiff
 [mergetool]
 	keepBackup = false
         prompt = false

@@ -92,4 +92,4 @@ ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock &
 
 xmodmap .Xmodmap &
 
-nitrogen --restore &
+#nitrogen --restore &
