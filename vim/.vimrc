@@ -181,3 +181,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " abbreviations
 ab bp binding.pry
+
+" Simple way to turn off Gdiff splitscreen
+" works only when diff buffer is focused
+if !exists(":Gdiffoff")
+  command Gdiffoff diffoff | q | Gedit
+endif
