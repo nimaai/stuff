@@ -2,7 +2,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 export CDPATH=~/symlinks
 EDITOR=gvim
 export EDITOR
-alias e='$EDITOR'
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
 

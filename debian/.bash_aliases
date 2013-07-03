@@ -1,3 +1,4 @@
+alias e=$EDITOR
 alias be='bundle exec'
 alias gl='BUNDLE_GEMFILE=Gemfile.local'
 alias et='RAILS_ENV=test'
