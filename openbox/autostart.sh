@@ -73,10 +73,7 @@ update-notifier &
 
 #docky &
 
-#synapse &
 (sleep 1 && tint2) &
-
-#(sleep 1 && lxpanel) &
 
 (sleep 100 && sh ~/progs/dropbox/.dropbox-dist/dropboxd) & # Launch dropbo when system is loaded and internet is around.
 
