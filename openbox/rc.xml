@@ -36,7 +36,7 @@
     <primaryMonitor>Active</primaryMonitor>
   </placement>
   <theme>
-    <name>SlimOne</name>
+    <name>Rabbit</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -54,7 +54,7 @@
       <name>Droid Sans Mono</name>
       <size>11</size>
       <!-- font size in points -->
-      <weight>Bold</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
@@ -63,7 +63,7 @@
       <name>Droid Sans Mono</name>
       <size>11</size>
       <!-- font size in points -->
-      <weight>Bold</weight>
+      <weight>Normal</weight>
       <!-- 'bold' or 'normal' -->
       <slant>Normal</slant>
       <!-- 'italic' or 'normal' -->
