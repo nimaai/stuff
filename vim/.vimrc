@@ -71,7 +71,7 @@ set nofoldenable        "dont fold by default
 set scrolloff=4         "Start scrolling when we're 4 lines away from margins:nnoremap <Space> i<Space><Esc>
 
 " Disable scrollbars
-set guioptions=iae
+set guioptions=iaer
 
 " Disable alt key mappings for menu in gvim
 set winaltkeys=no
