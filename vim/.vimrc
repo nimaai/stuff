@@ -7,6 +7,16 @@ endif
 
 set t_Co=256
 
+" show tab numbers in tab labels
+set guitablabel=%N\|\ %t\ %M
+
+" set tab name to show only the filename
+"function! GuiTabLabel()
+  "return fnamemodify(bufname(winbufnr(1)), ":t")
+"endfunction
+
+"set guitablabel=%!GuiTabLabel()
+
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
 " easygrep options
@@ -27,13 +37,6 @@ while c <= 'z'
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
-
-" set tab name to show only the filename
-function! GuiTabLabel()
-  return fnamemodify(bufname(winbufnr(1)), ":t")
-endfunction
-
-set guitablabel=%!GuiTabLabel()
 
 set ttimeoutlen=50
 
