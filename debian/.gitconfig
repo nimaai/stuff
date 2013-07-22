@@ -23,7 +23,7 @@
 
 [gui]
 	fontui = -family \"DejaVu Sans Mono\" -size 11 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"DejaVu Sans Mono\" -size -14 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"DejaVu Sans Mono\" -size -16 -weight normal -slant roman -underline 0 -overstrike 0
 	recentrepo = /home/nimaai/src/leihs
 
 [alias]
@@ -68,10 +68,10 @@
         remote = green
 
 [color "diff"]
-        meta = yellow bold
+        meta = bold
         frag = magenta bold
-        old = red bold
-        new = green bold
+        old = red
+        new = green
 
 [color "status"]
         added = yellow
