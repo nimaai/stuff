@@ -782,26 +782,26 @@
     <!-- show the manage desktops section in the client-list-(combined-)menu -->
   </menu>
   <applications>
-    <!--<application type="dialog">-->
-    <!--<maximized>no</maximized>-->
-    <!--<decor>yes</decor>-->
+          <!--<application class="*">-->
+                  <!--<maximized>yes</maximized>-->
+                  <!--<decor>yes</decor>-->
+          <!--</application>-->
+          <!--<application type="dialog">-->
+                  <!--<maximized>no</maximized>-->
+                  <!--<decor>yes</decor>-->
+          <!--</application>-->
+    <!--<application class="Firefox">-->
+      <!--<position force="no">-->
+        <!--<x>default</x>-->
+        <!--<y>default</y>-->
+        <!--<monitor>2</monitor>-->
+      <!--</position>-->
+      <!--<maximized>yes</maximized>-->
     <!--</application>-->
-    <!--<application class="*">-->
-    <!--<maximized>yes</maximized>-->
-    <!--<decor>yes</decor>-->
+    <!--<application class="Gvim">-->
+      <!--<maximized>yes</maximized>-->
+      <!--<decor>no</decor>-->
     <!--</application>-->
-    <application class="Firefox">
-      <position force="no">
-        <x>default</x>
-        <y>default</y>
-        <monitor>2</monitor>
-      </position>
-      <maximized>yes</maximized>
-    </application>
-    <application class="Gvim">
-      <maximized>yes</maximized>
-      <decor>no</decor>
-    </application>
     <!--
   # this is an example with comments through out. use these to make your
   # own rules, but without the comments of course.
