@@ -1,10 +1,5 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-" make gvim shell use another .bashrc file
-if has('gui_running')
-  set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
-endif
-
 set t_Co=256
 
 " show tab numbers in tab labels
@@ -88,7 +83,7 @@ set incsearch
 set hlsearch
 
 " == Line numbering ==
-" set number
+set number
 
 " extension to numberlines plugin to fix the toggle when switching windows
 "autocmd WinLeave * :call FocusLost()
@@ -101,8 +96,6 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " == Colors ==
-colorscheme xoria256
-"set background=dark
 "colorscheme base16-default
 
 " == Mousymouse
@@ -168,9 +161,20 @@ map <Leader>y "+y
 
 " == Fonts, encoding, Powerline ==
 
+if has('gui_running')
+  " make gvim shell use another .bashrc file
+  set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
+
+  colorscheme solarized
+  set background=light
+
+  let g:Powerline_theme="short"
+  let g:Powerline_colorscheme="solarized256_light"
+  let g:Powerline_symbols = 'unicode'
+endif
+
 set guifont=Droid\ Sans\ Mono\ 12
 set encoding=utf-8
-let g:Powerline_symbols = 'unicode'
 set laststatus=2
 
 " Markdown extension
