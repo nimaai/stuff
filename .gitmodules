@@ -80,3 +80,6 @@
 [submodule "vim/.vim/bundle/vim-solarized-powerline"]
 	path = vim/.vim/bundle/vim-solarized-powerline
 	url = https://github.com/stephenmckinney/vim-solarized-powerline.git
+[submodule "vim/.vim/bundle/vim-matchit"]
+	path = vim/.vim/bundle/vim-matchit
+	url = https://github.com/jwhitley/vim-matchit.git
