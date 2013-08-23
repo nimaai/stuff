@@ -1,7 +1,7 @@
 # This shell script is run before Openbox launches.
 # Environment variables set here are passed to the Openbox session.
 
-dual-monitor &
+bash ~/.screenlayout/dual.sh &
 
 # Set a background color
 BG=""
@@ -63,7 +63,7 @@ gnome-volume-control-applet &
 
 gnome-sound-applet &
 
-update-notifier &
+#update-notifier &
 
 #parcellite &
 
@@ -90,3 +90,7 @@ ln -s /var/run/mysqld/mysqld.sock /tmp/mysql.sock &
 xmodmap .Xmodmap &
 
 #nitrogen --restore &
+
+xbacklight -dec 20 &
+
+#dual-monitor &

@@ -69,7 +69,7 @@ set nofoldenable        "dont fold by default
 set scrolloff=4         "Start scrolling when we're 4 lines away from margins:nnoremap <Space> i<Space><Esc>
 
 " Disable scrollbars
-set guioptions=iaem
+set guioptions=iae
 
 " Disable alt key mappings for menu in gvim
 set winaltkeys=no
@@ -96,7 +96,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " == Colors ==
-"colorscheme base16-default
+colorscheme xoria256
 
 " == Mousymouse
 set mouse=a
@@ -166,14 +166,14 @@ if has('gui_running')
   set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
 
   colorscheme solarized
-  set background=light
+  set background=dark
 
   let g:Powerline_theme="short"
-  let g:Powerline_colorscheme="solarized256_light"
+  let g:Powerline_colorscheme="solarized256_dark"
   let g:Powerline_symbols = 'unicode'
 endif
 
-set guifont=Droid\ Sans\ Mono\ 12
+set guifont=Droid\ Sans\ Mono\ 13
 set encoding=utf-8
 set laststatus=2
 
