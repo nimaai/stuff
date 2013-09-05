@@ -74,9 +74,6 @@
 [submodule "vim/.vim/bundle/buffet"]
 	path = vim/.vim/bundle/buffet
 	url = git://github.com/sandeepcr529/Buffet.vim.git
-[submodule "vim/.vim/bundle/conque-shell"]
-	path = vim/.vim/bundle/conque-shell
-	url = git://github.com/vim-scripts/Conque-Shell.git
 [submodule "vim/.vim/bundle/vim-solarized-powerline"]
 	path = vim/.vim/bundle/vim-solarized-powerline
 	url = https://github.com/stephenmckinney/vim-solarized-powerline.git
