@@ -1,12 +1,12 @@
-# remap caps lock to escape
+! remap caps lock to escape
 remove Lock = Caps_Lock
 keysym Caps_Lock = Escape
 
-# remap right windows key to control
+! remap right windows key to control
 remove mod4 = Super_R
 add control = Super_R
 
-# remap altgr to alt
+! remap altgr to alt
 clear mod5
 add mod1 = Mode_switch
 keysym ISO_Level3_Shift = Alt_L
