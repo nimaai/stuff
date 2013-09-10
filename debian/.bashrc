@@ -2,8 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-set -o vi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -45,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -59,9 +57,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS2='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 "(%s)")# '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS2='${debian_chroot:+($debian_chroot)}\u:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(declare -F __git_ps1 &>/dev/null && __git_ps1 ":(%s)")\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -86,6 +84,11 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -106,22 +109,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set tab title in bash emulator
-setWindowTitle() {
-    echo -ne "\e]2;$*\a"
-}
-
-updateWindowTitle() {
-    setWindowTitle "${PWD/$HOME/~}"
-}
-
-function _prompt_command() {
-    updateWindowTitle
-
-    #PS1='$(__git_ps1 "(%s)") '$PS2
-    PS1=$PS2
-}
-
-PROMPT_COMMAND=_prompt_command
-
-export TERM=xterm-256color
+# set vi mode
+set -o vi
