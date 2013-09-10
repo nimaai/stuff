@@ -1,19 +1,24 @@
 #!/bin/bash
+
 case "$1" in
         dual) ~/.screenlayout/dual-monitor.sh
-                tint2restart
-                sleep 1s
-                conkywonky
-                sleep 1s
-                nitrogen --restore
                 ;;
         single) ~/.screenlayout/single-monitor.sh
-                tint2restart
-                sleep 1s
-                conkywonky
-                sleep 1s
-                nitrogen --restore
                 ;;
         *) echo "Invalid layout"
                 ;;
 esac
+
+tint2restart
+
+sleep 1s
+conkywonky
+
+sleep 1s
+nitrogen --restore
+
+sleep 1s
+cb-compositor --restart
+
+sleep 1s
+xmodmap ~/.Xmodmap
