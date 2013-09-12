@@ -4,7 +4,7 @@ MODE=`xrandr | grep "DP2 connected" -c`
 if [ "$MODE" == '1' ]
 then
         # the laptop is docked
-        displaymode dual &
+        ~/.screenlayout/dual-monitor.sh
 fi
 # in case the laptop is not docked, default will be used, alternatively add
 # ~/.screenlayout/single-monitor.sh
