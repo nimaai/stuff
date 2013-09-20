@@ -80,3 +80,9 @@
 [submodule "vim/.vim/bundle/vim-matchit"]
 	path = vim/.vim/bundle/vim-matchit
 	url = https://github.com/jwhitley/vim-matchit.git
+[submodule "vim/.vim/bundle/vim-slime"]
+	path = vim/.vim/bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+[submodule "vim/.vim/bundle/arc-vim"]
+	path = vim/.vim/bundle/arc-vim
+	url = https://github.com/vim-scripts/arc.vim.git
