@@ -96,7 +96,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " == Colors ==
-colorscheme xoria256
+"colorscheme xoria256
 
 " == Mousymouse
 set mouse=a
