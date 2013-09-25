@@ -1,7 +1,5 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-set t_Co=256
-
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
@@ -163,6 +161,8 @@ map <Leader>y "+y
 " == Fonts, encoding, Powerline ==
 
 if has('gui_running')
+  set t_Co=256
+
   " make gvim shell use another .bashrc file
   set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
 
