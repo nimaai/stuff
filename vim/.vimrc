@@ -196,3 +196,5 @@ ab bp binding.pry
 if !exists(":Gdiffoff")
   command Gdiffoff diffoff | q | Gedit
 endif
+
+let g:slime_target = "tmux"
