@@ -1,5 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+set t_Co=256
+
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
@@ -94,7 +96,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " == Colors ==
-"colorscheme xoria256
+colorscheme xoria256
 
 " == Mousymouse
 set mouse=a
@@ -161,7 +163,6 @@ map <Leader>y "+y
 " == Fonts, encoding, Powerline ==
 
 if has('gui_running')
-  set t_Co=256
 
   " make gvim shell use another .bashrc file
   set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
