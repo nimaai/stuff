@@ -86,3 +86,6 @@
 [submodule "vim/.vim/bundle/arc-vim"]
 	path = vim/.vim/bundle/arc-vim
 	url = https://github.com/vim-scripts/arc.vim.git
+[submodule "vim/.vim/bundle/vim-tabline"]
+	path = vim/.vim/bundle/vim-tabline
+	url = https://github.com/mkitt/tabline.vim.git
