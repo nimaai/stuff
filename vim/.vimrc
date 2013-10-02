@@ -194,7 +194,7 @@ ab bp binding.pry
 " Simple way to turn off Gdiff splitscreen
 " works only when diff buffer is focused
 if !exists(":Gdiffoff")
-  command Gdiffoff diffoff | q | Gedit
+  command Gdoff diffoff | q | Gedit
 endif
 
 let g:slime_target = "tmux"
