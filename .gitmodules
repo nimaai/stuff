@@ -89,3 +89,6 @@
 [submodule "vim/.vim/bundle/vim-tabline"]
 	path = vim/.vim/bundle/vim-tabline
 	url = https://github.com/mkitt/tabline.vim.git
+[submodule "vim/.vim/bundle/vim-racket"]
+	path = vim/.vim/bundle/vim-racket
+	url = https://github.com/wlangstroth/vim-racket.git
