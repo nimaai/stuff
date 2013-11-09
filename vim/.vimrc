@@ -14,9 +14,15 @@ set guitablabel=\(%N\)\ %t\ %M
 
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
+" fix strange arrow issues in cygwin on windows
+if has("win32unix")
+  let g:NERDTreeDirArrows=0
+endif
+
 " easygrep options
 let g:EasyGrepSearchCurrentBufferDir=0
 let g:EasyGrepRecursive=1
+
 
 cd ~/
 
@@ -158,7 +164,8 @@ if has('gui_running')
   let g:Powerline_symbols = 'unicode'
 endif
 
-set guifont=Droid\ Sans\ Mono\ 13
+set guifont=Liberation\ Mono\ Powerline\ 13
+"set guifont=Droid\ Sans\ Mono\ 13
 set encoding=utf-8
 set laststatus=2
 
