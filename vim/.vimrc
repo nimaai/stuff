@@ -113,17 +113,6 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 " == Open NERDTree on entering? ==
 "autocmd vimenter * NERDTree
 
-" == Quick command mappings in insert mode ==
-
-inoremap II <Esc>I
-inoremap AA <Esc>A
-inoremap OO <Esc>O
-
-inoremap CC <Esc>C
-inoremap SS <Esc>S
-inoremap DD <Esc>dd
-inoremap UU <Esc>u
-
 " == Key map for quick resizing of window ==
 
 " resize horzontal split window
