@@ -23,7 +23,6 @@ endif
 let g:EasyGrepSearchCurrentBufferDir=0
 let g:EasyGrepRecursive=1
 
-
 cd ~/
 
 set nocompatible
@@ -164,8 +163,7 @@ if has('gui_running')
   let g:Powerline_symbols = 'unicode'
 endif
 
-set guifont=Liberation\ Mono\ Powerline\ 13
-"set guifont=Droid\ Sans\ Mono\ 13
+"set guifont=Liberation\ Sans\ Mono\ 13
 set encoding=utf-8
 set laststatus=2
 
