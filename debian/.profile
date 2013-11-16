@@ -1,4 +1,5 @@
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export CDPATH=~/symlinks
 EDITOR=vim
 export EDITOR
