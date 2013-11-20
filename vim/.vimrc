@@ -186,3 +186,8 @@ if !exists(":Gdiffoff")
 endif
 
 let g:slime_target = "tmux"
+
+if bufwinnr(1)
+  map + 10<C-W>>
+  map - 10<C-W><
+endif
