@@ -12,9 +12,6 @@ esac
 tint2restart
 
 sleep 1s
-conkywonky
-
-sleep 1s
 nitrogen --restore
 
 sleep 1s
