@@ -98,3 +98,6 @@
 [submodule "vim/.vim/bundle/sass-compile"]
 	path = vim/.vim/bundle/sass-compile
 	url = https://github.com/AtsushiM/sass-compile.vim.git
+[submodule "vim-slim"]
+	path = vim-slim
+	url = git@github.com:slim-template/vim-slim.git
