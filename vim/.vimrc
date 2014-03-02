@@ -126,7 +126,7 @@ nmap <C-Right> 10<C-W><<C-W><
 noremap <A-t> :NERDTreeToggle<CR>
 noremap <A-f> :NERDTreeFind<CR>
 noremap <A-n> :NERDTreeFocus<CR>
-nnoremap <Leader>nc :tabdo :NERDTreeClose<CR>
+nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
 
