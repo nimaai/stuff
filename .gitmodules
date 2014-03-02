@@ -92,6 +92,3 @@
 [submodule "vim/.vim/bundle/paredit"]
 	path = vim/.vim/bundle/paredit
 	url = https://github.com/vim-scripts/paredit.vim.git
-[submodule "vim-slim"]
-	path = vim-slim
-	url = git@github.com:slim-template/vim-slim.git
