@@ -148,24 +148,14 @@ map <Leader>p "+p
 map <Leader>P "+P
 map <Leader>y "+y
 
-" == Fonts, encoding, Powerline ==
-
-if has('gui_running')
-
-  " make gvim shell use another .bashrc file
-  set shell=bash\ --init-file\ .bashrc_gvim\ --noediting
-
-  colorscheme solarized
-  set background=dark
-
-  let g:Powerline_theme="short"
-  let g:Powerline_colorscheme="solarized256_dark"
-  let g:Powerline_symbols = 'unicode'
-endif
+" == Fonts, encoding, statusline ==
 
 "set guifont=Liberation\ Sans\ Mono\ 13
 set encoding=utf-8
 set laststatus=2
+
+"configure status line
+set statusline=%F\ %m\ %{fugitive#statusline()}%=%y\ %l,%c\ %P
 
 " Markdown extension
 au BufNewFile,BufRead *.md set ft=md
