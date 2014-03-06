@@ -1,7 +1,5 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-set t_Co=256
-
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
@@ -95,7 +93,7 @@ set number
 "autocmd WinEnter * :call FocusGained()
 
 " == Colors ==
-colorscheme xoria256
+colorscheme noctu
 
 " == Mousymouse
 set mouse=a
