@@ -1,5 +1,7 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
+set t_Co=16
+
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
