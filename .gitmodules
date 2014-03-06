@@ -89,3 +89,6 @@
 [submodule "vim/.vim/bundle/paredit"]
 	path = vim/.vim/bundle/paredit
 	url = https://github.com/vim-scripts/paredit.vim.git
+[submodule "vim/.vim/bundle/vim-noctu"]
+	path = vim/.vim/bundle/vim-noctu
+	url = git://github.com/noahfrederick/vim-noctu.git
