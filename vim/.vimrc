@@ -1,6 +1,6 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-set t_Co=16
+"set t_Co=256
 
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
@@ -52,7 +52,7 @@ set directory=~/temp/vim-swap-files/
 set autoindent
 set smartindent
 set smarttab
-"set shiftwidth=2
+set shiftwidth=2
 "set softtabstop=2
 "set tabstop=2
 set expandtab
