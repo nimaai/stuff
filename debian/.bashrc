@@ -111,3 +111,5 @@ fi
 
 # set vi mode
 set -o vi
+
+export TERM=xterm-256color
