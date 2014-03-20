@@ -95,7 +95,7 @@ set number
 "autocmd WinEnter * :call FocusGained()
 
 " == Colors ==
-colorscheme noctu
+colorscheme elflord
 
 " == Mousymouse
 set mouse=a
