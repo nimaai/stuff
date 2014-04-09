@@ -92,3 +92,12 @@
 [submodule "vim/.vim/bundle/vim-noctu"]
 	path = vim/.vim/bundle/vim-noctu
 	url = git://github.com/noahfrederick/vim-noctu.git
+[submodule "vim/.vim/bundle/vim-clojure-static"]
+	path = vim/.vim/bundle/vim-clojure-static
+	url = https://github.com/guns/vim-clojure-static.git
+[submodule "vim/.vim/bundle/vim-fireplace"]
+	path = vim/.vim/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace.git
+[submodule "vim/.vim/bundle/vim-classpath"]
+	path = vim/.vim/bundle/vim-classpath
+	url = https://github.com/tpope/vim-classpath.git
