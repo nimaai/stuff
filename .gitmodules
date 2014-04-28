@@ -101,3 +101,9 @@
 [submodule "vim/.vim/bundle/vim-classpath"]
 	path = vim/.vim/bundle/vim-classpath
 	url = https://github.com/tpope/vim-classpath.git
+[submodule "vim/.vim/bundle/haskellmode-vim"]
+	path = vim/.vim/bundle/haskellmode-vim
+	url = https://github.com/lukerandall/haskellmode-vim.git
+[submodule "vim/.vim/bundle/vim-filetype-haskell"]
+	path = vim/.vim/bundle/vim-filetype-haskell
+	url = https://github.com/kana/vim-filetype-haskell.git
