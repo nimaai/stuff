@@ -181,3 +181,9 @@ if bufwinnr(1)
   map + 10<C-W>>
   map - 10<C-W><
 endif
+
+" use ghc functionality for haskell files
+au Bufenter *.hs compiler ghc
+
+" configure browser for haskell_doc.vim
+let g:haddock_browser = "firefox"
