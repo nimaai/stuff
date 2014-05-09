@@ -2,6 +2,59 @@
 
 "set t_Co=256
 
+" ######################## Vundle ########################
+
+set nocompatible             " be iMproved, required
+filetype off                 " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-cucumber'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails'
+Plugin 'duff/vim-bufonly'
+" Plugin 'jistr/vim-nerdtree-tabs.git'
+Plugin 'tpope/vim-endwise'
+" Plugin 'ervandew/supertab.git'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'sandeepcr529/Buffet.vim'
+Plugin 'edsono/vim-matchit'
+Plugin 'jpalardy/vim-slime'
+" Plugin 'mkitt/vim-tabline'
+" Plugin 'vim-scripts/paredit'
+" Plugin 'vim-scripts/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'lukerandall/haskellmode-vim'
+Plugin 'kana/vim-filetype-haskell'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" ########################################################
+
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
@@ -18,17 +71,11 @@ let g:EasyGrepRecursive=1
 
 cd ~/
 
-set nocompatible
-
-"call pathogen#infect()
-"call pathogen#helptags()
-
 set ttimeoutlen=50
 
 " syntax settings
 syntax on
 set hidden
-filetype plugin indent on
 
 " swap files location
 set directory=~/temp/vim-swap-files/
