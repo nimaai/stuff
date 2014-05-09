@@ -5,13 +5,6 @@
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
 
-" set tab name to show only the filename
-"function! GuiTabLabel()
-  "return fnamemodify(bufname(winbufnr(1)), ":t")
-"endfunction
-
-"set guitablabel=%!GuiTabLabel()
-
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
 " fix strange arrow issues in cygwin on windows
@@ -27,16 +20,8 @@ cd ~/
 
 set nocompatible
 
-call pathogen#infect()
-call pathogen#helptags()
-
-" fix the alt keys issue in terminal mode
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
+"call pathogen#infect()
+"call pathogen#helptags()
 
 set ttimeoutlen=50
 
@@ -108,9 +93,6 @@ nnoremap <Leader>b :Bufferlist<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 " short cut for changing current directory to the current file
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" == Open NERDTree on entering? ==
-"autocmd vimenter * NERDTree
 
 " == Key map for quick resizing of window ==
 
@@ -187,3 +169,11 @@ au Bufenter *.hs compiler ghc
 
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "firefox"
+
+" fix the alt keys issue in terminal mode
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
