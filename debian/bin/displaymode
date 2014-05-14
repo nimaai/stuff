@@ -9,13 +9,6 @@ case "$1" in
                 ;;
 esac
 
-tint2restart
-
-sleep 1s
-nitrogen --restore
-
-sleep 1s
-cb-compositor --restart
-
-sleep 1s
+pkill stalonetray
+stalonetray --icon-gravity W --geometry 6x1-0+0 --max-geometry 6x1+0+0 --background "#000000" --skip-taskbar --icon-size 20 --kludges force_icons_size --window-strut none &
 xmodmap ~/.Xmodmap
