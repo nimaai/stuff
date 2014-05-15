@@ -37,6 +37,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'kana/vim-filetype-haskell'
+Plugin 'nelstrom/vim-visual-star-search'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
