@@ -13,6 +13,8 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
+Plugin 'gmarik/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -31,13 +33,15 @@ Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
 Plugin 'jpalardy/vim-slime'
 Plugin 'mkitt/tabline.vim'
-" Plugin 'vim-scripts/paredit'
-" Plugin 'vim-scripts/vim-clojure-static'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'lukerandall/haskellmode-vim'
 Plugin 'kana/vim-filetype-haskell'
 Plugin 'nelstrom/vim-visual-star-search'
+Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'vim-scripts/bufkill.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -128,7 +132,7 @@ set number
 "autocmd WinEnter * :call FocusGained()
 
 " == Colors ==
-colorscheme elflord
+colorscheme xoria256
 
 " == Mousymouse
 set mouse=a
