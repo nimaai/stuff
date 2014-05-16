@@ -42,6 +42,7 @@ Plugin 'kana/vim-filetype-haskell'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'vim-scripts/bufkill.vim'
+Plugin 'Lokaltog/vim-powerline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -229,3 +230,5 @@ while c <= 'z'
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
+
+let g:Powerline_symbols = 'fancy'
