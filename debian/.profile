@@ -36,5 +36,3 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 export CDPATH=~/symlinks
-
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on"
