@@ -3,4 +3,4 @@ vim/.vim/bundle/conque-shell/doc/tags
 debian/bin/chromedriver
 debian/bin/work
 debian/bin/phantomjs
-vim/.vim/bundle/
+vim/.vim/bundle/*
