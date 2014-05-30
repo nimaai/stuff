@@ -191,6 +191,8 @@ set laststatus=2
 
 "configure status line
 set statusline=%F\ %m\ %{fugitive#statusline()}%=%y\ %l,%c\ %P
+" auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Markdown extension
 au BufNewFile,BufRead *.md set ft=md
