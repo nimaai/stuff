@@ -11,4 +11,5 @@ esac
 
 pkill stalonetray
 stalonetray --icon-gravity E --geometry 8x1-0+0 --max-geometry 8x1+0+0 --background "#000000" --skip-taskbar --icon-size 20 --kludges force_icons_size --window-strut none &
+nitrogen --restore &
 xmodmap ~/.Xmodmap
