@@ -234,3 +234,6 @@ while c <= 'z'
 endw
 
 let g:Powerline_symbols = 'fancy'
+
+" switching off keeping balanced parenthesis
+let g:paredit_mode = 0
