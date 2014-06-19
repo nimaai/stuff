@@ -4,3 +4,5 @@ highlight Hint font-family: monospace; font-size: 10pt; font-weight: bold; text-
 
 noremap j 3j
 noremap k 3k
+noremap h 3h
+noremap l 3l
