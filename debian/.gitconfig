@@ -79,12 +79,12 @@
         untracked = cyan
 
 [diff]
-        tool = gvim
+        tool = vimdiff
 [difftool]
         prompt = false
 
 [merge]
-        tool = gvimdiff
+        tool = vimdiff
 [mergetool]
 	keepBackup = false
         prompt = false
