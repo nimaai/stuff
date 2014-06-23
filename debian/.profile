@@ -33,6 +33,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="/opt/Citrix/ICAClient:$PATH"
 eval "$(rbenv init -)"
 
 export CDPATH=~/symlinks
