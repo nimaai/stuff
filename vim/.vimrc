@@ -98,9 +98,6 @@ set expandtab
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
-" == Extra matchers for % ==
-runtime macros/matchit.vim
-
 " == Folds ==
 
 set foldmethod=indent   "fold based on indent
@@ -235,5 +232,10 @@ endw
 
 let g:Powerline_symbols = 'fancy'
 
-" switching off keeping balanced parenthesis
-let g:paredit_mode = 0
+" in order for ctrlp to find all files
+let g:ctrlp_max_files = 0
+" 'r' - the nearest ancestor that contains one of these directories or files: .git .hg .svn .bzr _darcs
+" 'a' - like c, but only if the current working directory outside of CtrlP is not a direct ancestor of the directory of the current file.
+let g:ctrlp_working_path_mode = 'ra'
+" ignore files in .git
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
