@@ -147,11 +147,11 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 " == Key map for quick resizing of window ==
 
 " resize horzontal split window
-nmap <C-Up> 10<C-W>-<C-W>-
-nmap <C-Down> 10<C-W>+<C-W>+
+nmap <C-Up> 5<C-W>-<C-W>-
+nmap <C-Down> 5<C-W>+<C-W>+
 " resize vertical split window
-nmap <C-Left> 10<C-W>><C-W>>
-nmap <C-Right> 10<C-W><<C-W><
+nmap <C-Left> 5<C-W>><C-W>>
+nmap <C-Right> 5<C-W><<C-W><
 
 " == NERDTree key mappings ==
 
@@ -205,9 +205,9 @@ ab bp binding.pry
 
 " Simple way to turn off Gdiff splitscreen
 " works only when diff buffer is focused
-if !exists(":Gdiffoff")
-  command Gdoff diffoff | q | Gedit
-endif
+"if !exists(":Gdiffoff")
+  "command Gdoff diffoff | q | Gedit
+"endif
 
 let g:slime_target = "tmux"
 
