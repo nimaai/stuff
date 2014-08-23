@@ -27,9 +27,9 @@ fi
 if [ -d "/usr/sbin" ] ; then
     PATH="/usr/sbin:$PATH"
 fi
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+# set PATH so it includes user's private executable dir if it exists
+if [ -d "$HOME/exec" ] ; then
+    PATH="$HOME/exec:$PATH"
 fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
