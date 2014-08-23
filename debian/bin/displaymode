@@ -3,12 +3,12 @@
 pkill stalonetray
 
 case "$1" in
-        dual) ~/.screenlayout/dual-monitor.sh
-                ;;
-        single) ~/.screenlayout/single-monitor.sh
-                ;;
-        *) echo "Invalid layout"
-                ;;
+  dual) ~/.screenlayout/dual-monitor.sh
+    ;;
+  single) ~/.screenlayout/single-monitor.sh
+    ;;
+  *) echo "Invalid layout"
+    ;;
 esac
 
 stalonetray --icon-gravity E --geometry 8x1-0+0 --max-geometry 8x1-0+0 --background "#000000" --skip-taskbar --icon-size 20 --kludges force_icons_size --window-strut none &
