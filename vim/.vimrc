@@ -43,6 +43,8 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'vim-scripts/bufkill.vim'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'pangloss/vim-javascript'
+Plugin 'vim-scripts/buffer-grep'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
