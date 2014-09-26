@@ -45,6 +45,7 @@ Plugin 'vim-scripts/bufkill.vim'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
+Plugin '907th/vim-auto-save'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -241,3 +242,6 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_working_path_mode = 'ra'
 " ignore files in .git
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" enable AutoSave on Vim startup
+let g:auto_save = 1
