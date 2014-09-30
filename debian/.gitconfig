@@ -84,7 +84,7 @@
         prompt = false
 
 [merge]
-        tool = vimdiff
+        tool = meld
 [mergetool]
 	keepBackup = false
         prompt = false
