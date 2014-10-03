@@ -128,6 +128,9 @@ set hlsearch
 " == Line numbering ==
 set number
 
+" == Line highlight == 
+set cursorline
+
 " extension to numberlines plugin to fix the toggle when switching windows
 "autocmd WinLeave * :call FocusLost()
 "autocmd WinEnter * :call FocusGained()
@@ -244,4 +247,5 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " enable AutoSave on Vim startup
+let g:auto_save_in_insert_mode = 0
 let g:auto_save = 1
