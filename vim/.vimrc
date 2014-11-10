@@ -42,12 +42,11 @@ Plugin 'kana/vim-filetype-haskell'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'vim-scripts/bufkill.vim'
-"Plugin 'Lokaltog/powerline'
 Plugin 'bling/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
-"Plugin 'vim-scripts/buffers_search_and_replace'
+Plugin 'vim-scripts/buffers_search_and_replace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
