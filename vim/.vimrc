@@ -162,9 +162,8 @@ nmap <C-Right> 5<C-W><<C-W><
 
 " == NERDTree key mappings ==
 
-noremap <A-t> :NERDTreeToggle<CR>
-noremap <A-f> :NERDTreeFind<CR>
-noremap <A-n> :NERDTreeFocus<CR>
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+nnoremap <Leader>nf :NERDTreeFocus<CR>
 nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
@@ -189,7 +188,7 @@ map <Leader>y "+y
 
 " == Fonts, encoding, statusline ==
 
-"set guifont=Liberation\ Sans\ Mono\ 13
+set guifont=Monospace\ 13
 set encoding=utf-8
 set laststatus=2
 
