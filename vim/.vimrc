@@ -64,6 +64,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " ########################################################
+"
+
+" remap leader character
+let mapleader=","
 
 " show tab numbers in tab labels
 set guitablabel=\(%N\)\ %t\ %M
