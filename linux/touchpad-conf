@@ -1,0 +1,24 @@
+#!/bin/bash
+
+synclient VertEdgeScroll=0
+synclient VertTwoFingerScroll=1
+Option HorizTwoFingerScroll=1
+
+# So that the top buttons don't make the pointer move
+synclient AreaTopEdge=2400
+
+# this sets up the single, double and triple taps to match up to left, right and middle mouse clicks respectively
+synclient TapButton1=1
+synclient TapButton2=3
+synclient TapButton3=2
+
+# reduces movement during and between taps
+synclient HorizHysteresis=50
+synclient VertHysteresis=50
+
+# enables palm detection while you’re typing with some reasonable settings
+synclient PalmDetect=1
+synclient PalmMinWidth=5
+synclient PalmMinZ=40
+
+syndaemon -t -k -R -i 1 &
