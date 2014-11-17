@@ -167,7 +167,7 @@ nmap <C-Right> 5<C-W><<C-W><
 " == NERDTree key mappings ==
 
 nnoremap <Leader>nt :NERDTreeToggle<CR>
-nnoremap <Leader>nf :NERDTreeFocus<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
