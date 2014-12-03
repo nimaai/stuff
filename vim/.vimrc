@@ -1,7 +1,5 @@
 " Parts stolen from: https://github.com/skwp/dotfiles
 
-"set t_Co=256
-
 " ######################## Vundle ########################
 
 set nocompatible             " be iMproved, required
@@ -47,6 +45,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
 Plugin 'vim-scripts/buffers_search_and_replace'
+Plugin 'lucapette/vim-ruby-doc'
+Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,6 +141,7 @@ set cursorline
 "autocmd WinEnter * :call FocusGained()
 
 " == Colors ==
+let g:solarized_termcolors=256
 colorscheme xoria256
 
 " == Mousymouse
