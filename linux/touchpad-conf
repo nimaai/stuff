@@ -10,19 +10,19 @@ synclient TapButton2=3
 synclient TapButton3=2
 
 # reduces movement during and between taps
-#synclient HorizHysteresis=50
-#synclient VertHysteresis=50
+synclient HorizHysteresis=50
+synclient VertHysteresis=50
 
 # enables palm detection while you’re typing with some reasonable settings
-#synclient PalmDetect=1
-#synclient PalmMinWidth=5
-#synclient PalmMinZ=40
+synclient PalmDetect=1
+synclient PalmMinWidth=5
+synclient PalmMinZ=40
 
 # drag lock
 synclient LockedDrags=1
 # accurate tap-to-click!
-#synclient FingerLow=50
-#synclient FingerHigh=55
+synclient FingerLow=50
+synclient FingerHigh=55
 
 # prevents too many intentional clicks
 synclient PalmDetect=0
@@ -30,9 +30,9 @@ synclient PalmDetect=0
 synclient VertEdgeScroll=0
 # "natural" vertical and horizontal scrolling
 synclient VertTwoFingerScroll=1
-synclient VertScrollDelta=75
+#synclient VertScrollDelta=75
 synclient HorizTwoFingerScroll=1
-synclient HorizScrollDelta=75
+#synclient HorizScrollDelta=75
 
 synclient MinSpeed=1
 synclient MaxSpeed=1
