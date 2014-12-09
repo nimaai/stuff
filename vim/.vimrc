@@ -3,7 +3,6 @@
 " ######################## Vundle ########################
 
 set nocompatible             " be iMproved, required
-filetype off                 " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -44,15 +43,12 @@ Plugin 'bling/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
-Plugin 'vim-scripts/buffers_search_and_replace'
 Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+
 "
 " Brief help
 " :PluginList          - list configured plugins
@@ -65,6 +61,8 @@ filetype plugin indent on    " required
 
 " ########################################################
 "
+
+filetype plugin indent on    " required
 
 " remap leader character
 let mapleader=","
@@ -173,10 +171,10 @@ nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
 
-nmap <silent> <A-k> :wincmd k<CR>
-nmap <silent> <A-j> :wincmd j<CR>
-nmap <silent> <A-h> :wincmd h<CR>
-nmap <silent> <A-l> :wincmd l<CR>
+nmap <silent> <Leader>k :wincmd k<CR>
+nmap <silent> <Leader>j :wincmd j<CR>
+nmap <silent> <Leader>h :wincmd h<CR>
+nmap <silent> <Leader>l :wincmd l<CR>
 
 " == Easily jump between buffers
 nmap <silent> <C-J> :bprevious<CR>
@@ -254,3 +252,6 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0
 let g:auto_save = 1
+
+" vim does not indent some html tags by default
+let g:html_indent_inctags = "html,body,head,tbody"
