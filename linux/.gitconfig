@@ -79,7 +79,7 @@
         untracked = cyan
 
 [diff]
-        tool = vimdiff
+        tool = meld
 [difftool]
         prompt = false
 
