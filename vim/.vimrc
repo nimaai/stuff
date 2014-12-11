@@ -45,6 +45,8 @@ Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
 Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,19 +69,13 @@ filetype plugin indent on    " required
 " remap leader character
 let mapleader=","
 
-" show tab numbers in tab labels
-set guitablabel=\(%N\)\ %t\ %M
-
 " disable plugin from autoloading
 let g:nerdtree_tabs_loaded = 1
+
 " fix strange arrow issues in cygwin on windows
 if has("win32unix")
   let g:NERDTreeDirArrows=0
 endif
-
-" easygrep options
-let g:EasyGrepSearchCurrentBufferDir=0
-let g:EasyGrepRecursive=1
 
 cd ~/
 
@@ -195,8 +191,6 @@ set guifont=Monospace\ 13
 set encoding=utf-8
 set laststatus=2
 
-"configure status line
-set statusline=%F\ %m\ %{fugitive#statusline()}%=%y\ %l,%c\ %P
 " auto-clean fugitive buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
@@ -212,12 +206,6 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " abbreviations
 ab bp binding.pry
 
-" Simple way to turn off Gdiff splitscreen
-" works only when diff buffer is focused
-"if !exists(":Gdiffoff")
-  "command Gdoff diffoff | q | Gedit
-"endif
-
 let g:slime_target = "tmux"
 
 if bufwinnr(1)
@@ -226,18 +214,18 @@ if bufwinnr(1)
 endif
 
 " use ghc functionality for haskell files
-au Bufenter *.hs compiler ghc
+"au Bufenter *.hs compiler ghc
 
 " configure browser for haskell_doc.vim
-let g:haddock_browser = "firefox"
+"let g:haddock_browser = "firefox"
 
 " fix the alt keys issue in terminal mode
-let c='a'
-while c <= 'z'
-  exec "set <A-".c.">=\e".c
-  exec "imap \e".c." <A-".c.">"
-  let c = nr2char(1+char2nr(c))
-endw
+"let c='a'
+"while c <= 'z'
+  "exec "set <A-".c.">=\e".c
+  "exec "imap \e".c." <A-".c.">"
+  "let c = nr2char(1+char2nr(c))
+"endw
 
 let g:Powerline_symbols = 'fancy'
 
