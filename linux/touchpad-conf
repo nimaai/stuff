@@ -35,8 +35,8 @@ synclient FingerHigh=55
 synclient HorizHysteresis=50
 synclient VertHysteresis=50
 
-synclient MinSpeed=1
-synclient MaxSpeed=1
+#synclient MinSpeed=1
+#synclient MaxSpeed=1
 
 synclient AccelerationProfile=2
 synclient ConstantDeceleration=4
