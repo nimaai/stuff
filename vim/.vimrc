@@ -43,10 +43,11 @@ Plugin 'bling/vim-airline'
 Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
-Plugin 'lucapette/vim-ruby-doc'
+"Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
+Plugin 'danchoi/ri.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -130,10 +131,6 @@ set number
 " == Line highlight == 
 set cursorline
 
-" extension to numberlines plugin to fix the toggle when switching windows
-"autocmd WinLeave * :call FocusLost()
-"autocmd WinEnter * :call FocusGained()
-
 " == Colors ==
 let g:solarized_termcolors=256
 colorscheme xoria256
@@ -203,6 +200,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+let g:syntastic_ruby_checkers = ['mri','rubocop']
+
 " abbreviations
 ab bp binding.pry
 
@@ -218,14 +217,6 @@ endif
 
 " configure browser for haskell_doc.vim
 "let g:haddock_browser = "firefox"
-
-" fix the alt keys issue in terminal mode
-"let c='a'
-"while c <= 'z'
-  "exec "set <A-".c.">=\e".c
-  "exec "imap \e".c." <A-".c.">"
-  "let c = nr2char(1+char2nr(c))
-"endw
 
 let g:Powerline_symbols = 'fancy'
 
