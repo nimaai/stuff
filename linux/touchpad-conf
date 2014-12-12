@@ -1,17 +1,10 @@
 #!/bin/bash
 
-# So that the top buttons don't make the pointer move
-synclient AreaTopEdge=2400
-
 # this sets up the single, double and triple taps to match up to left, right and middle mouse clicks respectively
 #synclient TapButton1=1
 #synclient TapButton2=3
 ## three fingers for the middle button
 #synclient TapButton3=2
-
-## reduces movement during and between taps
-#synclient HorizHysteresis=50
-#synclient VertHysteresis=50
 
 ## enables palm detection while you’re typing with some reasonable settings
 #synclient PalmDetect=1
@@ -20,9 +13,6 @@ synclient AreaTopEdge=2400
 
 ## drag lock
 #synclient LockedDrags=1
-## accurate tap-to-click!
-#synclient FingerLow=50
-#synclient FingerHigh=55
 
 ## prevents too many intentional clicks
 #synclient PalmDetect=0
@@ -34,11 +24,22 @@ synclient AreaTopEdge=2400
 #synclient HorizTwoFingerScroll=1
 ##synclient HorizScrollDelta=75
 
-#synclient MinSpeed=1
-#synclient MaxSpeed=1
+# So that the top buttons don't make the pointer move
+synclient AreaTopEdge=2400
 
-#synclient AccelerationProfile=2
-#synclient ConstantDeceleration=4
+## accurate tap-to-click!
+synclient FingerLow=50
+synclient FingerHigh=55
+
+## reduces movement during and between taps
+synclient HorizHysteresis=50
+synclient VertHysteresis=50
+
+synclient MinSpeed=1
+synclient MaxSpeed=1
+
+synclient AccelerationProfile=2
+synclient ConstantDeceleration=4
 
 # Top right edge: right button
 synclient RightButtonAreaRigh=4858
