@@ -234,3 +234,6 @@ let g:auto_save = 1
 
 " vim does not indent some html tags by default
 let g:html_indent_inctags = "html,body,head,tbody"
+
+" add an additional space when commenting
+let g:NERDSpaceDelims = 1
