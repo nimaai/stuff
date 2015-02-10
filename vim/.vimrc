@@ -30,10 +30,10 @@ Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
 "Plugin 'jpalardy/vim-slime'
 Plugin 'mkitt/tabline.vim'
-"Plugin 'vim-scripts/paredit.vim'
-"Plugin 'guns/vim-clojure-static'
-"Plugin 'tpope/vim-fireplace'
-"Plugin 'tpope/vim-classpath'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
 "Plugin 'lukerandall/haskellmode-vim'
 "Plugin 'kana/vim-filetype-haskell'
 Plugin 'nelstrom/vim-visual-star-search'
@@ -48,6 +48,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
+Plugin 'junegunn/vim-easy-align'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,7 +105,7 @@ set list listchars=tab:\ \ ,trail:·
 " == Folds ==
 
 set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
+set foldnestmax=7       "deepest fold is 7 levels
 set nofoldenable        "dont fold by default
 
 " == Scrolling
@@ -201,6 +202,8 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 let g:syntastic_ruby_checkers = ['mri','rubocop']
+nnoremap <Leader>sc :SyntasticCheck<CR>
+nnoremap <Leader>sr :SyntasticReset<CR>
 
 " abbreviations
 ab bp binding.pry

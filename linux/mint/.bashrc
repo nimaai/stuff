@@ -1,6 +1,8 @@
 set -o vi
 
-export TERM=xterm-256color
+export TERM=screen-256color
+export FIREFOX_ESR_PATH=~/local/firefox-31.4.0esr/firefox
+export ANDROID_HOME=~/Android/Sdk
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
