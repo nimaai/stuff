@@ -240,3 +240,6 @@ let g:html_indent_inctags = "html,body,head,tbody"
 
 " add an additional space when commenting
 let g:NERDSpaceDelims = 1
+
+" split art for Gdiff
+let diffopt='vertical'
