@@ -85,6 +85,7 @@
 
 [merge]
         tool = meld
+	ff = only
 [mergetool]
 	keepBackup = false
         prompt = false
