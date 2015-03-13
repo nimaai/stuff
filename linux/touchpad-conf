@@ -17,12 +17,12 @@
 ## prevents too many intentional clicks
 #synclient PalmDetect=0
 
-#synclient VertEdgeScroll=0
-## "natural" vertical and horizontal scrolling
-#synclient VertTwoFingerScroll=1
-##synclient VertScrollDelta=75
-#synclient HorizTwoFingerScroll=1
-##synclient HorizScrollDelta=75
+# synclient VertEdgeScroll=0
+# # "natural" vertical and horizontal scrolling
+# synclient VertTwoFingerScroll=1
+# #synclient VertScrollDelta=75
+# synclient HorizTwoFingerScroll=1
+# #synclient HorizScrollDelta=75
 
 # So that the top buttons don't make the pointer move
 synclient AreaTopEdge=2400
@@ -38,11 +38,11 @@ synclient VertHysteresis=50
 #synclient MinSpeed=1
 #synclient MaxSpeed=1
 
-synclient AccelerationProfile=2
-synclient ConstantDeceleration=4
+# synclient AccelerationProfile=2
+# synclient ConstantDeceleration=4
 
 # Top right edge: right button
-synclient RightButtonAreaRigh=4858
+synclient RightButtonAreaRight=4858
 synclient RightButtonAreaLeft=4000
 synclient RightButtonAreaBottom=2500
 synclient RightButtonAreaTop=0
