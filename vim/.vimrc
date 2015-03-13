@@ -134,7 +134,7 @@ set cursorline
 
 " == Colors ==
 let g:solarized_termcolors=256
-colorscheme xoria256
+colorscheme solarized
 
 " == Mousymouse
 set mouse=a
