@@ -1,4 +1,4 @@
-" Parts stolen from: https://github.com/skwp/dotfiles
+" Part stolen from: https://github.com/skwp/dotfiles
 
 " ######################## Vundle ########################
 
@@ -45,10 +45,11 @@ Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
 "Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ngmy/vim-rubocop'
-Plugin 'scrooloose/syntastic'
+" Plugin 'ngmy/vim-rubocop'
+" Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
 Plugin 'junegunn/vim-easy-align'
+Plugin 'airblade/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -165,14 +166,14 @@ nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
 
-nmap <silent> <Leader>k :wincmd k<CR>
-nmap <silent> <Leader>j :wincmd j<CR>
-nmap <silent> <Leader>h :wincmd h<CR>
-nmap <silent> <Leader>l :wincmd l<CR>
+nmap <silent> <C-K> :wincmd k<CR>
+nmap <silent> <C-J> :wincmd j<CR>
+nmap <silent> <C-H> :wincmd h<CR>
+nmap <silent> <C-L> :wincmd l<CR>
 
 " == Easily jump between buffers
-nmap <silent> <C-J> :bprevious<CR>
-nmap <silent> <C-K> :bnext<CR>
+" nmap <silent> <C-J> :bprevious<CR>
+" nmap <silent> <C-K> :bnext<CR>
 
 " remap movement keys beginning and end of line
 map <Leader>a ^
@@ -206,7 +207,7 @@ nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
 " abbreviations
-ab bp binding.pry
+ia pry binding.pry
 
 let g:slime_target = "tmux"
 
