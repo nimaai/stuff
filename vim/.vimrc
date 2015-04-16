@@ -151,13 +151,6 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " == Key map for quick resizing of window ==
 
-" resize horzontal split window
-nmap <C-Up> 5<C-W>-<C-W>-
-nmap <C-Down> 5<C-W>+<C-W>+
-" resize vertical split window
-nmap <C-Left> 5<C-W>><C-W>>
-nmap <C-Right> 5<C-W><<C-W><
-
 " == NERDTree key mappings ==
 
 nnoremap <Leader>nt :NERDTreeToggle<CR>
@@ -206,15 +199,17 @@ let g:syntastic_ruby_checkers = ['mri','rubocop']
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
+nnoremap <Leader>gg :GitGutterToggle<CR>
+
 " abbreviations
 ia pry binding.pry
 
 let g:slime_target = "tmux"
 
-if bufwinnr(1)
-  map + 10<C-W>>
-  map - 10<C-W><
-endif
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 4/3)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 3/4)<CR>
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
 
 " use ghc functionality for haskell files
 "au Bufenter *.hs compiler ghc
@@ -244,3 +239,5 @@ let g:NERDSpaceDelims = 1
 
 " split art for Gdiff
 let diffopt='vertical'
+
+let g:gitgutter_enabled = 0
