@@ -1,0 +1,1 @@
+CIDER_CI_USERNAME=nimaai CIDER_CI_PASSWORD=*** cider-ci_coverage --upload -a http://ci2.zhdk.ch/cider-ci/api/v2/
