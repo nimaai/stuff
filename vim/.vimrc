@@ -28,7 +28,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
-"Plugin 'jpalardy/vim-slime'
+Plugin 'jpalardy/vim-slime'
 Plugin 'mkitt/tabline.vim'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'guns/vim-clojure-static'
@@ -46,8 +46,8 @@ Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
 "Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'ngmy/vim-rubocop'
-" Plugin 'scrooloose/syntastic'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'airblade/vim-gitgutter'
@@ -196,7 +196,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-let g:syntastic_ruby_checkers = ['mri','rubocop']
+let g:syntastic_ruby_checkers = ["mri","rubocop"]
+let g:syntastic_mode_map = { "mode": "passive" }
+let g:syntastic_always_populate_loc_list = 1
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
