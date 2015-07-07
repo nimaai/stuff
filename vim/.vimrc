@@ -3,6 +3,7 @@
 " ######################## Vundle ########################
 
 set nocompatible             " be iMproved, required
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,7 +19,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-cucumber'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'kien/ctrlp.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-rails'
 Plugin 'duff/vim-bufonly'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -51,6 +51,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'kchmck/vim-coffee-script'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,6 +69,7 @@ call vundle#end()            " required
 " ########################################################
 "
 
+syntax enable
 filetype plugin indent on    " required
 
 " remap leader character
