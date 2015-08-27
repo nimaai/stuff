@@ -49,9 +49,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
-Plugin 'junegunn/vim-easy-align'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-obsession'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -199,6 +200,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 let g:syntastic_ruby_checkers = ["mri","rubocop"]
+let g:syntastic_ruby_rubocop_exec = "bundle exec rubocop -c ~/.rubocop.yml"
 let g:syntastic_mode_map = { "mode": "passive" }
 let g:syntastic_always_populate_loc_list = 1
 nnoremap <Leader>sc :SyntasticCheck<CR>
@@ -246,3 +248,5 @@ let g:NERDSpaceDelims = 1
 let diffopt='vertical'
 
 let g:gitgutter_enabled = 0
+
+map <Leader>aa :Tab /[^\s]\s\w/l0<CR>
