@@ -14,7 +14,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-cucumber'
 Plugin 'vim-ruby/vim-ruby'
@@ -28,7 +27,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
-Plugin 'jpalardy/vim-slime'
+" Plugin 'jpalardy/vim-slime'
 Plugin 'mkitt/tabline.vim'
 Plugin 'vim-scripts/paredit.vim'
 Plugin 'guns/vim-clojure-static'
@@ -41,7 +40,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'vim-scripts/bufkill.vim'
 Plugin 'bling/vim-airline'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
 Plugin '907th/vim-auto-save'
 "Plugin 'lucapette/vim-ruby-doc'
@@ -51,8 +50,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mtscout6/vim-cjsx'
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
+" Plugin 'mtscout6/vim-cjsx'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -199,10 +202,25 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-let g:syntastic_ruby_checkers = ["mri","rubocop"]
-let g:syntastic_ruby_rubocop_exec = "bundle exec rubocop -c ~/.rubocop.yml"
+" Mark syntax errors with :signs
+let g:syntastic_enable_signs=1
+
+" Do not automatically jump to the error when saving the file
+" Jump feature is annoying to me as it automatically moves the cursor
+let g:syntastic_auto_jump=0
+
+" Show the error list automatically
+" Allows you to easily navigate the quick fix list
+let g:syntastic_auto_loc_list=1
+
+" manual checking
 let g:syntastic_mode_map = { "mode": "passive" }
-let g:syntastic_always_populate_loc_list = 1
+
+" This is where the magic happens. Chain together different style checkers
+" in order to check for both style flaws and syntax errors.
+" Syntax checkers: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
+let g:syntastic_ruby_checkers=['rubocop', 'mri']
+
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
@@ -213,8 +231,8 @@ ia pry binding.pry
 
 let g:slime_target = "tmux"
 
-nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 4/3)<CR>
-nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 3/4)<CR>
+nnoremap <silent> <Leader>] :exe "vertical resize " . (winwidth(0) * 4/3)<CR>
+nnoremap <silent> <Leader>[ :exe "vertical resize " . (winwidth(0) * 3/4)<CR>
 nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
 
@@ -244,9 +262,10 @@ let g:html_indent_inctags = "html,body,head,tbody"
 " add an additional space when commenting
 let g:NERDSpaceDelims = 1
 
-" split art for Gdiff
-let diffopt='vertical'
-
 let g:gitgutter_enabled = 0
 
 map <Leader>aa :Tab /[^\s]\s\w/l0<CR>
+
+" <dp> and <do> from fugitive are not working
+map <Leader>dp :diffput<CR>
+map <Leader>dg :diffget<CR>

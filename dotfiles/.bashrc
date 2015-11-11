@@ -3,6 +3,9 @@ set -o vi
 export TERM=screen-256color
 export FIREFOX_ESR_PATH=~/local/firefox-31.4.0esr/firefox
 export ANDROID_HOME=~/Android/Sdk
+export PATH="$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$PATH"
+export PUSER=nimaai
+export PGPASSWORD=nimaai
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"

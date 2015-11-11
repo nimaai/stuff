@@ -1,5 +1,3 @@
-set hintchars=sadfjklewcmpgh
-
 highlight Hint -append font-size:120%;
 
 noremap j 3j
