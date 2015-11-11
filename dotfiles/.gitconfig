@@ -29,6 +29,8 @@
 [alias]
         c = commit -m
 [alias]
+        ca = commit --amend
+[alias]
         s = status
 [alias]
         a = add
@@ -92,5 +94,6 @@
 
 [core]
 	editor = vim -f
+	excludesfile = /home/nimaai/.gitignore
 [push]
 	default = current
