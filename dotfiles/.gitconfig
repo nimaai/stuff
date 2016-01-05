@@ -57,7 +57,11 @@
 [alias]
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [alias]
-        supall = submodule foreach git pull -q origin master
+        suball = submodule foreach git pull -q origin master
+[alias]
+        suball = submodule foreach git pull -q origin master
+[alias]
+        su = submodule update
 
 [color]
         branch = auto

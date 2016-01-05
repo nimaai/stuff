@@ -1,4 +1,5 @@
 highlight Hint -append font-size:120%;
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
 
 noremap j 3j
 noremap k 3k
