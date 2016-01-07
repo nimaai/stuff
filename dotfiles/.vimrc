@@ -27,35 +27,28 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
-" Plugin 'jpalardy/vim-slime'
 Plugin 'mkitt/tabline.vim'
 Plugin 'vim-scripts/paredit.vim'
+" Plugin 'bhurlow/vim-parinfer'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-leiningen'
-"Plugin 'lukerandall/haskellmode-vim'
-"Plugin 'kana/vim-filetype-haskell'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
-Plugin 'vim-scripts/bufkill.vim'
+" Plugin 'vim-scripts/bufkill.vim'
 Plugin 'bling/vim-airline'
-" Plugin 'pangloss/vim-javascript'
 Plugin 'vim-scripts/buffer-grep'
-Plugin '907th/vim-auto-save'
-"Plugin 'lucapette/vim-ruby-doc'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
 Plugin 'danchoi/ri.vim'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mtscout6/vim-cjsx'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-obsession'
 " Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/dbext.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,7 +73,7 @@ filetype plugin indent on    " required
 let mapleader=","
 
 " disable plugin from autoloading
-let g:nerdtree_tabs_loaded = 1
+let g:nerdtree_tabs_loaded = 0
 
 " fix strange arrow issues in cygwin on windows
 if has("win32unix")
@@ -191,7 +184,7 @@ set encoding=utf-8
 set laststatus=2
 
 " auto-clean fugitive buffers
-autocmd BufReadPost fugitive://* set bufhidden=delete
+" autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Markdown extension
 au BufNewFile,BufRead *.md set ft=md
@@ -252,10 +245,6 @@ let g:ctrlp_working_path_mode = 'ra'
 " ignore files in .git
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
-" enable AutoSave on Vim startup
-let g:auto_save_in_insert_mode = 0
-let g:auto_save = 1
-
 " vim does not indent some html tags by default
 let g:html_indent_inctags = "html,body,head,tbody"
 
@@ -269,3 +258,6 @@ map <Leader>aa :Tab /[^\s]\s\w/l0<CR>
 " <dp> and <do> from fugitive are not working
 map <Leader>dp :diffput<CR>
 map <Leader>dg :diffget<CR>
+
+" dbext profiles
+let g:dbext_default_profile_PG = 'type=PGSQL:user=nimaai:passwd=nimaai:dbname=madek-v3_development'
