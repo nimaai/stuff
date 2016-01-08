@@ -1,1 +1,3 @@
 CIDER_CI_USERNAME=nimaai CIDER_CI_PASSWORD=*** cider-ci_coverage --upload -a http://ci2.zhdk.ch/cider-ci/api/v2/
+
+ansible-playbook -u leihs -i hosts.zhdk.staging -l test.leihs.zhdk.ch site_zhdk.yml -t deploy --vault-password-file={location of your vaulted file}
