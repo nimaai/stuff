@@ -20,24 +20,27 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'duff/vim-bufonly'
-Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tpope/vim-endwise'
 Plugin 'ervandew/supertab.git'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+" Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'sandeepcr529/Buffet.vim'
 Plugin 'edsono/vim-matchit'
 Plugin 'mkitt/tabline.vim'
 Plugin 'vim-scripts/paredit.vim'
 " Plugin 'bhurlow/vim-parinfer'
+" Plugin 'oakmac/parinfer-viml'
 Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-leiningen'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
+" conficts with dbext
 " Plugin 'vim-scripts/bufkill.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/buffer-grep'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
@@ -49,6 +52,9 @@ Plugin 'tpope/vim-obsession'
 " Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/dbext.vim'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/gem-ctags'
+Plugin 'jpalardy/vim-slime'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,12 +79,7 @@ filetype plugin indent on    " required
 let mapleader=","
 
 " disable plugin from autoloading
-let g:nerdtree_tabs_loaded = 0
-
-" fix strange arrow issues in cygwin on windows
-if has("win32unix")
-  let g:NERDTreeDirArrows=0
-endif
+" let g:nerdtree_tabs_loaded = 0
 
 cd ~/
 
@@ -128,18 +129,27 @@ set incsearch
 set hlsearch
 
 " == Line numbering ==
+set relativenumber
 set number
 
 " == Line highlight == 
 set cursorline
 
+" disable highlighting of matching paren
+let g:loaded_matchparen=1
+
 " == Colors ==
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 colorscheme solarized
 
 " == Mousymouse
-set mouse=a
-set ttymouse=xterm2
+set mouse=
+" set ttymouse=xterm2
+
+" fix not working backspace
+set backspace=indent,eol,start
+
+set omnifunc=syntaxcomplete#Complete
 
 " remap clearance of text highlighting
 nnoremap <Leader>b :Bufferlist<CR>
@@ -159,10 +169,14 @@ nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
 
-nmap <silent> <C-K> :wincmd k<CR>
-nmap <silent> <C-J> :wincmd j<CR>
-nmap <silent> <C-H> :wincmd h<CR>
-nmap <silent> <C-L> :wincmd l<CR>
+nmap <silent> <C-k><C-k> :wincmd k<CR>
+nmap <silent> <C-j><C-j> :wincmd j<CR>
+nmap <silent> <C-h><C-h> :wincmd h<CR>
+nmap <silent> <C-l><C-l> :wincmd l<CR>
+
+" == Remap relative/absolute line number toggle ==
+nmap <silent> <Leader>lta :set norelativenumber<CR>
+nmap <silent> <Leader>ltr :set relativenumber<CR>
 
 " == Easily jump between buffers
 " nmap <silent> <C-J> :bprevious<CR>
@@ -213,21 +227,20 @@ let g:syntastic_mode_map = { "mode": "passive" }
 " in order to check for both style flaws and syntax errors.
 " Syntax checkers: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
+let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
 
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
 nnoremap <Leader>gg :GitGutterToggle<CR>
 
-" abbreviations
-ia pry binding.pry
-
 let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 
-nnoremap <silent> <Leader>] :exe "vertical resize " . (winwidth(0) * 4/3)<CR>
-nnoremap <silent> <Leader>[ :exe "vertical resize " . (winwidth(0) * 3/4)<CR>
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 4/3)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 3/4)<CR>
+map + 10<C-W>>
+map - 10<C-W><
+map <Leader>+ 10<C-W>+
+map <Leader>- 10<C-W>-
 
 " use ghc functionality for haskell files
 "au Bufenter *.hs compiler ghc
@@ -260,4 +273,12 @@ map <Leader>dp :diffput<CR>
 map <Leader>dg :diffget<CR>
 
 " dbext profiles
-let g:dbext_default_profile_PG = 'type=PGSQL:user=nimaai:passwd=nimaai:dbname=madek-v3_development'
+let g:dbext_default_always_prompt_for_variables = 0
+let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit:dbname=madek-v3_development:cmd_terminator=;'
+let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=leihs2_dev:cmd_terminator=;'
+
+nmap <Leader>fsql :%!sqlformat -r -<CR>
+vmap <Leader>fsql :!sqlformat -r -<CR>
+
+" disable auto comment lines when pressing 'o' or 'O' in normal mode
+au FileType * set fo-=o
