@@ -1,4 +1,6 @@
 set editing-mode vi
 set keymap vi
 set convert-meta on
+# set completion-ignore-case on
 set show-all-if-ambiguous on
+# TAB: menu-complete

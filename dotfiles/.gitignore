@@ -3,3 +3,9 @@ Session.vim
 tags
 rerun_personas_migrations_100
 plugin/ri_vim_cache/
+.DS_Store
+.ruby-version
+.java-version
+cider-ci/bin/install_rbenv_version.rb
+*.retry
+.ctags
