@@ -1,6 +1,7 @@
 [user]
-	name = Matus Kmit
-	email = matus.kmit@zhdk.ch
+        name = Matúš Kmiť
+        email = matus.kmit@zhdk.ch
+        signingkey = 67C527A3
 
 [guitool "Rebase onto..."]
         cmd = git rebase
@@ -22,14 +23,18 @@
         cmd = git stash list
 
 [gui]
-	fontui = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-	recentrepo = /home/nimaai/src/leihs
+        fontui = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+        fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+        recentrepo = /home/nimaai/src/leihs
 
 [alias]
-        c = commit -m
+        c = commit
+[alias]
+        cm = commit -m
 [alias]
         ca = commit --amend
+[alias]
+        can = commit --amend --no-edit
 [alias]
         s = status
 [alias]
@@ -45,7 +50,15 @@
 [alias]
         ps = push
 [alias]
+        psf = push -f
+[alias]
+        psom = push origin HEAD:master
+[alias]
         d = diff
+[alias]
+        dsb = diff --submodule
+[alias]
+        ds = diff --staged
 [alias]
         dt = difftool
 [alias]
@@ -56,6 +69,18 @@
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [alias]
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[alias]
+        ms = merge --squash
+[alias]
+        mbom = merge-base HEAD origin/master
+[alias]
+        rc = rebase --continue
+[alias]
+        ra = rebase --abort
+[alias]
+        rs = rebase --skip
+[alias]
+        ri = rebase --interactive
 [alias]
         suball = submodule foreach git pull -q origin master
 [alias]
@@ -85,19 +110,34 @@
         untracked = cyan
 
 [diff]
-        tool = meld
+        tool = vimdiff
 [difftool]
         prompt = false
 
 [merge]
-        tool = meld
-	ff = only
+        tool = vimdiff
+        ff = only
 [mergetool]
-	keepBackup = false
+        keepBackup = false
         prompt = false
 
 [core]
-	editor = vim -f
-	excludesfile = /home/nimaai/.gitignore
+        editor = vim -f
+        excludesfile = /Users/mkmit/.gitignore
 [push]
-	default = current
+        default = current
+        recurseSubmodules = on-demand
+[branch]
+        autosetuprebase = always
+[difftool "sourcetree"]
+        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+        path = 
+[mergetool "sourcetree"]
+        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
+
+[commit]
+        gpgsign = true
+        template = /Users/mkmit/.stCommitMsg
+[status]
+        submodulesummary = 1
