@@ -36,6 +36,8 @@
 [alias]
         can = commit --amend --no-edit
 [alias]
+        patch = "!f() { git add . && git can && git psf; }; f"
+[alias]
         s = status
 [alias]
         a = add
@@ -54,17 +56,19 @@
 [alias]
         psom = push origin HEAD:master
 [alias]
-        d = diff
+        pso = "!f() { git push origin HEAD:$1; }; f"
 [alias]
-        dsb = diff --submodule
+        psfo = "!f() { git push --force origin HEAD:$1; }; f"
 [alias]
-        ds = diff --staged
+        d = diff --submodule
+[alias]
+        ds = diff --staged --submodule
 [alias]
         dt = difftool
 [alias]
         l = log
 [alias]
-        lp = log --pretty=oneline -10
+        lp = log --graph --decorate --pretty=oneline --abbrev-commit -10
 [alias]
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [alias]
@@ -74,6 +78,8 @@
 [alias]
         mbom = merge-base HEAD origin/master
 [alias]
+        r = rebase
+[alias]
         rc = rebase --continue
 [alias]
         ra = rebase --abort
@@ -82,11 +88,15 @@
 [alias]
         ri = rebase --interactive
 [alias]
+        rom = rebase origin/master
+[alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         su = submodule update
+[alias]
+        f = fetch
 
 [color]
         branch = auto
@@ -115,7 +125,7 @@
         prompt = false
 
 [merge]
-        tool = vimdiff
+	tool = fugitive
         ff = only
 [mergetool]
         keepBackup = false
@@ -130,14 +140,18 @@
 [branch]
         autosetuprebase = always
 [difftool "sourcetree"]
-        cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-        path = 
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-        trustExitCode = true
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
 [commit]
         gpgsign = true
         template = /Users/mkmit/.stCommitMsg
+[gpg]
+        program = /Applications/SourceTree.app/Contents/Resources/bin/stgpg.sh
 [status]
-        submodulesummary = 1
+	submodulesummary = true
+[mergetool "fugitive"]
+	cmd = vim -f -c \"Gdiff\" \"$MERGED\"

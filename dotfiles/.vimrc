@@ -37,24 +37,34 @@ Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-leiningen'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
-" conficts with dbext
-" Plugin 'vim-scripts/bufkill.vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/buffer-grep'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ngmy/vim-rubocop'
+" Plugin 'ngmy/vim-rubocop'
 Plugin 'scrooloose/syntastic'
-Plugin 'danchoi/ri.vim'
+" Plugin 'danchoi/ri.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-obsession'
-" Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/dbext.vim'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/gem-ctags'
 Plugin 'jpalardy/vim-slime'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'rizzatti/dash.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'moll/vim-bbye'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'janko-m/vim-test'
+Plugin 'tpope/vim-dispatch'
+Plugin 'jgdavey/tslime.vim'
+Plugin 'idanarye/vim-merginal'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,9 +84,6 @@ call vundle#end()            " required
 
 syntax enable
 filetype plugin indent on    " required
-
-" remap leader character
-let mapleader=","
 
 " disable plugin from autoloading
 " let g:nerdtree_tabs_loaded = 0
@@ -100,6 +107,7 @@ set shiftwidth=2
 "set softtabstop=2
 "set tabstop=2
 set expandtab
+set nowrap
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -109,6 +117,8 @@ set list listchars=tab:\ \ ,trail:·
 set foldmethod=indent   "fold based on indent
 set foldnestmax=7       "deepest fold is 7 levels
 set nofoldenable        "dont fold by default
+" set foldlevel=1
+" set foldlevelstart=1
 
 " == Scrolling
 
@@ -129,21 +139,18 @@ set incsearch
 set hlsearch
 
 " == Line numbering ==
-set relativenumber
+set relativenumber " makes vim slow!
 set number
 
-" == Line highlight == 
-set cursorline
-
-" disable highlighting of matching paren
-let g:loaded_matchparen=1
+" == Line highlight ==
+set cursorline " makes vim slow!
 
 " == Colors ==
 " let g:solarized_termcolors=256
 colorscheme solarized
 
 " == Mousymouse
-set mouse=
+set mouse=a
 " set ttymouse=xterm2
 
 " fix not working backspace
@@ -193,7 +200,7 @@ map <Leader>y "+y
 
 " == Fonts, encoding, statusline ==
 
-set guifont=Monospace\ 13
+set guifont=Monaco:h21
 set encoding=utf-8
 set laststatus=2
 
@@ -204,10 +211,10 @@ set laststatus=2
 au BufNewFile,BufRead *.md set ft=md
 
 " ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 " Mark syntax errors with :signs
 let g:syntastic_enable_signs=1
@@ -227,15 +234,19 @@ let g:syntastic_mode_map = { "mode": "passive" }
 " in order to check for both style flaws and syntax errors.
 " Syntax checkers: https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
-let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop '
+let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop'
+
+let g:syntastic_javascript_checkers = ['eslint']
 
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
 
-nnoremap <Leader>gg :GitGutterToggle<CR>
-
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_default_config = {"socket_name": "default"}
+let g:slime_dont_ask_default = 1
+
+let g:tslime_always_current_session = 1
 
 map + 10<C-W>>
 map - 10<C-W><
@@ -248,25 +259,19 @@ map <Leader>- 10<C-W>-
 " configure browser for haskell_doc.vim
 "let g:haddock_browser = "firefox"
 
-let g:Powerline_symbols = 'fancy'
-
 " in order for ctrlp to find all files
 let g:ctrlp_max_files = 0
 " 'r' - the nearest ancestor that contains one of these directories or files: .git .hg .svn .bzr _darcs
 " 'a' - like c, but only if the current working directory outside of CtrlP is not a direct ancestor of the directory of the current file.
 let g:ctrlp_working_path_mode = 'ra'
 " ignore files in .git
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|vendor)$'
 
 " vim does not indent some html tags by default
 let g:html_indent_inctags = "html,body,head,tbody"
 
 " add an additional space when commenting
 let g:NERDSpaceDelims = 1
-
-let g:gitgutter_enabled = 0
-
-map <Leader>aa :Tab /[^\s]\s\w/l0<CR>
 
 " <dp> and <do> from fugitive are not working
 map <Leader>dp :diffput<CR>
@@ -282,3 +287,23 @@ vmap <Leader>fsql :!sqlformat -r -<CR>
 
 " disable auto comment lines when pressing 'o' or 'O' in normal mode
 au FileType * set fo-=o
+
+" configure paren matching
+:hi MatchParen cterm=none ctermbg=8 ctermfg=none
+
+" run system command and load results in quickfix window
+command -nargs=+ Run :cexpr system('<args>') | copen
+
+let test#strategy = "dispatch"
+let g:test#preserve_screen = 1
+
+let NERDDefaultAlign='left'
+
+nmap <silent> <leader>tn :TestNearest<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tv :TestVisit<CR>
+
+" fix syntax highlighting for .md files
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
