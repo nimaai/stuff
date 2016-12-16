@@ -1,6 +1,6 @@
 [user]
-        name = Matúš Kmiť
-        email = matus.kmit@zhdk.ch
+	name = Matúš Kmiť
+	email = matus.kmit@zhdk.ch
         signingkey = 67C527A3
 
 [guitool "Rebase onto..."]
@@ -36,6 +36,12 @@
 [alias]
         can = commit --amend --no-edit
 [alias]
+        cf = "!f() { git commit --fixup=$1; }; f"
+[alias]
+        cp = cherry-pick
+[alias]
+        cpn = cherry-pick --no-commit
+[alias]
         patch = "!f() { git add . && git can && git psf; }; f"
 [alias]
         s = status
@@ -43,6 +49,8 @@
         a = add
 [alias]
         co = checkout
+[alias]
+        cp = cherry-pick
 [alias]
         b = branch
 [alias]
@@ -65,6 +73,8 @@
         ds = diff --staged --submodule
 [alias]
         dt = difftool
+[alias]
+        dom = diff origin/master
 [alias]
         l = log
 [alias]
@@ -90,11 +100,19 @@
 [alias]
         rom = rebase origin/master
 [alias]
+        riom = rebase --interactive origin/master
+[alias]
+        ria = rebase --interactive --autosquash
+[alias]
+        riaom = rebase --interactive --autosquash origin/master
+[alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         su = submodule update
+[alias]
+        sur = submodule update --recursive
 [alias]
         f = fetch
 
@@ -133,7 +151,7 @@
 
 [core]
         editor = vim -f
-        excludesfile = /Users/mkmit/.gitignore
+	excludesfile = /Users/mkmit/.gitignore
 [push]
         default = current
         recurseSubmodules = on-demand
@@ -148,10 +166,12 @@
 
 [commit]
         gpgsign = true
-        template = /Users/mkmit/.stCommitMsg
+	template = /Users/mkmit/.stCommitMsg
 [gpg]
         program = /Applications/SourceTree.app/Contents/Resources/bin/stgpg.sh
 [status]
 	submodulesummary = true
 [mergetool "fugitive"]
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+[remote "origin"]
+	prune = true

@@ -17,7 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-cucumber'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'duff/vim-bufonly'
 " Plugin 'jistr/vim-nerdtree-tabs'
@@ -25,10 +25,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'ervandew/supertab.git'
 Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'sandeepcr529/Buffet.vim'
-Plugin 'edsono/vim-matchit'
+Plugin 'tmhedberg/matchit'
 Plugin 'mkitt/tabline.vim'
-Plugin 'vim-scripts/paredit.vim'
+Plugin 'kovisoft/paredit'
 " Plugin 'bhurlow/vim-parinfer'
 " Plugin 'oakmac/parinfer-viml'
 Plugin 'guns/vim-clojure-static'
@@ -65,6 +64,8 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'jgdavey/tslime.vim'
 Plugin 'idanarye/vim-merginal'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'file:///Users/mkmit/src/private/vim-shen'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -90,11 +91,18 @@ filetype plugin indent on    " required
 
 cd ~/
 
+set clipboard=unnamed
+
 set ttimeoutlen=50
+
+let mapleader=","
 
 " syntax settings
 syntax on
 set hidden
+
+" read files automatically when changed outside vim
+set autoread
 
 " swap files location
 set directory=~/temp/vim-swap-files/
@@ -109,16 +117,24 @@ set shiftwidth=2
 set expandtab
 set nowrap
 
+set ignorecase
+" smart case in/sensitive search
+set smartcase
+
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
 " == Folds ==
 
 set foldmethod=indent   "fold based on indent
-set foldnestmax=7       "deepest fold is 7 levels
 set nofoldenable        "dont fold by default
+set foldlevelstart=1
+" augroup unfold_all
+"   autocmd!
+"   autocmd BufWinEnter * normal zR
+" augroup END
 " set foldlevel=1
-" set foldlevelstart=1
+" set foldnestmax=7       "deepest fold is 7 levels
 
 " == Scrolling
 
@@ -158,6 +174,8 @@ set backspace=indent,eol,start
 
 set omnifunc=syntaxcomplete#Complete
 
+" set clipboard=unnamed
+
 " remap clearance of text highlighting
 nnoremap <Leader>b :Bufferlist<CR>
 
@@ -176,27 +194,27 @@ nnoremap <Leader>nc :NERDTreeTabsClose<CR>
 
 " == Easily navigate split windows ==
 
-nmap <silent> <C-k><C-k> :wincmd k<CR>
-nmap <silent> <C-j><C-j> :wincmd j<CR>
-nmap <silent> <C-h><C-h> :wincmd h<CR>
-nmap <silent> <C-l><C-l> :wincmd l<CR>
+nnoremap <silent> <C-k><C-k> :wincmd k<CR>
+nnoremap <silent> <C-j><C-j> :wincmd j<CR>
+nnoremap <silent> <C-h><C-h> :wincmd h<CR>
+nnoremap <silent> <C-l><C-l> :wincmd l<CR>
 
 " == Remap relative/absolute line number toggle ==
-nmap <silent> <Leader>lta :set norelativenumber<CR>
-nmap <silent> <Leader>ltr :set relativenumber<CR>
+nnoremap <silent> <Leader>lta :set norelativenumber<CR>
+nnoremap <silent> <Leader>ltr :set relativenumber<CR>
 
 " == Easily jump between buffers
-" nmap <silent> <C-J> :bprevious<CR>
-" nmap <silent> <C-K> :bnext<CR>
+" nnoremap <silent> <C-J> :bprevious<CR>
+" nnoremap <silent> <C-K> :bnext<CR>
 
 " remap movement keys beginning and end of line
-map <Leader>a ^
-map <Leader>e $
+noremap <Leader>a ^
+noremap <Leader>e $
 
 " remap keys for copying to and pasting from clipboard
-map <Leader>p "+p
-map <Leader>P "+P
-map <Leader>y "+y
+noremap <Leader>p "+p
+noremap <Leader>P "+P
+noremap <Leader>y "+y
 
 " == Fonts, encoding, statusline ==
 
@@ -206,9 +224,6 @@ set laststatus=2
 
 " auto-clean fugitive buffers
 " autocmd BufReadPost fugitive://* set bufhidden=delete
-
-" Markdown extension
-au BufNewFile,BufRead *.md set ft=md
 
 " ruby
 " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -243,15 +258,15 @@ nnoremap <Leader>sr :SyntasticReset<CR>
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
-let g:slime_default_config = {"socket_name": "default"}
+let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 let g:slime_dont_ask_default = 1
 
 let g:tslime_always_current_session = 1
 
-map + 10<C-W>>
-map - 10<C-W><
-map <Leader>+ 10<C-W>+
-map <Leader>- 10<C-W>-
+noremap + 10<C-W>>
+noremap - 10<C-W><
+noremap <Leader>+ 10<C-W>+
+noremap <Leader>- 10<C-W>-
 
 " use ghc functionality for haskell files
 "au Bufenter *.hs compiler ghc
@@ -265,7 +280,7 @@ let g:ctrlp_max_files = 0
 " 'a' - like c, but only if the current working directory outside of CtrlP is not a direct ancestor of the directory of the current file.
 let g:ctrlp_working_path_mode = 'ra'
 " ignore files in .git
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|vendor)$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|hg|svn)|node_modules|vendor|log|public|tmp)$'
 
 " vim does not indent some html tags by default
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -274,36 +289,75 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:NERDSpaceDelims = 1
 
 " <dp> and <do> from fugitive are not working
-map <Leader>dp :diffput<CR>
-map <Leader>dg :diffget<CR>
+noremap <Leader>dp :diffput<CR>
+noremap <Leader>dg :diffget<CR>
 
 " dbext profiles
 let g:dbext_default_always_prompt_for_variables = 0
 let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit:dbname=madek-v3_development:cmd_terminator=;'
-let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=leihs2_dev:cmd_terminator=;'
+" let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=leihs2_dev:cmd_terminator=;'
 
-nmap <Leader>fsql :%!sqlformat -r -<CR>
-vmap <Leader>fsql :!sqlformat -r -<CR>
+nnoremap <Leader>fsql :%!sqlformat -r -<CR>
+vnoremap <Leader>fsql :!sqlformat -r -<CR>
 
 " disable auto comment lines when pressing 'o' or 'O' in normal mode
-au FileType * set fo-=o
+augroup auto_comment
+  autocmd!
+  autocmd FileType * set fo-=o
+augroup END
 
 " configure paren matching
 :hi MatchParen cterm=none ctermbg=8 ctermfg=none
 
 " run system command and load results in quickfix window
-command -nargs=+ Run :cexpr system('<args>') | copen
+command! -nargs=+ Run :cexpr system('<args>') | copen
 
 let test#strategy = "dispatch"
 let g:test#preserve_screen = 1
 
 let NERDDefaultAlign='left'
 
-nmap <silent> <leader>tn :TestNearest<CR>
-nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>ts :TestSuite<CR>
-nmap <silent> <leader>tl :TestLast<CR>
-nmap <silent> <leader>tv :TestVisit<CR>
+nnoremap <silent> <leader>tn :TestNearest<CR>
+nnoremap <silent> <leader>tns :TestNearest -strategy=tslime<CR>
+nnoremap <silent> <leader>tf :TestFile<CR>
+nnoremap <silent> <leader>ts :TestSuite<CR>
+nnoremap <silent> <leader>tl :TestLast<CR>
+nnoremap <silent> <leader>tls :TestLast -strategy=tslime<CR>
+nnoremap <silent> <leader>tv :TestVisit<CR>
 
 " fix syntax highlighting for .md files
-au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+augroup md_filetype
+  autocmd!
+  autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+augroup END
+
+" augroup shen_filetype
+"   autocmd!
+"   " autocmd BufNewFile,BufFilePre,BufRead *.shen set filetype=shen
+"   autocmd FileType shen call PareditInitBuffer()
+" augroup END
+
+" more convenient ad-hoc editing of .vimrc file
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <leader>sw :setlocal wrap!<cr>
+
+augroup bpry_abbrev
+  autocmd!
+  autocmd FileType ruby,haml :iabbrev <buffer> bpry binding.pry<right>
+  autocmd FileType coffee :iabbrev <buffer> bpry debugger<right>
+augroup END
+
+nnoremap <silent> <leader>ll :call ColorColumnToggle()<CR>
+function! ColorColumnToggle()
+  if &colorcolumn
+    setlocal colorcolumn=0
+  else
+    setlocal colorcolumn=83
+  endif
+endfunction
+
+let g:paredit_smartjump = 1
+
+autocmd FocusLost * wall

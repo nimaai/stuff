@@ -9,3 +9,4 @@ plugin/ri_vim_cache/
 cider-ci/bin/install_rbenv_version.rb
 *.retry
 .ctags
+database_pg.yml
