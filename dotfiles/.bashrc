@@ -4,7 +4,7 @@ export TERM=screen-256color
 export EDITOR=vim
 export FIREFOX_ESR_PATH=~/Applications/FirefoxESR.app/Contents/MacOS/firefox
 export ANDROID_HOME=~/Android/Sdk
-export PATH="$ANDROID_HOME/tools/:$ANDROID_HOME/platform-tools/:$PATH"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export PUSER=mkmit
 export PGPASSWORD=mkmit
 
@@ -31,3 +31,5 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 function dash() { open "dash://$1"; }
+
+eval $(thefuck --alias)

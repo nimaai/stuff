@@ -80,6 +80,8 @@
 [alias]
         lp = log --graph --decorate --pretty=oneline --abbrev-commit -10
 [alias]
+        last = log --graph --decorate --pretty=oneline --abbrev-commit -1
+[alias]
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [alias]
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all

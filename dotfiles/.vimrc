@@ -65,6 +65,7 @@ Plugin 'jgdavey/tslime.vim'
 Plugin 'idanarye/vim-merginal'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'elixir-lang/vim-elixir'
 Plugin 'file:///Users/mkmit/src/private/vim-shen'
 
 " All of your Plugins must be added before the following line
@@ -91,6 +92,10 @@ filetype plugin indent on    " required
 
 cd ~/
 
+" " swap files location
+" set directory=~/temp/vim-swap-files/
+set noswapfile
+
 set clipboard=unnamed
 
 set ttimeoutlen=50
@@ -103,9 +108,6 @@ set hidden
 
 " read files automatically when changed outside vim
 set autoread
-
-" swap files location
-set directory=~/temp/vim-swap-files/
 
 " == Indentation ==
 set autoindent
@@ -294,7 +296,7 @@ noremap <Leader>dg :diffget<CR>
 
 " dbext profiles
 let g:dbext_default_always_prompt_for_variables = 0
-let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit:dbname=madek-v3_development:cmd_terminator=;'
+let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit'
 " let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=leihs2_dev:cmd_terminator=;'
 
 nnoremap <Leader>fsql :%!sqlformat -r -<CR>

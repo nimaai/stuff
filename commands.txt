@@ -1,3 +1,39 @@
 CIDER_CI_USERNAME=nimaai CIDER_CI_PASSWORD=*** cider-ci_coverage --upload -a http://ci2.zhdk.ch/cider-ci/api/v2/
 
 ansible-playbook -u leihs -i hosts.zhdk.staging -l test.leihs.zhdk.ch site_zhdk.yml -t deploy --vault-password-file={location of your vaulted file}
+
+ansible-playbook -i inventories/zhdk/staging-v3-pdata play_dump-and-fetch-data.yml
+bundle exec rake db:pg:truncate_tables db:pg:data:restore FILE=~/src/work/madek/deploy/tmp/staging-v3-pdata/tmp/madek_data.pgbin
+
+## FROM DATALAYER ###
+# get madek prod db dump
+scp root@medienarchiv.zhdk.ch:/opt/madekdata/backups/latest.pgbin tmp/
+# postgres restore prod dump
+bx rake db:drop db:create db:pg:structure_and_data:restore FILE=tmp/latest.pgbin
+# both together
+scp root@medienarchiv.zhdk.ch:/opt/madekdata/backups/latest.pgbin tmp/; bx rake db:drop db:create db:pg:structure_and_data:restore FILE=tmp/latest.pgbin
+#####################
+
+# madek integration tests apache with reverse proxy
+LD_LIBRARY_PATH=/usr/local/opt/httpd24/libexec/ /usr/local/opt/httpd24/bin/apachectl -d reverse-proxy -e info -DFOREGROUND
+
+# deploy madek master
+git submodule foreach --recursive 'git push origin HEAD:master || exit 0' && open "https://ci.zhdk.ch/cider-ci/ui/workspace/trees/$(git log -1 --format="%T")/jobs/new" && sleep 250 && git push origin HEAD:master
+
+# mount test images locally
+sshfs root@test.madek.zhdk.ch:/opt/madekdata /Volumes/MADEKDATA_RO_from_test
+
+# restore leihs personas dump
+bx rake db:drop db:create db:migrate; mysql -u root leihs2_dev < features/personas/dumps/normal_2016-10-18T19:31:20+02:00.sql
+
+# access to the executor with port forwarding:
+# on local machine:
+ssh -L 2322:ci-g2016-02.byod.zhdk.ch:22 root@ci.zhdk.ch
+# on CI master
+ssh root@localhost -p2322
+
+# access to the executor via ssh-agent
+# add key if necessary
+ssh-add ~/.ssh/id_rsa
+# ssh with agent option
+ssh -A root@ci.zhdk.ch
