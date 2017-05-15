@@ -21,8 +21,15 @@ export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && prin
 export PS1="# \[\033[33;1m\]\${PS1X}\[\033[m\]\[\033[34m\]\$(parse_git_branch)\[\033[m\] $ "
 # export PS1="\\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[32m\]\$(parse_git_branch)\[\033[m\] \$ "
 
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+if [ $VIM ]; then
+  export PS1="# \${PS1X}\$(parse_git_branch) $ "
+  export CLICOLOR=0
+fi
+
+if [ -z $VIM ]; then
+  export CLICOLOR=1
+  export LSCOLORS=ExFxBxDxCxegedabagacad
+fi
 
 # alias ls='ls -GFh'
 

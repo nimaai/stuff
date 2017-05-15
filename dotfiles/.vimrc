@@ -40,8 +40,8 @@ Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/buffer-grep'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'ngmy/vim-rubocop'
-Plugin 'scrooloose/syntastic'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'vim-syntastic/syntastic'
 " Plugin 'danchoi/ri.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mtscout6/vim-cjsx'
@@ -66,6 +66,8 @@ Plugin 'idanarye/vim-merginal'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'brigade/haml-lint'
 Plugin 'file:///Users/mkmit/src/private/vim-shen'
 
 " All of your Plugins must be added before the following line
@@ -90,13 +92,11 @@ filetype plugin indent on    " required
 " disable plugin from autoloading
 " let g:nerdtree_tabs_loaded = 0
 
-cd ~/
-
 " " swap files location
 " set directory=~/temp/vim-swap-files/
 set noswapfile
 
-set clipboard=unnamed
+" set clipboard=unnamed
 
 set ttimeoutlen=50
 
@@ -220,7 +220,7 @@ noremap <Leader>y "+y
 
 " == Fonts, encoding, statusline ==
 
-set guifont=Monaco:h21
+set guifont=Monaco:h18
 set encoding=utf-8
 set laststatus=2
 
@@ -254,6 +254,7 @@ let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:vimrubocop_rubocop_cmd = 'bundle exec rubocop'
 
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_haml_checkers = ['haml_lint']
 
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
@@ -363,3 +364,10 @@ endfunction
 let g:paredit_smartjump = 1
 
 autocmd FocusLost * wall
+
+" automatically open quickfix window after Ggrep
+autocmd QuickFixCmdPost *grep* copen
+
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1

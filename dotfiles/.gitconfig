@@ -44,6 +44,8 @@
 [alias]
         patch = "!f() { git add . && git can && git psf; }; f"
 [alias]
+        rmu = "!f() { git status --porcelain | cut -f 2- -d \" \" | xargs rmtrash; }; f"
+[alias]
         s = status
 [alias]
         a = add
@@ -68,6 +70,8 @@
 [alias]
         psfo = "!f() { git push --force origin HEAD:$1; }; f"
 [alias]
+        dno = diff --name-only
+[alias]
         d = diff --submodule
 [alias]
         ds = diff --staged --submodule
@@ -85,6 +89,8 @@
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
 [alias]
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+[alias]
+        m = merge
 [alias]
         ms = merge --squash
 [alias]
