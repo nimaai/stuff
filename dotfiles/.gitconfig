@@ -52,6 +52,8 @@
 [alias]
         co = checkout
 [alias]
+        cos = "!f() { git checkout $1 && git submodule update --recursive; }; f"
+[alias]
         cp = cherry-pick
 [alias]
         b = branch

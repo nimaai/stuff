@@ -2,13 +2,16 @@ set -o vi
 
 export TERM=screen-256color
 export EDITOR=vim
-export FIREFOX_ESR_PATH=~/Applications/FirefoxESR.app/Contents/MacOS/firefox
 export ANDROID_HOME=~/Android/Sdk
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
 export PUSER=mkmit
 export PGPASSWORD=mkmit
+export FIREFOX_ESR_45_PATH=/Users/mkmit/Applications/FirefoxESR.app/Contents/MacOS/firefox
+export FIREFOX_ESR_PATH=$FIREFOX_ESR_45_PATH
+export NODE_PATH=/usr/local/lib/node_modules/
 
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
 
 eval "$(rbenv init -)"
 

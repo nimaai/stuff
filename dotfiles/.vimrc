@@ -68,6 +68,8 @@ Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'brigade/haml-lint'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'gcorne/vim-sass-lint'
 Plugin 'file:///Users/mkmit/src/private/vim-shen'
 
 " All of your Plugins must be added before the following line
@@ -202,8 +204,8 @@ nnoremap <silent> <C-h><C-h> :wincmd h<CR>
 nnoremap <silent> <C-l><C-l> :wincmd l<CR>
 
 " == Remap relative/absolute line number toggle ==
-nnoremap <silent> <Leader>lta :set norelativenumber<CR>
-nnoremap <silent> <Leader>ltr :set relativenumber<CR>
+nnoremap <silent> <Leader>lna :set norelativenumber<CR>
+nnoremap <silent> <Leader>lnr :set relativenumber<CR>
 
 " == Easily jump between buffers
 " nnoremap <silent> <C-J> :bprevious<CR>
@@ -297,8 +299,11 @@ noremap <Leader>dg :diffget<CR>
 
 " dbext profiles
 let g:dbext_default_always_prompt_for_variables = 0
-let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit'
-" let g:dbext_default_profile_mysql = 'type=MYSQL:user=root:passwd=:dbname=leihs2_dev:cmd_terminator=;'
+let g:dbext_default_profile_pg = 'type=PGSQL:user=mkmit:passwd=mkmit:cmd_terminator=;'
+let g:dbext_default_profile = 'pg'
+let g:dbext_default_PGSQL_bin = 'psql -c "\pset columns 175"'
+let g:dbext_default_buffer_lines = 20
+let g:dbext_default_prompt_for_parameters = 0
 
 nnoremap <Leader>fsql :%!sqlformat -r -<CR>
 vnoremap <Leader>fsql :!sqlformat -r -<CR>
@@ -371,3 +376,5 @@ autocmd QuickFixCmdPost *grep* copen
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
+
+nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<cr>
