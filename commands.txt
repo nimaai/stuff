@@ -37,3 +37,6 @@ ssh root@localhost -p2322
 ssh-add ~/.ssh/id_rsa
 # ssh with agent option
 ssh -A root@ci.zhdk.ch
+
+# access executor from home
+ssh root@ci-g2016-02.byod.zhdk.ch

@@ -42,6 +42,10 @@
 [alias]
         cpn = cherry-pick --no-commit
 [alias]
+        cpa = cherry-pick --abort
+[alias]
+        cpc = cherry-pick --continue
+[alias]
         patch = "!f() { git add . && git can && git psf; }; f"
 [alias]
         rmu = "!f() { git status --porcelain | cut -f 2- -d \" \" | xargs rmtrash; }; f"
@@ -116,6 +120,12 @@
 [alias]
         riaom = rebase --interactive --autosquash origin/master
 [alias]
+        rhom = reset --hard origin/master
+[alias]
+        rmbom = "!f() { git reset $(git merge-base HEAD origin/master); }; f"
+[alias]
+        rhmbom = "!f() { git reset --hard $(git merge-base HEAD origin/master); }; f"
+[alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         suball = submodule foreach git pull -q origin master
@@ -124,7 +134,29 @@
 [alias]
         sur = submodule update --recursive
 [alias]
+        suf = submodule update --force
+[alias]
+        surf = submodule update --recursive --force
+[alias]
+        uiau = update-index --assume-unchanged
+[alias]
+        uinau = update-index --assume-unchanged
+[alias]
+        ss = stash save
+[alias]
+        sp = stash pop
+[alias]
+        sd = stash drop
+[alias]
+        sl = stash list
+[alias]
         f = fetch
+[alias]
+        rp = rev-parse
+[alias]
+        rp = rev-parse
+[alias]
+        bc = "!f() { hub browse -- commits/$(git rev-parse $1); }; f"
 
 [color]
         branch = auto
@@ -147,24 +179,24 @@
         changed = green
         untracked = cyan
 
-[diff]
-        tool = vimdiff
-[difftool]
-        prompt = false
-
-[merge]
-	tool = fugitive
-        ff = only
-[mergetool]
-        keepBackup = false
-        prompt = false
-
+; [diff]
+;         tool = vimdiff
+; [difftool]
+;         prompt = false
+; [difftool "vimdiff"]
+;         cmd = nvim -d $LOCAL $REMOTE
+; [merge]
+;         tool = vimdiff
+; [mergetool]
+;         prompt = false
+; [mergetool "vimdiff"]
+;         cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [core]
         editor = vim -f
 	excludesfile = /Users/mkmit/.gitignore
 [push]
         default = current
-        recurseSubmodules = on-demand
+        recurseSubmodules = check
 [branch]
         autosetuprebase = always
 [difftool "sourcetree"]

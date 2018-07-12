@@ -12,3 +12,4 @@ cider-ci/bin/install_rbenv_version.rb
 database_pg.yml
 plugin/applescript/*
 tmp/
+.eslintrc
