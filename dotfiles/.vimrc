@@ -15,6 +15,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-cucumber'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -26,50 +27,50 @@ Plugin 'ervandew/supertab.git'
 Plugin 'Lokaltog/vim-easymotion'
 " Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'tmhedberg/matchit'
-Plugin 'mkitt/tabline.vim'
+" Plugin 'mkitt/tabline.vim'
 Plugin 'kovisoft/paredit'
 " Plugin 'bhurlow/vim-parinfer'
 " Plugin 'oakmac/parinfer-viml'
 Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-leiningen'
+" Plugin 'tpope/vim-fireplace'
+" Plugin 'tpope/vim-classpath'
+" Plugin 'tpope/vim-leiningen'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'bling/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/buffer-grep'
+" Plugin 'vim-scripts/buffer-grep'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ngmy/vim-rubocop'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 " Plugin 'danchoi/ri.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mtscout6/vim-cjsx'
 Plugin 'tpope/vim-obsession'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-scripts/dbext.vim'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/gem-ctags'
+" Plugin 'tpope/vim-bundler'
+" Plugin 'tpope/gem-ctags'
 Plugin 'jpalardy/vim-slime'
-Plugin 'godlygeek/tabular'
+" Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'rizzatti/dash.vim'
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
-Plugin 'moll/vim-bbye'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'janko-m/vim-test'
-Plugin 'tpope/vim-dispatch'
+" Plugin 'moll/vim-bbye'
+" Plugin 'kana/vim-textobj-user'
+" Plugin 'nelstrom/vim-textobj-rubyblock'
+" Plugin 'janko-m/vim-test'
+" Plugin 'tpope/vim-dispatch'
 Plugin 'jgdavey/tslime.vim'
-Plugin 'idanarye/vim-merginal'
-Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'brigade/haml-lint'
+" Plugin 'brigade/haml-lint'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'gcorne/vim-sass-lint'
+" Plugin 'gcorne/vim-sass-lint'
+" MAKES VIM CRASH
+" Plugin 'prettier/vim-prettier'
 Plugin 'file:///Users/mkmit/src/private/vim-shen'
 
 " All of your Plugins must be added before the following line
@@ -98,11 +99,10 @@ filetype plugin indent on    " required
 " set directory=~/temp/vim-swap-files/
 set noswapfile
 
-" set clipboard=unnamed
-
 set ttimeoutlen=50
 
 let mapleader=","
+
 
 " syntax settings
 syntax on
@@ -132,13 +132,14 @@ set list listchars=tab:\ \ ,trail:·
 
 set foldmethod=indent   "fold based on indent
 set nofoldenable        "dont fold by default
-set foldlevelstart=1
+set foldlevelstart=2
+set foldnestmax=7       "deepest fold is 7 levels
+set foldlevel=1
+
 " augroup unfold_all
 "   autocmd!
 "   autocmd BufWinEnter * normal zR
 " augroup END
-" set foldlevel=1
-" set foldnestmax=7       "deepest fold is 7 levels
 
 " == Scrolling
 
@@ -163,7 +164,7 @@ set relativenumber " makes vim slow!
 set number
 
 " == Line highlight ==
-set cursorline " makes vim slow!
+" set cursorline " makes vim slow!
 
 " == Colors ==
 " let g:solarized_termcolors=256
@@ -178,7 +179,9 @@ set backspace=indent,eol,start
 
 set omnifunc=syntaxcomplete#Complete
 
-" set clipboard=unnamed
+" remap clearance of text highlighting
+" nnoremap dr dd
+" nnoremap dd "_dd
 
 " remap clearance of text highlighting
 nnoremap <Leader>b :Bufferlist<CR>
@@ -187,8 +190,6 @@ nnoremap <Leader>b :Bufferlist<CR>
 nnoremap <silent> <Leader>/ :nohlsearch<CR>
 " short cut for changing current directory to the current file
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" == Key map for quick resizing of window ==
 
 " == NERDTree key mappings ==
 
@@ -207,18 +208,14 @@ nnoremap <silent> <C-l><C-l> :wincmd l<CR>
 nnoremap <silent> <Leader>lna :set norelativenumber<CR>
 nnoremap <silent> <Leader>lnr :set relativenumber<CR>
 
-" == Easily jump between buffers
-" nnoremap <silent> <C-J> :bprevious<CR>
-" nnoremap <silent> <C-K> :bnext<CR>
-
 " remap movement keys beginning and end of line
 noremap <Leader>a ^
 noremap <Leader>e $
 
 " remap keys for copying to and pasting from clipboard
-noremap <Leader>p "+p
-noremap <Leader>P "+P
-noremap <Leader>y "+y
+noremap <Leader>p "*p
+noremap <Leader>P "*P
+noremap <Leader>y "*y
 
 " == Fonts, encoding, statusline ==
 
@@ -226,15 +223,7 @@ set guifont=Monaco:h18
 set encoding=utf-8
 set laststatus=2
 
-" auto-clean fugitive buffers
-" autocmd BufReadPost fugitive://* set bufhidden=delete
-
-" ruby
-" autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-" autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-" autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
+"================================ SYNTASTIC ===============================
 " Mark syntax errors with :signs
 let g:syntastic_enable_signs=1
 
@@ -247,7 +236,10 @@ let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
 
 " manual checking
-let g:syntastic_mode_map = { "mode": "passive" }
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "passive_filetypes": ["ruby"]
+  \ }
 
 " This is where the magic happens. Chain together different style checkers
 " in order to check for both style flaws and syntax errors.
@@ -260,6 +252,7 @@ let g:syntastic_haml_checkers = ['haml_lint']
 
 nnoremap <Leader>sc :SyntasticCheck<CR>
 nnoremap <Leader>sr :SyntasticReset<CR>
+"==========================================================================
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
@@ -315,7 +308,8 @@ augroup auto_comment
 augroup END
 
 " configure paren matching
-:hi MatchParen cterm=none ctermbg=8 ctermfg=none
+highlight MatchParen cterm=none ctermbg=8 ctermfg=red
+" highlight MatchParen cterm=bold,underline ctermfg=5* ctermbg=none
 
 " run system command and load results in quickfix window
 command! -nargs=+ Run :cexpr system('<args>') | copen
@@ -339,6 +333,12 @@ augroup md_filetype
   autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 augroup END
 
+" fix syntax highlighting for .md files
+augroup pl_filetype
+  autocmd!
+  autocmd BufNewFile,BufFilePre,BufRead *.pl set filetype=prolog
+augroup END
+
 " augroup shen_filetype
 "   autocmd!
 "   " autocmd BufNewFile,BufFilePre,BufRead *.shen set filetype=shen
@@ -354,7 +354,7 @@ nnoremap <leader>sw :setlocal wrap!<cr>
 augroup bpry_abbrev
   autocmd!
   autocmd FileType ruby,haml :iabbrev <buffer> bpry binding.pry<right>
-  autocmd FileType coffee :iabbrev <buffer> bpry debugger<right>
+  autocmd FileType javascript.jsx,coffee :iabbrev <buffer> bpry debugger<right>
 augroup END
 
 nnoremap <silent> <leader>ll :call ColorColumnToggle()<CR>
@@ -368,13 +368,46 @@ endfunction
 
 let g:paredit_smartjump = 1
 
-autocmd FocusLost * wall
-
 " automatically open quickfix window after Ggrep
-autocmd QuickFixCmdPost *grep* copen
+augroup open_quickfix_after_grep
+  autocmd QuickFixCmdPost *grep* copen
+augroup END
 
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
 
-nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<cr>
+nnoremap <leader>yl :let @+=expand("%") . ':' . line(".")<CR>
+
+augroup js_filetype
+  autocmd!
+  autocmd BufNewFile,BufRead *.js set filetype=javascript.jsx
+augroup END
+
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_enabled = 1
+let g:prettier#autoformat = 0
+
+augroup focus_lost
+  autocmd!
+  autocmd FocusLost * wall
+augroup END
+
+" MAKES VIM CRASH
+" augroup prettier
+"   autocmd!
+"   autocmd BufWritePre *.js,*.jsx,*.json PrettierAsync
+" augroup END
+
+" function! DeleteEmptyBuffers()
+"   let [i, n; empty] = [1, bufnr('$')]
+"   while i <= n
+"     if bufexists(i) && bufname(i) == ''
+"       call add(empty, i)
+"     endif
+"     let i += 1
+"   endwhile
+"   if len(empty) > 0
+"     exe 'bdelete' join(empty)
+"   endif
+" endfunction
