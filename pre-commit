@@ -1,0 +1,30 @@
+#!/bin/sh
+
+current_dir=$(pwd)
+
+root_dir=$(git rev-parse --show-toplevel)
+
+cd "$root_dir/server"
+
+server_files=$(git diff --relative --cached --name-only --diff-filter=ACM | grep -E "\.(clj|edn)$")
+
+for sf in $server_files; do
+  lein zprint $sf
+  git add $sf
+done
+
+cd "$root_dir/client"
+
+client_files=$(git diff --relative --cached --name-only --diff-filter=ACM) 
+
+if [ ! "$client_files" == "" ]; then
+  npm run lint
+  for cf in $client_files; do
+    lein zprint $cf
+    git add $cf
+  done
+fi
+
+cd $root_dir
+
+cd $current_dir
