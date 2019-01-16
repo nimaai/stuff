@@ -1,5 +1,5 @@
 [user]
-	name = Matúš Kmiť
+	name = Matus Kmit
 	email = matus.kmit@zhdk.ch
         signingkey = 67C527A3
 
@@ -50,13 +50,15 @@
 [alias]
         rmu = "!f() { git status --porcelain | cut -f 2- -d \" \" | xargs rmtrash; }; f"
 [alias]
-        s = status
+        s = status --ignore-submodules=untracked
+[alias]
+        sa = status
 [alias]
         a = add
 [alias]
         co = checkout
 [alias]
-        cos = "!f() { git checkout $1 && git submodule update --recursive; }; f"
+        cos = "!f() { git checkout $1 && git submodule update --init --recursive; }; f"
 [alias]
         cp = cherry-pick
 [alias]
@@ -72,7 +74,7 @@
 [alias]
         psom = push origin HEAD:master
 [alias]
-        pso = "!f() { git push origin HEAD:$1; }; f"
+        pso = "!f() { git push origin HEAD:refs/heads/$1; }; f"
 [alias]
         psfo = "!f() { git push --force origin HEAD:$1; }; f"
 [alias]
@@ -89,6 +91,8 @@
         l = log
 [alias]
         lp = log --graph --decorate --pretty=oneline --abbrev-commit -10
+[alias]
+        lpfp = log --graph --decorate --pretty=oneline --abbrev-commit --first-parent -10
 [alias]
         last = log --graph --decorate --pretty=oneline --abbrev-commit -1
 [alias]
@@ -126,6 +130,8 @@
 [alias]
         rhmbom = "!f() { git reset --hard $(git merge-base HEAD origin/master); }; f"
 [alias]
+        rsuo = remote set-url origin
+[alias]
         suball = submodule foreach git pull -q origin master
 [alias]
         suball = submodule foreach git pull -q origin master
@@ -136,13 +142,17 @@
 [alias]
         suf = submodule update --force
 [alias]
-        surf = submodule update --recursive --force
+        surf = submodule update --recursive --force --init
 [alias]
         uiau = update-index --assume-unchanged
 [alias]
         uinau = update-index --assume-unchanged
+; [alias]
+;         ss = stash save
 [alias]
-        ss = stash save
+        ssm = "!f() { git submodule summary | colorss; }; f"
+[alias]
+        sst = git submodule status
 [alias]
         sp = stash pop
 [alias]
@@ -157,6 +167,8 @@
         rp = rev-parse
 [alias]
         bc = "!f() { hub browse -- commits/$(git rev-parse $1); }; f"
+[alias]
+        ci = "!f() { hub ci-status; }; f"
 
 [color]
         branch = auto
@@ -180,40 +192,42 @@
         untracked = cyan
 
 ; [diff]
-;         tool = vimdiff
-; [difftool]
-;         prompt = false
-; [difftool "vimdiff"]
-;         cmd = nvim -d $LOCAL $REMOTE
+;         tool = nvim -d
+[difftool]
+        prompt = false
+[difftool "vimdiff"]
+        cmd = nvim -d $LOCAL $REMOTE
 ; [merge]
-;         tool = vimdiff
-; [mergetool]
-;         prompt = false
-; [mergetool "vimdiff"]
-;         cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+;         tool = nvim -d
+[mergetool]
+        prompt = false
+[mergetool "vimdiff"]
+        cmd = nvim -d $BASE $LOCAL $REMOTE
 [core]
-        editor = vim -f
-	excludesfile = /Users/mkmit/.gitignore
+        editor = nvim
+	excludesfile = /Users/nitaai/.gitignore_global
 [push]
         default = current
-        recurseSubmodules = check
+        recurseSubmodules = on-demand
 [branch]
         autosetuprebase = always
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [commit]
         gpgsign = true
-	template = /Users/mkmit/.stCommitMsg
+	template = /Users/nitaai/.stCommitMsg
+        # template = /Users/nitaai/.stCommitMsg
 [gpg]
-        program = /Applications/SourceTree.app/Contents/Resources/bin/stgpg.sh
-[status]
-	submodulesummary = true
+        program = gpg
+; [status]
+; 	submodulesummary = true
 [mergetool "fugitive"]
-	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+	; cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+        cmd = nvim -d $BASE $LOCAL $REMOTE
 [remote "origin"]
 	prune = true

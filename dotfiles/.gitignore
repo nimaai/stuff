@@ -13,3 +13,4 @@ database_pg.yml
 plugin/applescript/*
 tmp/
 .eslintrc
+node_modules/

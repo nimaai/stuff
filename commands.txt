@@ -40,3 +40,6 @@ ssh -A root@ci.zhdk.ch
 
 # access executor from home
 ssh root@ci-g2016-02.byod.zhdk.ch
+
+# sync subapps' jars
+rsync -avPh -e 'ssh -AJ root@ci.zhdk.ch' root@ci-g2016-01.byod.zhdk.ch:/tmp/leihs_build_cache/ /tmp/leihs_build_cache/
