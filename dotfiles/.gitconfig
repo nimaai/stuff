@@ -142,7 +142,9 @@
 [alias]
         suf = submodule update --force
 [alias]
-        surf = submodule update --recursive --force --init
+        surf = submodule update --recursive --force
+[alias]
+        surfi = submodule update --recursive --force --init
 [alias]
         uiau = update-index --assume-unchanged
 [alias]
@@ -152,7 +154,9 @@
 [alias]
         ssm = "!f() { git submodule summary | colorss; }; f"
 [alias]
-        sst = git submodule status
+        ss = submodule status
+[alias]
+        ssr = submodule status --recursive
 [alias]
         sp = stash pop
 [alias]
@@ -161,6 +165,8 @@
         sl = stash list
 [alias]
         f = fetch
+[alias]
+        fr = fetch --recurse-submodules
 [alias]
         rp = rev-parse
 [alias]
@@ -205,12 +211,12 @@
         cmd = nvim -d $BASE $LOCAL $REMOTE
 [core]
         editor = nvim
-	excludesfile = /Users/nitaai/.gitignore_global
+	excludesfile = /Users/nitaai/.gitignore
 [push]
         default = current
         recurseSubmodules = on-demand
-[branch]
-        autosetuprebase = always
+; [branch]
+;         autosetuprebase = always
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

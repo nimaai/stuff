@@ -14,3 +14,8 @@ plugin/applescript/*
 tmp/
 .eslintrc
 node_modules/
+.mux.yml
+dev-repl
+test-repl
+dev-server
+mock

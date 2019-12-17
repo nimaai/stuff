@@ -1,11 +1,14 @@
-export ANDROID_HOME=~/Android/Sdk
+export ANDROID_SDK=~/Library/Android/sdk
+export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 export EDITOR=nvim
 export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox
 export FIREFOX_ESR_60_PATH=/Applications/FirefoxESR\ 60.app/Contents/MacOS/firefox
-export FIREFOX_ESR_PATH=$FIREFOX_ESR_45_PATH
+export FIREFOX_ESR_PATH=$FIREFOX_ESR_60_PATH
+export FIREFOX_PATH=/Applications/Firefox.app/Contents/MacOS/firefox
+export LEIHS_SECRET=leihs
 export NODE_PATH=/usr/local/lib/node_modules/
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
 export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
 export PGPASSWORD=mkmit
 export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'
@@ -24,6 +27,10 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
 function export_db() {
   export DATABASE_URL="postgresql://localhost:5432/$1?min-pool-size=1&max-pool-size=16"
+}
+
+function export_leihs_db() {
+  export DATABASE_URL="postgresql://localhost:5432/$1?min-pool-size=1&max-pool-size=16"
   export LEIHS_DATABASE_URL="jdbc:$DATABASE_URL"
 }
 
@@ -39,5 +46,36 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# eval $(thefuck --alias)
-PATH=/usr/local/opt/gnu-tar/libexec/gnubin:/Users/nitaai/Android/Sdk/tools:/Users/nitaai/Android/Sdk/platform-tools:/Users/nitaai/.rbenv/shims:/Users/nitaai/.jenv/bin:/usr/local/sbin:/Users/nitaai/Android/Sdk/tools:/Users/nitaai/Android/Sdk/platform-tools:/Users/nitaai/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Users/nitaai/.rbenv/shims:/Users/nitaai/.jenv/bin:/usr/local/sbin:/Users/nitaai/Android/Sdk/tools:/Users/nitaai/Android/Sdk/platform-tools:/Users/nitaai/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/Users/nitaai/.fzf/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/opt/gnu-tar/libexec/gnubin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/opt/gnu-tar/libexec/gnubin
+###################################################################################
+
+export HISTFILE=~/.bash_history
+export HISTFILESIZE=500000
+export HISTSIZE=500000
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+# unset PROMPT_COMMAND
+# export PROMPT_COMMAND="history -n;history -w;history -c;history -r;$PROMPT_COMMAND"
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+  PATH="$HOME/bin:$PATH"
+fi
+
+eval "$(rbenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+eval $(thefuck --alias)
+
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"
