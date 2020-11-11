@@ -1,19 +1,28 @@
+function! s:set_mode()
+  let mac_mode = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if mac_mode == "Dark\n"
+    set background=dark
+  else
+    set background=light
+  endif
+endfunction
+
+autocmd FocusGained * call airline#themes#solarized#refresh() | call s:set_mode()
+call s:set_mode()
+
 call plug#begin()
 " Plug 'alcesleo/vim-uppercase-sql'
+Plug 'airblade/vim-gitgutter'
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
 Plug 'chiel92/vim-autoformat'
-" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
-" Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
-" Plug 'gosukiwi/vim-atom-dark'
 Plug 'guns/vim-clojure-static'
 " Plug 'guns/vim-clojure-highlight'
-Plug 'brandonvin/vim-clojure-highlight'
+Plug 'jrdoane/vim-clojure-highlight'
 Plug 'guns/vim-sexp'
 Plug 'iCyMind/NeoSolarized'
-" Plug 'joshdick/onedark.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -24,11 +33,11 @@ Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kburdett/vim-nuuid'
-Plug 'luochen1990/rainbow'
-" Plug 'nimaai/vim-lfe'
-" Plug 'nimaai/vim-shen'
+Plug 'lifepillar/vim-solarized8'
+" Plug 'luochen1990/rainbow'
+Plug 'nimaai/vim-shadow-cljs'
 Plug '~/src/private/vim-shen'
-Plug 'mkitt/tabline.vim'
+" Plug 'mkitt/tabline.vim'
 Plug 'mxw/vim-jsx'
 Plug 'noscript/justdo.vim'
 Plug 'pangloss/vim-javascript'
@@ -46,13 +55,16 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
+Plug 'wlangstroth/vim-racket'
 " Plug 'typedclojure/vim-typedclojure'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 " =================================================
 " paredit has to be loaded after other lisp plugins
@@ -66,12 +78,16 @@ call plug#end()
 set autoindent
 set autoread
 " set autowriteall
+" set background=light
 set clipboard=unnamed
 set cursorline
 set expandtab
 set foldmethod=indent
+" set guicursor=a:blinkon100
+set hidden
 set ignorecase
 set incsearch
+set lispwords+=fn-traced
 set mouse=a
 set nofoldenable
 set noshowcmd
@@ -82,28 +98,32 @@ set relativenumber
 set shiftwidth=2
 set smartcase
 set statusline=%f%m%=%y
+set termguicolors
 
 let mapleader = ","
 let maplocalleader = ","
 nnoremap \ ,
 
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" let g:airline_powerline_fonts = 1
 let g:clj_refactor_prefix_rewriting = 0
-let g:clojure_highlight_references = 0
 let g:filetype_pl = "prolog"
+let g:gitgutter_enabled = 0
 let g:paredit_electric_return = 0
 let g:ruby_indent_block_style = 'do'
 let g:slime_target = 'tmux'
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
-let g:rainbow_active = 1 
+" let g:rainbow_active = 1 
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 
-colorscheme hybrid_material
+colorscheme NeoSolarized
 
-autocmd FocusLost * silent! wall
-autocmd FileType prolog setlocal nocursorline
+" autocmd FocusLost * silent! wall
+" autocmd FileType prolog setlocal nocursorline
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 
 augroup insert_mode_match_paren
@@ -114,16 +134,22 @@ augroup END
 nnoremap <Leader>bf :Buffers<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
+nnoremap <Leader>gs :Gstatus<CR>
 " NOTE: conficts with vim-sexp mappings
 " nnoremap <Leader>i% gg=G``
 " nnoremap <Leader>if [[=%``
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>rr :wall<CR>:Require!<CR>
+nnoremap <Leader>bd :set background=dark<CR>
+nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>sw :set wrap!<CR>
 nnoremap <C-S> :wall<CR>
-nnoremap + 10<C-W>>
-nnoremap - 10<C-W><
+" nnoremap <c-w>+ 7<c-w>+
+" nnoremap <c-w>- 7<c-w>-
+nnoremap + 7<c-w>>
+nnoremap - 7<c-w><
+nnoremap p p=`]
 
 map <C-l> <C-w>l
 map <C-h> <C-w>h
@@ -159,37 +185,21 @@ highlight default link myTodo Todo
 
 command! Reset execute 'Eval (app/reset)' | BufDo edit
 
-function! s:Relpath(fn)
-  let l:cwd = getcwd()
-  let l:s = substitute(a:fn, l:cwd . '/', '', '')
-  return l:s
-endfunction
+nnoremap <Leader>rs :Reset<CR>
 
-function! Shadow()
-  execute 'Piggieback!'
-  let l:shadow_path = '.shadow-cljs/nrepl.port'
-  if filereadable(l:shadow_path)
-    let l:port = readfile(l:shadow_path, 'b', 1)[0]
-    if l:port
-      " execute 'Piggieback!'
-      " let l:path = 'src/all/leihs/borrow/client'
-      let l:path = s:Relpath(expand("%:p"))
-      echo(l:path)
-      execute 'Connect ' . l:port . ' ' . l:path 
-      execute 'Piggieback :app'
-    endif
+" autocmd VimEnter * RainbowToggle
+
+" Evaluate Clojure buffers on load
+autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+
+function! InitDB()
+  let s:db_path = 'tmp/db.txt'
+  if filereadable(s:db_path)
+    execute readfile(s:db_path)[0]
   endif
 endfunction
 
-command! Shadow call Shadow()
-augroup shadow_buf_read_post
-  autocmd!
-  autocmd BufReadPost,BufNewFile *.cljs call Shadow()
-augroup END
-
-nnoremap <Leader>rs :Reset<CR>
-
-autocmd VimEnter * RainbowToggle
+command! InitDB call InitDB()
 
 " search for non-ascii characters
 " /[^\x00-\x7F]

@@ -1,7 +1,7 @@
 [user]
 	name = Matus Kmit
 	email = matus.kmit@zhdk.ch
-        signingkey = 67C527A3
+        signingkey = A7D4C7D0AA8CF012
 
 [guitool "Rebase onto..."]
         cmd = git rebase
@@ -54,6 +54,12 @@
 [alias]
         sa = status
 [alias]
+        sw = switch
+[alias]
+        swr = switch --recurse-submodules
+[alias]
+        rt = restore
+[alias]
         a = add
 [alias]
         co = checkout
@@ -70,7 +76,7 @@
 [alias]
         ps = push
 [alias]
-        psf = push -f
+        psf = push --force-with-lease
 [alias]
         psom = push origin HEAD:master
 [alias]
@@ -102,6 +108,8 @@
 [alias]
         m = merge
 [alias]
+        ma = merge --abort
+[alias]
         ms = merge --squash
 [alias]
         mbom = merge-base HEAD origin/master
@@ -123,6 +131,8 @@
         ria = rebase --interactive --autosquash
 [alias]
         riaom = rebase --interactive --autosquash origin/master
+[alias]
+        rh = reset --hard
 [alias]
         rhom = reset --hard origin/master
 [alias]
@@ -227,9 +237,8 @@
 [commit]
         gpgsign = true
 	template = /Users/nitaai/.stCommitMsg
-        # template = /Users/nitaai/.stCommitMsg
 [gpg]
-        program = gpg
+	program = /usr/local/bin/gpg
 ; [status]
 ; 	submodulesummary = true
 [mergetool "fugitive"]
@@ -237,3 +246,5 @@
         cmd = nvim -d $BASE $LOCAL $REMOTE
 [remote "origin"]
 	prune = true
+[pull]
+	rebase = true

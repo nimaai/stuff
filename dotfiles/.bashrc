@@ -7,14 +7,20 @@ export FIREFOX_ESR_PATH=$FIREFOX_ESR_60_PATH
 export FIREFOX_PATH=/Applications/Firefox.app/Contents/MacOS/firefox
 export LEIHS_SECRET=leihs
 export NODE_PATH=/usr/local/lib/node_modules/
-export PATH=~/Library/Android/sdk/platform-tools:$PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
-export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
 export PGPASSWORD=mkmit
 export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'
 export PSQL_EDITOR=nvim
 export PUSER=nitaai
 export TERM=screen-256color
+
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
+export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+export PATH="$HOME/.jenv/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"
 
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
@@ -48,11 +54,13 @@ fi
 
 ###################################################################################
 
-export HISTFILE=~/.bash_history
-export HISTFILESIZE=500000
-export HISTSIZE=500000
+# export HISTFILE=~/.bash_history
+# export HISTFILESIZE=500000
+# export HISTSIZE=500000
 export HISTCONTROL=ignoredups:erasedups
-shopt -s histappend
+export HISTIGNORE='history *'
+# shopt -s histappend
+
 # unset PROMPT_COMMAND
 # export PROMPT_COMMAND="history -n;history -w;history -c;history -r;$PROMPT_COMMAND"
 
@@ -70,12 +78,27 @@ eval "$(rbenv init -)"
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 
-export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 eval $(thefuck --alias)
 
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  sith() {
+    val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+    if [[ $val == "Dark" ]]; then
+      i
+    fi
+  }
+
+  i() {
+    if [[ $ITERM_PROFILE == "Solarized Light" ]]; then
+      echo -ne "\033]50;SetProfile=Solarized Dark\a"
+      export ITERM_PROFILE="Solarized Dark"
+    else
+      echo -ne "\033]50;SetProfile=Solarized Light\a"
+      export ITERM_PROFILE="Solarized Light"
+    fi
+  }
+
+  sith
+fi
