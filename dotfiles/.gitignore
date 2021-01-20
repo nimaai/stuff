@@ -18,6 +18,7 @@ dev-repl
 dev-server
 int-test-repl
 int-test-server
+local-vm*
 my-scripts/
 node_modules/
 plugin/applescript/*

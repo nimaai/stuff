@@ -3,7 +3,8 @@ export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 export EDITOR=nvim
 export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox
 export FIREFOX_ESR_60_PATH=/Applications/FirefoxESR\ 60.app/Contents/MacOS/firefox
-export FIREFOX_ESR_PATH=$FIREFOX_ESR_60_PATH
+export FIREFOX_ESR_78_PATH=/Applications/FirefoxESR\ 78.app/Contents/MacOS/firefox
+export FIREFOX_ESR_PATH=$FIREFOX_ESR_78_PATH
 export FIREFOX_PATH=/Applications/Firefox.app/Contents/MacOS/firefox
 export LEIHS_SECRET=leihs
 export NODE_PATH=/usr/local/lib/node_modules/
@@ -16,7 +17,6 @@ export TERM=screen-256color
 export PATH=~/Library/Android/sdk/platform-tools:$PATH
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
 export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
-export PATH="$HOME/.jenv/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
@@ -73,12 +73,8 @@ if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
 
-eval "$(rbenv init -)"
-
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-
-eval "$(jenv init -)"
 
 eval $(thefuck --alias)
 

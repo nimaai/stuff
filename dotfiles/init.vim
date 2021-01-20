@@ -1,18 +1,6 @@
-function! s:set_mode()
-  let mac_mode = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
-  if mac_mode == "Dark\n"
-    set background=dark
-  else
-    set background=light
-  endif
-endfunction
-
-autocmd FocusGained * call airline#themes#solarized#refresh() | call s:set_mode()
-call s:set_mode()
-
 call plug#begin()
 " Plug 'alcesleo/vim-uppercase-sql'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
 Plug 'chiel92/vim-autoformat'
 Plug 'duff/vim-bufonly'
@@ -31,9 +19,9 @@ Plug 'junegunn/vim-easy-align'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kristijanhusak/vim-hybrid-material'
+" Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kburdett/vim-nuuid'
-Plug 'lifepillar/vim-solarized8'
+" Plug 'lifepillar/vim-solarized8'
 " Plug 'luochen1990/rainbow'
 Plug 'nimaai/vim-shadow-cljs'
 Plug '~/src/private/vim-shen'
@@ -41,7 +29,7 @@ Plug '~/src/private/vim-shen'
 Plug 'mxw/vim-jsx'
 Plug 'noscript/justdo.vim'
 Plug 'pangloss/vim-javascript'
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/vim-tmux-clipboard'
@@ -82,6 +70,7 @@ set autoread
 set clipboard=unnamed
 set cursorline
 set expandtab
+set foldlevelstart=99
 set foldmethod=indent
 " set guicursor=a:blinkon100
 set hidden
@@ -89,7 +78,7 @@ set ignorecase
 set incsearch
 set lispwords+=fn-traced
 set mouse=a
-set nofoldenable
+" set nofoldenable
 set noshowcmd
 set noshowmode
 set nowrap
@@ -120,8 +109,6 @@ let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 
-colorscheme NeoSolarized
-
 " autocmd FocusLost * silent! wall
 " autocmd FileType prolog setlocal nocursorline
 autocmd BufRead,BufNewFile *.service setfiletype dosini
@@ -133,6 +120,7 @@ augroup END
 
 nnoremap <Leader>bf :Buffers<CR>
 nnoremap <Leader>bo :BufOnly<CR>
+nnoremap <Leader>cp :let @* = expand("%") . ":" . line(".")<cr>
 nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 " NOTE: conficts with vim-sexp mappings
@@ -144,6 +132,7 @@ nnoremap <Leader>rr :wall<CR>:Require!<CR>
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>sw :set wrap!<CR>
+nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <C-S> :wall<CR>
 " nnoremap <c-w>+ 7<c-w>+
 " nnoremap <c-w>- 7<c-w>-
@@ -200,6 +189,23 @@ function! InitDB()
 endfunction
 
 command! InitDB call InitDB()
+
+function! s:SetMode()
+  let l:mode = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if l:mode == "Dark\n" && &background != "dark"
+    set background=dark
+  elseif l:mode != "Dark\n" && &background != "light"
+    set background=light
+  endif
+  if exists(':AirlineRefresh')
+    execute 'AirlineRefresh'
+  endif
+endfunction
+
+call s:SetMode()
+autocmd FocusGained * call s:SetMode()
+
+colorscheme NeoSolarized
 
 " search for non-ascii characters
 " /[^\x00-\x7F]

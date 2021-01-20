@@ -56,6 +56,8 @@
 [alias]
         sw = switch
 [alias]
+        swc = switch -C
+[alias]
         swr = switch --recurse-submodules
 [alias]
         rt = restore
@@ -222,9 +224,9 @@
 [core]
         editor = nvim
 	excludesfile = /Users/nitaai/.gitignore
-[push]
-        default = current
-        recurseSubmodules = on-demand
+; [push]
+;         default = current
+;         recurseSubmodules = on-demand
 ; [branch]
 ;         autosetuprebase = always
 [difftool "sourcetree"]
