@@ -60,8 +60,7 @@ Plug 'vim-ruby/vim-ruby'
 " =================================================
 call plug#end()
 
-" syntax on
-" filetype plugin indent on
+" SET OPTIONS ===============================================================
 
 set autoindent
 set autoread
@@ -89,36 +88,39 @@ set smartcase
 set statusline=%f%m%=%y
 set termguicolors
 
-let mapleader = ","
-let maplocalleader = ","
-nnoremap \ ,
+" LET BINDINGS ==============================================================
 
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 " let g:airline_powerline_fonts = 1
 let g:clj_refactor_prefix_rewriting = 0
 let g:filetype_pl = "prolog"
+let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6 } }
 let g:gitgutter_enabled = 0
 let g:paredit_electric_return = 0
 let g:ruby_indent_block_style = 'do'
+let g:sexp_mappings = {
+      \ 'sexp_swap_list_backward':        '',
+      \ 'sexp_swap_list_forward':         '',
+      \ 'sexp_swap_element_backward':     '',
+      \ 'sexp_swap_element_forward':      '',
+      \ }
+let g:sexp_filetypes = 'clojure,scheme,lisp,timl,shen'
 let g:slime_target = 'tmux'
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
 " let g:rainbow_active = 1 
+let mapleader = ","
+let maplocalleader = ","
 let vim_markdown_preview_browser='Google Chrome'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_hotkey='<C-m>'
 
-" autocmd FocusLost * silent! wall
-" autocmd FileType prolog setlocal nocursorline
-autocmd BufRead,BufNewFile *.service setfiletype dosini
+" MAP KEYS ==================================================================
 
-augroup insert_mode_match_paren
-  autocmd InsertEnter * silent! NoMatchParen
-  autocmd InsertLeave * silent! DoMatchParen
-augroup END
-
+nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bf :Buffers<CR>
+nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>cp :let @* = expand("%") . ":" . line(".")<cr>
 nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
@@ -129,8 +131,7 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>rr :wall<CR>:Require!<CR>
-nnoremap <Leader>bd :set background=dark<CR>
-nnoremap <Leader>bl :set background=light<CR>
+nnoremap <Leader>rs :Reset<CR>
 nnoremap <Leader>sw :set wrap!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <C-S> :wall<CR>
@@ -139,6 +140,7 @@ nnoremap <C-S> :wall<CR>
 nnoremap + 7<c-w>>
 nnoremap - 7<c-w><
 nnoremap p p=`]
+nnoremap \ ,
 
 map <C-l> <C-w>l
 map <C-h> <C-w>h
@@ -151,35 +153,23 @@ map <M-k> <C-k>
 map <M-u> <C-u>
 map <M-o> <C-o>
 map <M-i> <C-i>
-
 map * g*
 
 vnoremap <Leader>db :DB<CR>
 
-let g:sexp_mappings = {
-  \ 'sexp_swap_list_backward':        '',
-  \ 'sexp_swap_list_forward':         '',
-  \ 'sexp_swap_element_backward':     '',
-  \ 'sexp_swap_element_forward':      '',
-  \ }
-let g:sexp_filetypes = 'clojure,scheme,lisp,timl,shen'
+" SYNTAX / HIGHLIGHTS =======================================================
 
 " for files without syntax rules
 syntax keyword myTodo NOTE: REFACTOR:
-" for files with syntax rules
-autocmd Syntax * syntax keyword myTodo NOTE: REFACTOR: containedin=ALL
 highlight default link myTodo Todo
 
-" command! Zprint 1,$d | %! zprintm "$(cat .zprintrc)" < %
+" CUSTOM COMMANDS ===========================================================
 
+command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5432/' . <q-args> 
+command! InitDB call InitDB()
 command! Reset execute 'Eval (app/reset)' | BufDo edit
 
-nnoremap <Leader>rs :Reset<CR>
-
-" autocmd VimEnter * RainbowToggle
-
-" Evaluate Clojure buffers on load
-autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+" FUNCTIONS =================================================================
 
 function! InitDB()
   let s:db_path = 'tmp/db.txt'
@@ -187,8 +177,6 @@ function! InitDB()
     execute readfile(s:db_path)[0]
   endif
 endfunction
-
-command! InitDB call InitDB()
 
 function! s:SetMode()
   let l:mode = system("defaults read -g AppleInterfaceStyle 2>/dev/null")
@@ -202,8 +190,36 @@ function! s:SetMode()
   endif
 endfunction
 
+" CALL FUNCTIONS ============================================================
+
 call s:SetMode()
+
+" AUTOCOMMANDS ==============================================================
+
+" Evaluate Clojure buffers on load
+" autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
+" fold ns form
+autocmd BufRead *.clj[cs]\= normal jzck
+autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
+" autocmd FocusLost * silent! wall
+" autocmd FileType prolog setlocal nocursorline
+
+augroup insert_mode_match_paren
+  autocmd InsertEnter * silent! NoMatchParen
+  autocmd InsertLeave * silent! DoMatchParen
+augroup END
+
+" for files with syntax rules
+autocmd Syntax * syntax keyword myTodo NOTE: REFACTOR: containedin=ALL
+" don't show preview window in FZF
+autocmd VimEnter * command! -bang -nargs=? 
+      \ GFiles call fzf#vim#gitfiles(<q-args>, {'options': '--no-preview'}, <bang>0)
+autocmd VimEnter * command! -bang -nargs=? 
+      \ Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
+autocmd VimEnter * InitDB
+
+" MISC ======================================================================
 
 colorscheme NeoSolarized
 
