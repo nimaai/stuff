@@ -25,6 +25,7 @@ plugin/applescript/*
 plugin/ri_vim_cache/
 rerun_personas_migrations_100
 run-spec
+shadow-cljs.vim
 tags
 test-repl
 test-server

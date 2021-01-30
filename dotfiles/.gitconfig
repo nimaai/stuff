@@ -56,6 +56,8 @@
 [alias]
         sw = switch
 [alias]
+        swd = switch -d
+[alias]
         swc = switch -C
 [alias]
         swr = switch --recurse-submodules
@@ -63,10 +65,10 @@
         rt = restore
 [alias]
         a = add
-[alias]
-        co = checkout
-[alias]
-        cos = "!f() { git checkout $1 && git submodule update --init --recursive; }; f"
+; [alias]
+;         co = checkout
+; [alias]
+;         cos = "!f() { git checkout $1 && git submodule update --init --recursive; }; f"
 [alias]
         cp = cherry-pick
 [alias]
@@ -224,8 +226,8 @@
 [core]
         editor = nvim
 	excludesfile = /Users/nitaai/.gitignore
-; [push]
-;         default = current
+[push]
+        default = current
 ;         recurseSubmodules = on-demand
 ; [branch]
 ;         autosetuprebase = always
