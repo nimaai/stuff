@@ -29,13 +29,14 @@ Plug '~/src/private/vim-shen'
 Plug 'mxw/vim-jsx'
 Plug 'noscript/justdo.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'scrooloose/nerdtree'
-Plug 'snoe/clj-refactor.nvim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
+" Plug 'snoe/clj-refactor.nvim'
+Plug 'clumsyjedi/clj-refactor.nvim' " due to not merged-in PR
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
@@ -51,7 +52,7 @@ Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
 Plug 'wlangstroth/vim-racket'
 " Plug 'typedclojure/vim-typedclojure'
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' ", { 'commit': 'c7a633ce8f4547e680377efe8ea70493fcce1349' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 " =================================================
@@ -85,14 +86,14 @@ set number
 set relativenumber
 set shiftwidth=2
 set smartcase
+set splitright
 set statusline=%f%m%=%y
 set termguicolors
 
 " LET BINDINGS ==============================================================
 
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'short_path'
 let g:clj_refactor_prefix_rewriting = 0
 let g:filetype_pl = "prolog"
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6 } }
@@ -124,7 +125,7 @@ nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>cp :let @* = expand("%") . ":" . line(".")<cr>
 nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
-nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gs :Git<CR>
 " NOTE: conficts with vim-sexp mappings
 " nnoremap <Leader>i% gg=G``
 " nnoremap <Leader>if [[=%``
@@ -167,9 +168,17 @@ highlight default link myTodo Todo
 
 command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5432/' . <q-args> 
 command! InitDB call InitDB()
-command! Reset execute 'Eval (app/reset)' | BufDo edit
+" command! Reset execute 'Eval (app/reset)' | BufDo edit
+command! Reset execute 'Eval (app/reset)'
 
 " FUNCTIONS =================================================================
+
+function! s:CollapseNsForm()
+  if match(readfile(expand("%:p")),"(ns") != -1
+    call searchpos("(ns")
+    normal jzck
+  endif
+endfunction
 
 function! InitDB()
   let s:db_path = 'tmp/db.txt'
@@ -199,7 +208,8 @@ call s:SetMode()
 " Evaluate Clojure buffers on load
 " autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 " fold ns form
-autocmd BufRead *.clj[cs]\= normal jzck
+" autocmd BufRead *.clj[cs]\= call searchpos('(ns') | normal jzck
+autocmd BufRead *.clj[cs]\= call s:CollapseNsForm()
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
 " autocmd FocusLost * silent! wall
@@ -218,6 +228,10 @@ autocmd VimEnter * command! -bang -nargs=?
 autocmd VimEnter * command! -bang -nargs=? 
       \ Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 autocmd VimEnter * InitDB
+
+" ABBREVIATIONS =============================================================
+
+abbreviate bpry binding.pry
 
 " MISC ======================================================================
 

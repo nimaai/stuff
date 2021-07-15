@@ -1,6 +1,6 @@
 [user]
 	name = Matus Kmit
-	email = matus.kmit@zhdk.ch
+	email = matuskmit1@gmail.com
         signingkey = A7D4C7D0AA8CF012
 
 [guitool "Rebase onto..."]
@@ -61,6 +61,8 @@
         swc = switch -C
 [alias]
         swr = switch --recurse-submodules
+[alias]
+        swdr = switch -d --recurse-submodules
 [alias]
         rt = restore
 [alias]
@@ -242,7 +244,7 @@
         gpgsign = true
 	template = /Users/nitaai/.stCommitMsg
 [gpg]
-	program = /usr/local/bin/gpg
+	program = gpg
 ; [status]
 ; 	submodulesummary = true
 [mergetool "fugitive"]
