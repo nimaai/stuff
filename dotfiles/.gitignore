@@ -16,6 +16,7 @@ cider-ci/bin/install_rbenv_version.rb
 database_pg.yml
 dev-repl
 dev-server
+dev-watch
 int-test-repl
 int-test-server
 local-vm*
@@ -29,4 +30,5 @@ shadow-cljs.vim
 tags
 test-repl
 test-server
+test-watch
 tmp/

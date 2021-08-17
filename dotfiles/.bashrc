@@ -7,6 +7,7 @@ export FIREFOX_ESR_78_PATH=/Applications/FirefoxESR\ 78.app/Contents/MacOS/firef
 export FIREFOX_ESR_PATH=$FIREFOX_ESR_78_PATH
 export FIREFOX_PATH=/Applications/Firefox.app/Contents/MacOS/firefox
 export LEIHS_SECRET=leihs
+export LOCAL_CACHE_DIR=/Users/nitaai/tmp/leihs_dev_build_cache
 export NODE_PATH=/usr/local/lib/node_modules/
 export PGPASSWORD=mkmit
 export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'

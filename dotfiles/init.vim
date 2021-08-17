@@ -209,7 +209,7 @@ call s:SetMode()
 " autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 " fold ns form
 " autocmd BufRead *.clj[cs]\= call searchpos('(ns') | normal jzck
-autocmd BufRead *.clj[cs]\= call s:CollapseNsForm()
+" autocmd BufRead *.clj[cs]\= call s:CollapseNsForm()
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
 " autocmd FocusLost * silent! wall
