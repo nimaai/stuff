@@ -230,7 +230,7 @@
 	excludesfile = /Users/nitaai/.gitignore
 [push]
         default = current
-;         recurseSubmodules = on-demand
+        ; recurseSubmodules = on-demand
 ; [branch]
 ;         autosetuprebase = always
 [difftool "sourcetree"]
@@ -244,7 +244,7 @@
         gpgsign = true
 	template = /Users/nitaai/.stCommitMsg
 [gpg]
-	program = gpg
+	program = /usr/local/bin/gpg
 ; [status]
 ; 	submodulesummary = true
 [mergetool "fugitive"]

@@ -11,6 +11,7 @@
 .nrepl-port
 .pryrc
 .ruby-version
+.tool-versions
 Session.vim
 cider-ci/bin/install_rbenv_version.rb
 database_pg.yml

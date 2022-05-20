@@ -1,13 +1,11 @@
 call plug#begin()
-" Plug 'alcesleo/vim-uppercase-sql'
-" Plug 'airblade/vim-gitgutter'
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
+" Plug 'nimaai/zprint.vim', { 'branch': 'configure-command' }
 Plug 'chiel92/vim-autoformat'
+Plug 'clojure-vim/clojure.vim'
 Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
-Plug 'guns/vim-clojure-static'
-" Plug 'guns/vim-clojure-highlight'
 Plug 'jrdoane/vim-clojure-highlight'
 Plug 'guns/vim-sexp'
 Plug 'iCyMind/NeoSolarized'
@@ -19,15 +17,11 @@ Plug 'junegunn/vim-easy-align'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-" Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'kburdett/vim-nuuid'
-" Plug 'lifepillar/vim-solarized8'
-" Plug 'luochen1990/rainbow'
 Plug 'nimaai/vim-shadow-cljs'
-Plug '~/src/private/vim-shen'
-" Plug 'mkitt/tabline.vim'
+" Plug '~/src/private/vim-shen'
 Plug 'mxw/vim-jsx'
-Plug 'noscript/justdo.vim'
+" Plug 'noscript/justdo.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -35,7 +29,7 @@ Plug 'rhysd/vim-textobj-ruby'
 Plug 'rizzatti/dash.vim'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'scrooloose/nerdtree'
-" Plug 'snoe/clj-refactor.nvim'
+Plug 'snoe/clj-refactor.nvim'
 Plug 'clumsyjedi/clj-refactor.nvim' " due to not merged-in PR
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
@@ -48,10 +42,8 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
-Plug 'wlangstroth/vim-racket'
-" Plug 'typedclojure/vim-typedclojure'
+" Plug 'venantius/vim-cljfmt'
 Plug 'vim-airline/vim-airline' ", { 'commit': 'c7a633ce8f4547e680377efe8ea70493fcce1349' }
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
@@ -70,6 +62,7 @@ set autoread
 set clipboard=unnamed
 set cursorline
 set expandtab
+set foldenable
 set foldlevelstart=99
 set foldmethod=indent
 " set guicursor=a:blinkon100
@@ -92,9 +85,23 @@ set termguicolors
 
 " LET BINDINGS ==============================================================
 
+let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'short_path'
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline_section_y = ''
+" let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.linenr = ' | '
+" let g:airline_symbols.colnr = ' | '
+
 let g:clj_refactor_prefix_rewriting = 0
+let g:clojure_align_subforms = 1
+let g:clojure_discard_macro = 1
 let g:filetype_pl = "prolog"
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6 } }
 let g:gitgutter_enabled = 0
@@ -110,7 +117,7 @@ let g:sexp_filetypes = 'clojure,scheme,lisp,timl,shen'
 let g:slime_target = 'tmux'
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
-" let g:rainbow_active = 1 
+" let g:rainbow_active = 1
 let mapleader = ","
 let maplocalleader = ","
 let vim_markdown_preview_browser='Google Chrome'
@@ -119,6 +126,7 @@ let vim_markdown_preview_hotkey='<C-m>'
 
 " MAP KEYS ==================================================================
 
+nnoremap <Leader>bb :b#<CR>
 nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bf :Buffers<CR>
 nnoremap <Leader>bl :set background=light<CR>
@@ -131,7 +139,8 @@ nnoremap <Leader>gs :Git<CR>
 " nnoremap <Leader>if [[=%``
 nnoremap <Leader>nt :NERDTreeToggle<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
-nnoremap <Leader>rr :wall<CR>:Require!<CR>
+nnoremap <Leader>qq :q<CR>
+nnoremap <Leader>rr :wall<CR>:Require<CR>
 nnoremap <Leader>rs :Reset<CR>
 nnoremap <Leader>sw :set wrap!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
@@ -142,6 +151,8 @@ nnoremap + 7<c-w>>
 nnoremap - 7<c-w><
 nnoremap p p=`]
 nnoremap \ ,
+" nnoremap n nzz
+" nnoremap N Nzz
 
 map <C-l> <C-w>l
 map <C-h> <C-w>h
@@ -166,17 +177,20 @@ highlight default link myTodo Todo
 
 " CUSTOM COMMANDS ===========================================================
 
-command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5432/' . <q-args> 
+command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5432/' . <q-args>
 command! InitDB call InitDB()
 " command! Reset execute 'Eval (app/reset)' | BufDo edit
 command! Reset execute 'Eval (app/reset)'
+command! Cljf silent execute "!cljfmt -c cljfmt.edn -p %"
 
 " FUNCTIONS =================================================================
 
 function! s:CollapseNsForm()
-  if match(readfile(expand("%:p")),"(ns") != -1
+  if match(readfile(expand("%:p")),"(ns") != -1 && (match(@%, "fugitive") == -1)
     call searchpos("(ns")
-    normal jzck
+    normal j
+    execute 'silent! foldclose'
+    normal k
   endif
 endfunction
 
@@ -205,13 +219,19 @@ call s:SetMode()
 
 " AUTOCOMMANDS ==============================================================
 
-" Evaluate Clojure buffers on load
-" autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
-" fold ns form
-" autocmd BufRead *.clj[cs]\= call searchpos('(ns') | normal jzck
+" autocmd BufRead * set foldlevel=99
+
 " autocmd BufRead *.clj[cs]\= call s:CollapseNsForm()
+autocmd BufEnter *.clj[cs]\=
+      \ if expand('%:p') =~ 'leihs/borrow/src' | let g:clojure_align_subforms = 1 |
+      \ else | let g:clojure_align_subforms = 0 | endif
+
+" autocmd BufWritePost *.clj[cs]\=
+"       \ if expand('%:p') =~ 'leihs/borrow/src' | silent execute '!cljfmt -c cljfmt.edn -p %' | endif | edit
+
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
+
 " autocmd FocusLost * silent! wall
 " autocmd FileType prolog setlocal nocursorline
 
@@ -228,6 +248,8 @@ autocmd VimEnter * command! -bang -nargs=?
 autocmd VimEnter * command! -bang -nargs=? 
       \ Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 autocmd VimEnter * InitDB
+
+autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create(['%p%% %l/%L:%v'])
 
 " ABBREVIATIONS =============================================================
 
