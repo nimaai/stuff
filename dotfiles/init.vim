@@ -1,10 +1,12 @@
 call plug#begin()
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
 " Plug 'nimaai/zprint.vim', { 'branch': 'configure-command' }
+" Plug 'BorisMoore/jsrender'
 Plug 'chiel92/vim-autoformat'
 Plug 'clojure-vim/clojure.vim'
 Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'jrdoane/vim-clojure-highlight'
 Plug 'guns/vim-sexp'
@@ -228,6 +230,12 @@ autocmd BufEnter *.clj[cs]\=
 
 " autocmd BufWritePost *.clj[cs]\=
 "       \ if expand('%:p') =~ 'leihs/borrow/src' | silent execute '!cljfmt -c cljfmt.edn -p %' | endif | edit
+
+" does not work
+" augroup jsr_highlighting
+"   autocmd BufRead,BufNewFile *.jsr setfiletype html
+"   autocmd BufRead,BufNewFile *.erb setfiletype eruby.html
+" augroup END
 
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
