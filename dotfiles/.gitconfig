@@ -242,7 +242,6 @@
 
 [commit]
         gpgsign = true
-	template = /Users/nitaai/.stCommitMsg
 [gpg]
 	program = /usr/local/bin/gpg
 ; [status]

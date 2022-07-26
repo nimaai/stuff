@@ -2,14 +2,15 @@ call plug#begin()
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
 " Plug 'nimaai/zprint.vim', { 'branch': 'configure-command' }
 " Plug 'BorisMoore/jsrender'
+Plug 'bronson/vim-visual-star-search'
 Plug 'chiel92/vim-autoformat'
 Plug 'clojure-vim/clojure.vim'
 Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
-Plug 'jrdoane/vim-clojure-highlight'
 Plug 'guns/vim-sexp'
+Plug 'jrdoane/vim-clojure-highlight'
 Plug 'iCyMind/NeoSolarized'
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
@@ -257,7 +258,7 @@ autocmd VimEnter * command! -bang -nargs=?
       \ Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 autocmd VimEnter * InitDB
 
-autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create(['%p%% %l/%L:%v'])
+autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create(['%p%% | %l/%L:%v'])
 
 " ABBREVIATIONS =============================================================
 
