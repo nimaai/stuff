@@ -92,9 +92,9 @@
 [alias]
         dno = diff --name-only
 [alias]
-        d = diff --submodule
+        d = diff --submodule=diff
 [alias]
-        ds = diff --staged --submodule
+        ds = diff --staged --submodule=diff
 [alias]
         dt = difftool
 [alias]
@@ -230,7 +230,7 @@
 	excludesfile = /Users/nitaai/.gitignore
 [push]
         default = current
-        ; recurseSubmodules = on-demand
+        recurseSubmodules = on-demand
 ; [branch]
 ;         autosetuprebase = always
 [difftool "sourcetree"]
@@ -253,3 +253,5 @@
 	prune = true
 [pull]
 	rebase = true
+[credential]
+	helper = cache

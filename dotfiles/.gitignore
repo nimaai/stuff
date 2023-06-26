@@ -13,6 +13,7 @@
 .ruby-version
 .tool-versions
 Session.vim
+_vim-dadbod
 cider-ci/bin/install_rbenv_version.rb
 database_pg.yml
 dev-repl

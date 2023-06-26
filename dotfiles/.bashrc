@@ -26,6 +26,14 @@ fi
 
 ###################################################################################
 
+function pg_set_10() {
+  PGVERSION=10 && source ~/bin/pg_env_set
+}
+
+function pg_set_15() {
+  PGVERSION=15 && source ~/bin/pg_env_set
+}
+
 function export_db() {
   export DATABASE_URL="postgresql://localhost:5432/$1?min-pool-size=1&max-pool-size=16"
 }
@@ -64,12 +72,13 @@ fi
 
 ###################################################################################
 
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 eval $(thefuck --alias)
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
 
 ###################################################################################
 
@@ -77,10 +86,10 @@ eval $(thefuck --alias)
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 export EDITOR=nvim
-# export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox
+export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox
 # export FIREFOX_ESR_60_PATH=/Applications/FirefoxESR\ 60.app/Contents/MacOS/firefox
-# export FIREFOX_ESR_78_PATH=/Applications/FirefoxESR\ 78.app/Contents/MacOS/firefox
-# export FIREFOX_ESR_PATH=$FIREFOX_ESR_78_PATH
+export FIREFOX_ESR_78_PATH=/Applications/FirefoxESR\ 78.app/Contents/MacOS/firefox
+export FIREFOX_ESR_PATH=$FIREFOX_ESR_45_PATH
 export FIREFOX_PATH=/Applications/Firefox.app/Contents/MacOS/firefox
 export HISTCONTROL=ignoredups:erasedups
 export HISTIGNORE='history *'
@@ -90,8 +99,17 @@ export LEIHS_SECRET=leihs
 export LOCAL_CACHE_DIR=/Users/nitaai/tmp/leihs_dev_build_cache
 # export NODE_PATH=/usr/local/lib/node_modules/
 export NVM_DIR="$HOME/.nvm"
-export PGPASSWORD=mkmit
+
 export PGUSER=nitaai
+export PG10USER=nitaai
+export PG15USER=nitaai
+export PGPASSWORD=nitaai
+export PG10PASSWORD=nitaai
+export PG15PASSWORD=nitaai
+export PGPORT=5432
+export PG10PORT=5432
+export PG15PORT=5433
+
 export PROMPT_COMMAND='PS1X=$(p="${PWD#${HOME}}"; [ "${PWD}" != "${p}" ] && printf "~";IFS=/; for q in ${p:1}; do printf /${q:0:1}; done; printf "${q:1}")'
 export PS1="\[\033[0;35m\]\${PS1X}\[\033[m\]\[\033[34m\]\$(parse_git_branch)\[\033[m\] $ "
 # export PSQL_EDITOR=nvim
@@ -100,8 +118,9 @@ export SELENIUM_URL=http://localhost:4444
 export TERM=screen-256color
 
 # export PATH=~/Library/Android/sdk/platform-tools:$PATH
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/14/bin
-# export PATH=$PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/10/bin
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+# export PATH=$PATH:~/.local/share/nvim/plugged/vim-iced/bin
 # export PATH="/usr/local/bin:$PATH"
 # export PATH="/usr/local/sbin:$PATH"
 # export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"

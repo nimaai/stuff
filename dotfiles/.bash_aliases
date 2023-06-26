@@ -18,5 +18,5 @@ alias sane='stty sane'
 alias tmuxa='tmux a -t'
 alias tmuxr='tmux start \; run-shell ~/.tmux/plugins/tmux-resurrect/scripts/restore.sh \; attach -t _misc'
 alias trigger-ci="echo $(date) > _trigger_ci && git add _trigger_ci && git cm 'trigger ci' && git push"
-alias vim='nvim'
+alias vim='ASDF_RUBY_VERSION=3.1.3 ASDF_NODEJS_VERSION=16.18.1 ASDF_PYTHON_VERSION=3.10.5 nvim'
 alias vimd="vim -c 'set background=dark'"

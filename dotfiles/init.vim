@@ -1,15 +1,12 @@
 call plug#begin()
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
-" Plug 'nimaai/zprint.vim', { 'branch': 'configure-command' }
-" Plug 'BorisMoore/jsrender'
 Plug 'bronson/vim-visual-star-search'
-Plug 'chiel92/vim-autoformat'
 Plug 'clojure-vim/clojure.vim'
 Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
-Plug 'guns/vim-sexp'
+Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'jrdoane/vim-clojure-highlight'
 Plug 'iCyMind/NeoSolarized'
 Plug 'jpalardy/vim-slime'
@@ -22,18 +19,13 @@ Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kburdett/vim-nuuid'
 Plug 'nimaai/vim-shadow-cljs'
-" Plug '~/src/private/vim-shen'
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'mxw/vim-jsx'
-" Plug 'noscript/justdo.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'rizzatti/dash.vim'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'scrooloose/nerdtree'
-Plug 'snoe/clj-refactor.nvim'
-Plug 'clumsyjedi/clj-refactor.nvim' " due to not merged-in PR
 Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dadbod'
@@ -46,9 +38,9 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
-" Plug 'venantius/vim-cljfmt'
 Plug 'vim-airline/vim-airline' ", { 'commit': 'c7a633ce8f4547e680377efe8ea70493fcce1349' }
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-autoformat/vim-autoformat'
 Plug 'vim-ruby/vim-ruby'
 " =================================================
 " paredit has to be loaded after other lisp plugins
@@ -60,21 +52,18 @@ call plug#end()
 
 set autoindent
 set autoread
-" set autowriteall
-" set background=light
 set clipboard=unnamed
 set cursorline
 set expandtab
 set foldenable
 set foldlevelstart=99
 set foldmethod=indent
-" set guicursor=a:blinkon100
+set guifont=Hack\ Nerd\ Font
 set hidden
 set ignorecase
 set incsearch
 set lispwords+=fn-traced
 set mouse=a
-" set nofoldenable
 set noshowcmd
 set noshowmode
 set nowrap
@@ -88,7 +77,8 @@ set termguicolors
 
 " LET BINDINGS ==============================================================
 
-let g:airline#extensions#branch#enabled = 0
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'short_path'
 let g:airline#extensions#tabline#show_buffers = 0
@@ -98,16 +88,13 @@ let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline_section_y = ''
-" let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.linenr = ' | '
-" let g:airline_symbols.colnr = ' | '
-
 let g:clj_refactor_prefix_rewriting = 0
 let g:clojure_align_subforms = 1
 let g:clojure_discard_macro = 1
 let g:filetype_pl = "prolog"
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6 } }
 let g:gitgutter_enabled = 0
+let g:loaded_perl_provider = 0
 let g:paredit_electric_return = 0
 let g:ruby_indent_block_style = 'do'
 let g:sexp_mappings = {
@@ -120,7 +107,6 @@ let g:sexp_filetypes = 'clojure,scheme,lisp,timl,shen'
 let g:slime_target = 'tmux'
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
-" let g:rainbow_active = 1
 let mapleader = ","
 let maplocalleader = ","
 let vim_markdown_preview_browser='Google Chrome'
@@ -130,9 +116,7 @@ let vim_markdown_preview_hotkey='<C-m>'
 " MAP KEYS ==================================================================
 
 nnoremap <Leader>bb :b#<CR>
-nnoremap <Leader>bd :set background=dark<CR>
 nnoremap <Leader>bf :Buffers<CR>
-nnoremap <Leader>bl :set background=light<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>cp :let @* = expand("%") . ":" . line(".")<cr>
 nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
@@ -140,34 +124,23 @@ nnoremap <Leader>gs :Git<CR>
 " NOTE: conficts with vim-sexp mappings
 " nnoremap <Leader>i% gg=G``
 " nnoremap <Leader>if [[=%``
-nnoremap <Leader>nt :NERDTreeToggle<CR>
-nnoremap <Leader>nf :NERDTreeFind<CR>
+nnoremap <Leader>nt :NvimTreeToggle<CR>
+nnoremap <Leader>nf :NvimTreeFindFile<CR>
 nnoremap <Leader>qq :q<CR>
-nnoremap <Leader>rr :wall<CR>:Require<CR>
+nnoremap <Leader>rr :Require<CR>
 nnoremap <Leader>rs :Reset<CR>
 nnoremap <Leader>sw :set wrap!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <C-S> :wall<CR>
-" nnoremap <c-w>+ 7<c-w>+
-" nnoremap <c-w>- 7<c-w>-
 nnoremap + 7<c-w>>
 nnoremap - 7<c-w><
 nnoremap p p=`]
 nnoremap \ ,
-" nnoremap n nzz
-" nnoremap N Nzz
 
 map <C-l> <C-w>l
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
-map <M-l> <C-l>
-map <M-h> <C-h>
-map <M-j> <C-j>
-map <M-k> <C-k>
-map <M-u> <C-u>
-map <M-o> <C-o>
-map <M-i> <C-i>
 map * g*
 
 vnoremap <Leader>db :DB<CR>
@@ -182,8 +155,8 @@ highlight default link myTodo Todo
 
 command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5432/' . <q-args>
 command! InitDB call InitDB()
-" command! Reset execute 'Eval (app/reset)' | BufDo edit
-command! Reset execute 'Eval (app/reset)'
+command! Reset execute 'Eval (app/reset)' | BufDo edit
+" command! Reset execute 'Eval (app/reset)'
 command! Cljf silent execute "!cljfmt -c cljfmt.edn -p %"
 
 " FUNCTIONS =================================================================
@@ -198,9 +171,9 @@ function! s:CollapseNsForm()
 endfunction
 
 function! InitDB()
-  let s:db_path = 'tmp/db.txt'
+  let s:db_path = '_vim-dadbod'
   if filereadable(s:db_path)
-    execute readfile(s:db_path)[0]
+    execute 'DB g:db = ' . readfile(s:db_path)[0]
   endif
 endfunction
 
@@ -229,20 +202,8 @@ autocmd BufEnter *.clj[cs]\=
       \ if expand('%:p') =~ 'leihs/borrow/src' | let g:clojure_align_subforms = 1 |
       \ else | let g:clojure_align_subforms = 0 | endif
 
-" autocmd BufWritePost *.clj[cs]\=
-"       \ if expand('%:p') =~ 'leihs/borrow/src' | silent execute '!cljfmt -c cljfmt.edn -p %' | endif | edit
-
-" does not work
-" augroup jsr_highlighting
-"   autocmd BufRead,BufNewFile *.jsr setfiletype html
-"   autocmd BufRead,BufNewFile *.erb setfiletype eruby.html
-" augroup END
-
 autocmd BufRead,BufNewFile *.service setfiletype dosini
 autocmd FocusGained * call s:SetMode()
-
-" autocmd FocusLost * silent! wall
-" autocmd FileType prolog setlocal nocursorline
 
 augroup insert_mode_match_paren
   autocmd InsertEnter * silent! NoMatchParen
