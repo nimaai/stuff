@@ -9,6 +9,7 @@ alias e=$EDITOR
 alias fig='lein figwheel'
 alias lightmode="echo -ne \"\033]50;SetProfile=Solarized Light\a\""
 alias ls='ls -G'
+alias ls1='ls -1'
 alias lsd1='lsd -1'
 alias lsd='ls --group-directories-first'
 alias novim='set -o emacs'

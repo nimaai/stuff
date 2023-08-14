@@ -255,3 +255,5 @@
 	rebase = true
 [credential]
 	helper = cache
+[diff]
+	; external = difft
