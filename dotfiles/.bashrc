@@ -49,26 +49,26 @@ function parse_git_branch() {
 
 ###################################################################################
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-  sith() {
-    val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
-    if [[ $val == "Dark" ]]; then
-      i
-    fi
-  }
+# if [[ "$(uname -s)" == "Darwin" ]]; then
+#   sith() {
+#     val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+#     if [[ $val == "Dark" ]]; then
+#       i
+#     fi
+#   }
 
-  i() {
-    if [[ $ITERM_PROFILE == "Solarized Light" ]]; then
-      echo -ne "\033]50;SetProfile=Solarized Dark\a"
-      export ITERM_PROFILE="Solarized Dark"
-    else
-      echo -ne "\033]50;SetProfile=Solarized Light\a"
-      export ITERM_PROFILE="Solarized Light"
-    fi
-  }
+#   i() {
+#     if [[ $ITERM_PROFILE == "catppuccin-latte" ]]; then
+#       echo -ne "\033]50;SetProfile=catppuccin-macchiato\a"
+#       export ITERM_PROFILE="catppuccin-macchiato"
+#     else
+#       echo -ne "\033]50;SetProfile=catppuccin-latte\a"
+#       export ITERM_PROFILE="catppuccin-latte"
+#     fi
+#   }
 
-  sith
-fi
+#   sith
+# fi
 
 ###################################################################################
 
@@ -81,6 +81,7 @@ eval $(thefuck --alias)
 
 # export ANDROID_SDK=~/Library/Android/sdk
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export CATPPUCCIN_FLAVOUR=${ITERM_PROFILE/catppuccin-/}
 export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 export EDITOR=nvim
 export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox

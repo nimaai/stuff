@@ -3,11 +3,12 @@
 alias bx='bundle exec'
 alias code='nvim'
 alias closh='nvm exec 9 closh'
-alias darkmode="echo -ne \"\033]50;SetProfile=Solarized Dark\a\""
+alias darkmode="echo -ne \"\033]50;SetProfile=catppuccin-macchiato\a\""
 alias dc='docker compose'
 alias e=$EDITOR
 alias fig='lein figwheel'
-alias lightmode="echo -ne \"\033]50;SetProfile=Solarized Light\a\""
+alias lightmode="echo -ne \"\033]50;SetProfile=catppuccin-latte\a\""
+alias lg='lazygit'
 alias ls='ls -G'
 alias ls1='ls -1'
 alias lsd1='lsd -1'

@@ -92,13 +92,13 @@
 [alias]
         dno = diff --name-only
 [alias]
-        d = diff --submodule=diff
+        d = diff --ext-diff --submodule=diff
 [alias]
-        ds = diff --staged --submodule=diff
+        ds = diff --ext-diff --staged --submodule=diff
 [alias]
         dt = difftool
 [alias]
-        dom = diff origin/master
+        dom = diff --ext-diff --submodule=diff origin/master
 [alias]
         l = log
 [alias]
@@ -167,6 +167,8 @@
         uinau = update-index --assume-unchanged
 ; [alias]
 ;         ss = stash save
+; [alias]
+;         sh = show --ext-diff
 [alias]
         ssm = "!f() { git submodule summary | colorss; }; f"
 [alias]
@@ -244,8 +246,8 @@
         gpgsign = true
 [gpg]
 	program = /usr/local/bin/gpg
-; [status]
-; 	submodulesummary = true
+[status]
+	submodulesummary = true
 [mergetool "fugitive"]
 	; cmd = vim -f -c \"Gdiff\" \"$MERGED\"
         cmd = nvim -d $BASE $LOCAL $REMOTE
@@ -256,4 +258,4 @@
 [credential]
 	helper = cache
 [diff]
-	; external = difft
+	external = difft
