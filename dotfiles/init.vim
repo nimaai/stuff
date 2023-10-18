@@ -1,4 +1,5 @@
 call plug#begin()
+Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'bbakersmith/vim-sexp-mappings-for-regular-people', { 'branch': 'raise-mappings' }
 Plug 'bronson/vim-visual-star-search'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
@@ -7,7 +8,6 @@ Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
-Plug 'guns/vim-sexp', {'for': 'clojure'}
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -71,11 +71,13 @@ set lispwords+=fn-traced*
 set mouse=a
 set noshowcmd
 set noshowmode
+set noswapfile
 set nowrap
 set number
 set relativenumber
 set shiftwidth=2
 set smartcase
+set shortmess+=S
 set splitright
 " set statusline=%f%m%=%y
 set termguicolors
@@ -221,9 +223,9 @@ function! s:SetMode()
   elseif l:mode != "Dark\n" && &background != "light"
     set background=light
   endif
-  if exists(':AirlineRefresh')
-    execute 'AirlineRefresh'
-  endif
+  " if exists(':AirlineRefresh')
+  "   execute 'AirlineRefresh'
+  " endif
 endfunction
 
 " CALL FUNCTIONS ============================================================
@@ -257,8 +259,8 @@ autocmd VimEnter * command! -bang -nargs=?
       \ Buffers call fzf#vim#buffers(<q-args>, {'options': '--no-preview'}, <bang>0)
 " autocmd VimEnter * InitDB
 
-" autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create(['%p%% | %l/%L:%v'])
-autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create([])
+autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create(['%p%% | %l/%L:%v'])
+" autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create([])
 
 autocmd FileType sql setlocal commentstring=--\ %s
 autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
