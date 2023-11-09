@@ -83,6 +83,7 @@ eval $(thefuck --alias)
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export CATPPUCCIN_FLAVOUR=${ITERM_PROFILE/catppuccin-/}
 export DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+export DISABLE_SECRETS_STRENGTH_CHECK=yes
 export EDITOR=nvim
 export FIREFOX_ESR_45_PATH=/Applications/FirefoxESR\ 45.app/Contents/MacOS/firefox
 # export FIREFOX_ESR_60_PATH=/Applications/FirefoxESR\ 60.app/Contents/MacOS/firefox

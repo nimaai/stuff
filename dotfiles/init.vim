@@ -8,12 +8,13 @@ Plug 'duff/vim-bufonly'
 Plug 'easymotion/vim-easymotion'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 Plug 'jpalardy/vim-slime'
 Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'JamshedVesuna/vim-markdown-preview'
+" Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kburdett/vim-nuuid'
@@ -113,9 +114,9 @@ let g:conjure#filetypes = ['clojure']
 " let g:conjure#log#hud#enabled = v:false
 let g:db_ui_table_helpers = {
       \	'postgresql': {
-      \	  'Describe': '\d {table}'
-      \   }
-      \ }
+      \	  'Describe': '\d {table}',
+      \	  'Count': 'SELECT COUNT(*) FROM {table}'
+      \ }}
 let g:filetype_pl = "prolog"
 let g:fzf_layout = { 'window': { 'width': 0.7, 'height': 0.6 } }
 let g:gitgutter_enabled = 0
@@ -135,9 +136,9 @@ let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:slime_dont_ask_default = 1
 let mapleader = ","
 let maplocalleader = ","
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_github=1
-let vim_markdown_preview_hotkey='<C-m>'
+" let vim_markdown_preview_browser='Google Chrome'
+" let vim_markdown_preview_github=1
+" let vim_markdown_preview_hotkey='<C-m>'
 
 " MAP KEYS ==================================================================
 
@@ -148,7 +149,7 @@ nnoremap <Leader>bf :Buffers<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>cp :let @* = expand("%") . ":" . line(".")<cr>
 nnoremap <Leader>db :DBUIToggle<CR>
-nnoremap <Leader>gf :GFiles --recurse-submodules<CR>
+nnoremap <Leader>gf :GFiles<CR>
 nnoremap <Leader>gs :Git<CR>
 " NOTE: conficts with vim-sexp mappings
 " nnoremap <Leader>i% gg=G``
@@ -193,6 +194,7 @@ command! -nargs=1 DBConnect execute 'DB g:db = jdbc:postgresql://localhost:5415/
 " command! Reset execute 'Eval (app/reset)'
 command! Cljf silent execute "!cljfmt -c cljfmt.edn -p %"
 command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
+command! -bang -nargs=? GFiles call fzf#vim#gitfiles('--recurse-submodules '.<q-args>, {'dir': '.', 'options': '--no-preview'}, <bang>0)
 
 " FUNCTIONS =================================================================
 
@@ -223,9 +225,9 @@ function! s:SetMode()
   elseif l:mode != "Dark\n" && &background != "light"
     set background=light
   endif
-  " if exists(':AirlineRefresh')
-  "   execute 'AirlineRefresh'
-  " endif
+  if exists(':AirlineRefresh')
+    execute 'AirlineRefresh'
+  endif
 endfunction
 
 " CALL FUNCTIONS ============================================================
@@ -264,6 +266,8 @@ autocmd User AirlineAfterInit  :let g:airline_section_z = airline#section#create
 
 autocmd FileType sql setlocal commentstring=--\ %s
 autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+autocmd BufWritePre ~/.asdf/* setlocal undofile
 
 " ABBREVIATIONS =============================================================
 
