@@ -1,11 +1,13 @@
 *.retry
 */**/tags
+.clj-kondo/
 .DS_Store
 .DS_Store
 .cpcache
 .ctags
 .eslintrc
 .java-version
+.lsp/
 .mux.yml
 .nrepl-history
 .nrepl-port
@@ -15,6 +17,7 @@
 Session.vim
 _vim-dadbod
 cider-ci/bin/install_rbenv_version.rb
+database.yml
 database_pg.yml
 dev-repl
 dev-server
