@@ -3,30 +3,40 @@
 	email = matuskmit1@gmail.com
         signingkey = A7D4C7D0AA8CF012
 
-[guitool "Rebase onto..."]
-        cmd = git rebase
-        revprompt = yes
-[guitool "Rebase/Continue"]
-        cmd = git rebase --continue
-[guitool "Rebase/Skip"]
-        cmd = git rebase --skip
-[guitool "Rebase/Abort"]
-        cmd = git rebase --abort
-[guitool "Pull with Rebase"]
-        cmd = git pull --rebase
+; [guitool "Rebase onto..."]
+;         cmd = git rebase
+;         revprompt = yes
+; [guitool "Rebase/Continue"]
+;         cmd = git rebase --continue
+; [guitool "Rebase/Skip"]
+;         cmd = git rebase --skip
+; [guitool "Rebase/Abort"]
+;         cmd = git rebase --abort
+; [guitool "Pull with Rebase"]
+;         cmd = git pull --rebase
 
-[guitool "Stash/Push"]
-        cmd = git stash
-[guitool "Stash/Pop"]
-        cmd = git stash pop
-[guitool "Stash/List"]
-        cmd = git stash list
+; [guitool "Stash/Push"]
+;         cmd = git stash
+; [guitool "Stash/Pop"]
+;         cmd = git stash pop
+; [guitool "Stash/List"]
+;         cmd = git stash list
 
-[gui]
-        fontui = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-        fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-        recentrepo = /home/nimaai/src/leihs
+; [gui]
+;         fontui = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+;         fontdiff = -family \"DejaVu Sans Mono\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+;         recentrepo = /home/nimaai/src/leihs
 
+[alias]
+        dno = diff --name-only
+[alias]
+        d = diff --ext-diff
+[alias]
+        ds = diff --ext-diff --staged
+[alias]
+        dsb = diff --submodule=diff --no-ext-diff
+[alias]
+        dom = diff --ext-diff
 [alias]
         c = commit
 [alias]
@@ -47,12 +57,12 @@
         cpc = cherry-pick --continue
 [alias]
         patch = "!f() { git add . && git can && git psf; }; f"
-[alias]
-        rmu = "!f() { git status --porcelain | cut -f 2- -d \" \" | xargs rmtrash; }; f"
+; [alias]
+;         rmu = "!f() { git status --porcelain | cut -f 2- -d \" \" | xargs rmtrash; }; f"
 [alias]
         s = status --ignore-submodules=untracked
-[alias]
-        sa = status
+; [alias]
+;         sa = status
 [alias]
         sw = switch
 [alias]
@@ -72,8 +82,6 @@
 ; [alias]
 ;         cos = "!f() { git checkout $1 && git submodule update --init --recursive; }; f"
 [alias]
-        cp = cherry-pick
-[alias]
         b = branch
 [alias]
         pl = pull
@@ -90,21 +98,11 @@
 [alias]
         psfo = "!f() { git push --force origin HEAD:$1; }; f"
 [alias]
-        dno = diff --name-only
-[alias]
-        d = diff --ext-diff --submodule=diff
-[alias]
-        ds = diff --ext-diff --staged --submodule=diff
-[alias]
-        dt = difftool
-[alias]
-        dom = diff --ext-diff --submodule=diff origin/master
-[alias]
         l = log
 [alias]
         lp = log --graph --decorate --pretty=oneline --abbrev-commit -10
-[alias]
-        lpfp = log --graph --decorate --pretty=oneline --abbrev-commit --first-parent -10
+; [alias]
+;         lpfp = log --graph --decorate --pretty=oneline --abbrev-commit --first-parent -10
 [alias]
         last = log --graph --decorate --pretty=oneline --abbrev-commit -1
 [alias]
@@ -141,34 +139,32 @@
         rh = reset --hard
 [alias]
         rhom = reset --hard origin/master
-[alias]
-        rmbom = "!f() { git reset $(git merge-base HEAD origin/master); }; f"
-[alias]
-        rhmbom = "!f() { git reset --hard $(git merge-base HEAD origin/master); }; f"
-[alias]
-        rsuo = remote set-url origin
-[alias]
-        suball = submodule foreach git pull -q origin master
-[alias]
-        suball = submodule foreach git pull -q origin master
-[alias]
-        su = submodule update
+; [alias]
+;         rmbom = "!f() { git reset $(git merge-base HEAD origin/master); }; f"
+; [alias]
+;         rhmbom = "!f() { git reset --hard $(git merge-base HEAD origin/master); }; f"
+; [alias]
+;         rsuo = remote set-url origin
+; [alias]
+;         suball = submodule foreach git pull -q origin master
+; [alias]
+;         suball = submodule foreach git pull -q origin master
+; [alias]
+;         su = submodule update
 [alias]
         sur = submodule update --recursive
+; [alias]
+;         suf = submodule update --force
 [alias]
-        suf = submodule update --force
-[alias]
-        surf = submodule update --recursive --force
-[alias]
-        surfi = submodule update --recursive --force --init
-[alias]
-        uiau = update-index --assume-unchanged
-[alias]
-        uinau = update-index --assume-unchanged
+        suri = submodule update --recursive --init
+; [alias]
+;         uiau = update-index --assume-unchanged
+; [alias]
+;         uinau = update-index --assume-unchanged
 ; [alias]
 ;         ss = stash save
-; [alias]
-;         sh = show --ext-diff
+[alias]
+        sh = show --ext-diff
 [alias]
         ssm = "!f() { git submodule summary | colorss; }; f"
 [alias]
@@ -182,9 +178,9 @@
 [alias]
         sl = stash list
 [alias]
-        f = fetch
+        f = fetch --all
 [alias]
-        fr = fetch --recurse-submodules
+        fr = fetch --all --recurse-submodules
 [alias]
         rp = rev-parse
 [alias]
@@ -199,34 +195,34 @@
         diff = auto
         status = auto
 
-[color "branch"]
-        current = yellow reverse
-        local = yellow
-        remote = green
+; [color "branch"]
+;         current = yellow reverse
+;         local = yellow
+;         remote = green
 
-[color "diff"]
-        meta = bold
-        frag = magenta bold
-        old = red
-        new = green
+; [color "diff"]
+;         meta = bold
+;         frag = magenta bold
+;         old = red
+;         new = green
 
 [color "status"]
         added = yellow
-        changed = green
+        changed = blue
         untracked = cyan
 
 ; [diff]
 ;         tool = nvim -d
-[difftool]
-        prompt = false
-[difftool "vimdiff"]
-        cmd = nvim -d $LOCAL $REMOTE
+; [difftool]
+;         prompt = false
+; [difftool "vimdiff"]
+;         cmd = nvim -d $LOCAL $REMOTE
 ; [merge]
 ;         tool = nvim -d
-[mergetool]
-        prompt = false
-[mergetool "vimdiff"]
-        cmd = nvim -d $BASE $LOCAL $REMOTE
+; [mergetool]
+;         prompt = false
+; [mergetool "vimdiff"]
+;         cmd = nvim -d $BASE $LOCAL $REMOTE
 [core]
         editor = nvim
 	excludesfile = /Users/nitaai/.gitignore
@@ -235,22 +231,22 @@
         recurseSubmodules = on-demand
 ; [branch]
 ;         autosetuprebase = always
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+; [difftool "sourcetree"]
+; 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+; 	path = 
+; [mergetool "sourcetree"]
+; 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+; 	trustExitCode = true
 
 [commit]
         gpgsign = true
 [gpg]
 	program = /usr/local/bin/gpg
-[status]
-	submodulesummary = true
-[mergetool "fugitive"]
-	; cmd = vim -f -c \"Gdiff\" \"$MERGED\"
-        cmd = nvim -d $BASE $LOCAL $REMOTE
+; [status]
+; 	submodulesummary = true
+; [mergetool "fugitive"]
+; 	; cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+;         cmd = nvim -d $BASE $LOCAL $REMOTE
 [remote "origin"]
 	prune = true
 [pull]

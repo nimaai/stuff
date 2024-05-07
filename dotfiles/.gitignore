@@ -6,6 +6,7 @@
 .cpcache
 .ctags
 .eslintrc
+.envrc
 .java-version
 .lsp/
 .mux.yml
@@ -13,7 +14,7 @@
 .nrepl-port
 .pryrc
 .ruby-version
-.tool-versions
+.yardoc/
 Session.vim
 _vim-dadbod
 cider-ci/bin/install_rbenv_version.rb
