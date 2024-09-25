@@ -134,7 +134,7 @@
 [alias]
         bc = "!f() { hub browse -- commits/$(git rev-parse $1); }; f"
 [alias]
-        ci = "!f() { hub ci-status; }; f"
+        ci = "!f() { gh pr checks; }; f"
 
 [color]
         branch = auto
