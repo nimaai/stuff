@@ -165,5 +165,7 @@
 	helper = cache
 [diff]
 	external = difft
+[merge]
+        ff = true
 [mergetool "vimdiff"]
         layout = REMOTE,BASE,LOCAL
