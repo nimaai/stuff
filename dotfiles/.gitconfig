@@ -156,13 +156,11 @@
 [commit]
         gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [remote "origin"]
 	prune = true
 [pull]
 	rebase = true
-[credential]
-	helper = cache
 [diff]
 	external = difft
 [merge]
