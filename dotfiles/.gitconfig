@@ -4,15 +4,15 @@
         signingkey = A7D4C7D0AA8CF012
 
 [alias]
+        d = diff
+[alias]
         dno = diff --name-only
 [alias]
-        d = diff --ext-diff
-[alias]
-        ds = diff --ext-diff --staged
+        ds = diff --staged
 [alias]
         dsb = diff --submodule=diff --no-ext-diff
 [alias]
-        dom = diff --ext-diff origin/master
+        dom = diff origin/master
 [alias]
         c = commit
 [alias]
@@ -106,11 +106,11 @@
 [alias]
         rhom = reset --hard origin/master
 [alias]
+        sh = show --ext-diff
+[alias]
         sur = submodule update --recursive
 [alias]
         suri = submodule update --recursive --init
-[alias]
-        sh = show --ext-diff
 [alias]
         ssm = "!f() { git submodule summary | colorss; }; f"
 [alias]
