@@ -82,6 +82,8 @@
 [alias]
         ms = merge --squash
 [alias]
+        mom = merge origin/master
+[alias]
         mbom = merge-base HEAD origin/master
 [alias]
         r = rebase
@@ -107,6 +109,8 @@
         rhom = reset --hard origin/master
 [alias]
         sh = show --ext-diff
+[alias]
+        shh = sh HEAD
 [alias]
         sur = submodule update --recursive
 [alias]
